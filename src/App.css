@@ -14,8 +14,8 @@ main {
 }
 
 .navbar {
-  background: #011436;
-  color: #D1EDFF;
+  background: transparent;
+  color: #D1F6FF;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -29,13 +29,17 @@ main {
 }
 
 .navbar a {
-  color: #D1EDFF;
+  color: #D1F6FF;
   text-decoration: none;
 }
 
+.navbar span:hover {
+transform: scale(0.95);
+}
+
 .footer {
-  background: #045587;
-  color: #32B0E1;
+  background: #32B0E1;
+  color: #045587;
   text-align: center;
   padding: 1rem;
 }

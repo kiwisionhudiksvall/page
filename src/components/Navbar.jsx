@@ -1,15 +1,17 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "../assets/images/logo_white.svg";
 import "../index.css";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+    const navigate = useNavigate();
 
   return (
-    <nav className="navbar">
-      <img src={Logo} alt="Logo" className="logo" />
-
+    <nav className="navbar" style={{position: "sticky", top: 0, zIndex: 100}}>
+      <img src={Logo} alt="Logo" style={{ cursor: "pointer", maxHeight: "40px" }}
+        onClick={() => navigate("/")}
+      />
       <ul className="nav-links">
         <li
           className="dropdown"

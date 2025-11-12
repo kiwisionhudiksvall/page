@@ -1,19 +1,17 @@
-import React from 'react';
+import React from "react";
 import "../index.css";
 
 export default function Contact() {
   return (
     <>
-    <header data-name="hero">
-       <div data-name="box-1">
-    </div>
+      <header data-name="hero">
+        <div data-name="box-1"></div>
         <div data-name="box-2">
-      <h1>Kontakt</h1>
-      <p>Kontakta oss för ett möte så ser vi tillsammans över era behov.</p>
-      </div>
-    </header>
-    <section data-name="section-1">
-        </section>
-        </> 
+          <h1>Kontakt</h1>
+          <p>Kontakta oss för ett möte så ser vi tillsammans över era behov.</p>
+        </div>
+      </header>
+      <section data-name="section-1"></section>
+    </>
   );
 }
