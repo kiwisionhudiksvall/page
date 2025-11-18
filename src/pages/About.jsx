@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import "../index.css";
-import Image from "../assets/images/employed_kiwision.png";
+import "../styles/global.css";
+import heroImage from "../assets/images/employed_kiwision.png";
 
 export default function About() {
   const [data, setData] = useState(null);
@@ -51,7 +51,7 @@ export default function About() {
   if (!data) return <div>Innehåll kunde inte hämtas.</div>;
 
   const heroStyle = {
-    backgroundImage: `url(${Image})`,
+    backgroundImage: `url(${heroImage})`,
     height: "100vh",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
@@ -89,7 +89,7 @@ export default function About() {
       </header>
 
       <section
-        data-name="section-1"
+        data-name="section-2"
         style={{
           width: "100%",
           minHeight: "60vh",
@@ -102,19 +102,19 @@ export default function About() {
         <h2>{data.heading2}</h2>
         <p>{data.paragraph2}</p>
 </section>
-<section data-name="section-2" style={{ width: "100%"}}>
+<section data-name="section-3" style={{ width: "100%"}}>
            <div
           data-name="overlay"
             style={{
               position: "absolute",
               left: 0,
               right: 0,
-              height: "80vh",
+              height: "100%",
               objectFit: "cover",
               backgroundColor:"rgba(24, 17, 6, 0.82)", 
               zIndex: 30, 
             }}
-          >
+          ></div>
         <img
           src={data.imageUrl}
           alt={data.image?.title}
@@ -129,7 +129,7 @@ export default function About() {
             zIndex: 10,
           }}
         />
-</div>
+
       </section>
     </>
   );

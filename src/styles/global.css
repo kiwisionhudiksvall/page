@@ -1,0 +1,150 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  width: 100vw;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.navbar {
+  background: transparent;
+  color: #D1F6FF;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4% 2%;
+  max-width: 100%;
+}
+
+.navbar ul {
+  display: flex;
+  list-style: none;
+  gap: 1rem;
+}
+
+.navbar a {
+  color: #D1F6FF;
+  text-decoration: none;
+}
+
+.navbar span:hover {
+transform: scale(0.95);
+}
+
+.footer {
+  background: #32B0E1;
+  color: var(--darkblue);
+  text-align: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+}
+
+:root {
+  font-weight: 300;
+  font-family: halcom, sans-serif;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #011436;
+
+  --kiwigreen: #AEC539;
+  --aquablue: #32B0E1;
+  --lightblue: #D1F6FF;
+  --lightgreen: #F2F3A7;
+  --whiteblue: #EEFFFE;
+  --midblue: #005D85;
+  --midgreen: #637B27;
+  --darkblue: #011436;
+  --darkgreen: #252C00;
+  --creme: #FEFCF1;
+  --white: #FFFFFF;
+  --black: #000000;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.logo {
+  width: auto;
+  max-height: 40px;
+}
+
+.navbar img:hover {
+  transform: scale(0.95);
+}
+
+a {
+  font-weight: 600;
+  color: var(--kiwigreen);
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: var(--midgreen);
+  transform: scale(0.95);
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border: 1px solid transparent;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+/*   transition: border-color 0.25s; */
+  margin: 0.2rem;
+  padding: 0.5rem 2rem 0.7rem 2rem;
+  border-radius: 100px;
+  border: none;
+  background-color: var(--aquablue);
+  color: var(--lightblue);
+  cursor: pointer;
+}
+
+button:hover {
+  border-width: medium;
+  border-color: var(--lightblue);
+  transform: scale(0.95);
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .navbar ul {
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+}

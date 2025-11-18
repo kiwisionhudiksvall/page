@@ -1,5 +1,5 @@
 import React from "react";
-import "../index.css";
+import "../styles/global.css";
 import { Link } from "react-router-dom";
 import Image from "../assets/images/wall_kiwision.png";
 
@@ -91,33 +91,17 @@ export default function Home() {
             >
               <Link
                 to="/products"
-                data-name="button-1"
-                style={{
-                  margin: "0.2rem",
-                  padding: "0.5rem 2rem 0.7rem 2rem",
-                  borderRadius: "100px",
-                  border: "none",
-                  backgroundColor: "#32B0E1",
-                  color: "white",
-                  cursor: "pointer",
-                }}
-              >
+                data-name="link-1"
+              ><button data-name="button-1">
                 UTBUD
+                </button>
               </Link>
               <Link
                 to="/about"
-                data-name="button-1"
-                style={{
-                  margin: "0.2rem",
-                  padding: "0.5rem 2rem 0.7rem 2rem",
-                  borderRadius: "100px",
-                  border: "none",
-                  backgroundColor: "#32B0E1",
-                  color: "white",
-                  cursor: "pointer",
-                }}
-              >
+                data-name="link-2"
+              ><button data-name="button-2">
                 OM OSS
+                </button>
               </Link>
             </div>
           </div>
