@@ -39,8 +39,8 @@ export default function Navbar() {
               className="dropdown-menu"
               style={{
                 position: "absolute",
-                top: "65px",
-                right: "30px",
+                top: "13vh",
+                right: "2vw",
                 backgroundColor: "#011436d6",
                 boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
                 borderRadius: "20px",

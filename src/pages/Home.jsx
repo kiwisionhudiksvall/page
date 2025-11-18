@@ -5,8 +5,7 @@ import Image from "../assets/images/wall_kiwision.png";
 
 export default function Home() {
   const heroImage = {
-    backgroundImage:
-      `url(${Image})`,
+    backgroundImage: `url(${Image})`,
     height: "100vh",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
@@ -17,18 +16,20 @@ export default function Home() {
       <main
         data-name="home-main"
         style={{
-            marginTop: "-13vh",
+          top: 0,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          gap: "2rem",
+          marginBottom: 0,
         }}
       >
         <header
           data-name="home-hero"
           style={{
             ...heroImage,
+            top: 0,
+            marginTop: "-30vh",
             textAlign: "center",
             justifyContent: "center",
             display: "flex",
@@ -36,33 +37,41 @@ export default function Home() {
             alignItems: "center",
           }}
         >
-                    <div
+          <div
+          data-name="overlay"
             style={{
               position: "absolute",
               top: 0,
               left: 0,
-              width: "100%",
-              height: "100%",
-              backgroundColor: "rgba(0, 0, 0, 0.5)", // 0.5 = 50% toning
-              zIndex: 1, // bakom texten men ovanpå bilden
+              bottom: 0,
+              right: 0,
+              backgroundColor:"rgba(24, 17, 6, 0.82)", 
+              zIndex: 1, 
             }}
           ></div>
-          <div style={{ 
-            position: "relative",
-             zIndex: 2 }}>
-             <h1 style={{
+          <div
+            style={{
+              position: "relative",
+              zIndex: 2,
+            }}
+          >
+            <h1
+              style={{
+                fontFamily: "Arboria, sans-serif",
                 letterSpacing: "1.0rem",
-                fontWeight: "600",
-                fontSize: "2.6rem",
+                fontWeight: "300",
+                fontSize: "3.2rem",
                 color: "#32B0E1",
               }}
             >
               VI ÄLSKAR IT
             </h1>
-            <p style={{
+            <p
+              style={{
                 maxWidth: "75%",
                 margin: "1rem auto",
-                }}>
+              }}
+            >
               Kiwision är en IT-konsultbyrå som specialiserar sig på att skapa
               skräddarsydda digitala lösningar för företag och organisationer.
               Med hög spetskompetens och kanske några av Sveriges bästa
@@ -70,47 +79,47 @@ export default function Home() {
               arbetar nära våra kunder för att förstå deras behov och levererar
               lösningar med djup kunnighet bakom.
             </p>
-          <div
-            data-name="button-wrap"
-            style={{
-              marginTop: "1rem",
-              display: "flex",
-              justifyContent: "center",
-              flexDirection: "row",
-              alignItems: "center",
-            }}
-          >
-            <Link
-              to="/products"
-              data-name="button-1"
+            <div
+              data-name="button-wrap"
               style={{
-                margin: "0.2rem",
-                padding: "0.5rem 2rem 0.7rem 2rem",
-                borderRadius: "100px",
-                border: "none",
-                backgroundColor: "#32B0E1",
-                color: "white",
-                cursor: "pointer",
+                marginTop: "1rem",
+                display: "flex",
+                justifyContent: "center",
+                flexDirection: "row",
+                alignItems: "center",
               }}
             >
-              UTBUD
-            </Link>
-            <Link
-              to="/about"
-              data-name="button-1"
-              style={{
-                margin: "0.2rem",
-                padding: "0.5rem 2rem 0.7rem 2rem",
-                borderRadius: "100px",
-                border: "none",
-                backgroundColor: "#32B0E1",
-                color: "white",
-                cursor: "pointer",
-              }}
-            >
-              OM OSS
-            </Link>
-          </div>
+              <Link
+                to="/products"
+                data-name="button-1"
+                style={{
+                  margin: "0.2rem",
+                  padding: "0.5rem 2rem 0.7rem 2rem",
+                  borderRadius: "100px",
+                  border: "none",
+                  backgroundColor: "#32B0E1",
+                  color: "white",
+                  cursor: "pointer",
+                }}
+              >
+                UTBUD
+              </Link>
+              <Link
+                to="/about"
+                data-name="button-1"
+                style={{
+                  margin: "0.2rem",
+                  padding: "0.5rem 2rem 0.7rem 2rem",
+                  borderRadius: "100px",
+                  border: "none",
+                  backgroundColor: "#32B0E1",
+                  color: "white",
+                  cursor: "pointer",
+                }}
+              >
+                OM OSS
+              </Link>
+            </div>
           </div>
         </header>
         <section

@@ -1,8 +1,21 @@
 :root {
-  font-weight: 400;
+  font-weight: 300;
   font-family: halcom, sans-serif;
   color: rgba(255, 255, 255, 0.87);
   background-color: #011436;
+
+  --kiwigreen: #AEC539;
+  --aquablue: #32B0E1;
+  --lightblue: #D1F6FF;
+  --lightgreen: #F2F3A7;
+  --whiteblue: #EEFFFE;
+  --midblue: #005D85;
+  --midgreen: #637B27;
+  --darkblue: #011436;
+  --darkgreen: #252C00;
+  --creme: #FEFCF1;
+  --white: #FFFFFF;
+  --black: #000000;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -34,7 +47,7 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
+  max-width: 100vw;
   min-height: 100vh;
 }
 
