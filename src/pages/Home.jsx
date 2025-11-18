@@ -72,9 +72,9 @@ export default function Home() {
                 margin: "1rem auto",
               }}
             >
-              Kiwision är en IT-konsultbyrå som specialiserar sig på att skapa
-              skräddarsydda digitala lösningar för företag och organisationer.
-              Med hög spetskompetens och kanske några av Sveriges bästa
+              Kiwision är en IT-byrå med skräddarsydda lösningar 
+              för dig som företag eller organisation.
+              Med spetskompetens i branschen och några av Sveriges bästa
               systemutvecklare har vi lösningarna för just dina IT-behov. Vi
               arbetar nära våra kunder för att förstå deras behov och levererar
               lösningar med djup kunnighet bakom.

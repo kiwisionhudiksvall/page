@@ -1,56 +1,23 @@
 import React, { useState, useEffect } from "react";
 import "../styles/global.css";
 import heroImage from "../assets/images/employed_kiwision.png";
+import { fetchPageContent } from "../sdk/contentfulSDK.js";
 
 export default function About() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const url =
-      "https://graphql.contentful.com/content/v1/spaces/pxok2zrh6jgc/environments/master";
-
-    const query = `
-      query {
-        pageText(id: "3TqYb6JvRoK1WguY9oKLE9") {
-          heading
-          paragraph
-          heading2
-          paragraph2
-          image {
-            title
-            url
-          }
-        }
-      }
-    `;
-
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer UjuQwJoV0G6WTlkEq80T8SLFOXxfUXCyYI_9zu_JCg4",
-      },
-      body: JSON.stringify({ query }),
-    })
-      .then((res) => res.json())
-      .then((json) => {
-        const entry = json.data.pageText;
-        const imageUrl = entry.image?.url;
-
-        setData({ ...entry, imageUrl });
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Fel vid GraphQL-anrop:", err);
-        setLoading(false);
-      });
+    fetchPageContent("4V46k8e7DIJpyrhjQVtvHt").then((result) => {
+      setData(result);
+      setLoading(false);
+    });
   }, []);
 
   if (loading) return <div>Laddar innehåll...</div>;
   if (!data) return <div>Innehåll kunde inte hämtas.</div>;
 
-  const heroStyle = {
+  const heroBackgroundImage = {
     backgroundImage: `url(${heroImage})`,
     height: "100vh",
     backgroundSize: "cover",
@@ -62,7 +29,7 @@ export default function About() {
 
   return (
     <>
-      <header data-name="hero" style={heroStyle}>
+      <header data-name="hero" style={heroBackgroundImage}>
         <div
           data-name="box-1"
           style={{
@@ -82,7 +49,7 @@ export default function About() {
           <div
             style={{ padding: "6rem", margin: "14rem 0", textAlign: "center" }}
           >
-            <h1>{data.heading}</h1>
+            <h1>{data.heading1}</h1>
             <p>{data.paragraph}</p>
           </div>
         </div>
@@ -100,7 +67,7 @@ export default function About() {
         }}
       >
         <h2>{data.heading2}</h2>
-        <p>{data.paragraph2}</p>
+        <p>{data.paragraph}</p>
 </section>
 <section data-name="section-3" style={{ width: "100%"}}>
            <div
