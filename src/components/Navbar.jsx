@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Logo from "../assets/images/logo_white.svg";
+import Logo from "../assets/images/logos/kiwision-bluemix_logo-02.png"
 import "../styles/global.css";
 
 export default function Navbar() {

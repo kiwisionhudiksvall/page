@@ -53,6 +53,7 @@ export default function Home() {
             style={{
               position: "relative",
               zIndex: 2,
+              marginTop: "15vh",
             }}
           >
             <h1
@@ -68,8 +69,8 @@ export default function Home() {
             </h1>
             <p
               style={{
-                maxWidth: "75%",
-                margin: "1rem auto",
+                maxWidth: "50%",
+                margin: "2rem auto",
               }}
             >
               Kiwision är en IT-byrå med skräddarsydda lösningar 
