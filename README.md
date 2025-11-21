@@ -23,7 +23,7 @@ kiwi         #AEC539
 darkblue     #011436
 midblue      #045587 #005D85
 lightblue    #D1F6FF
-whiteblue    #EEFFFE
+whiteblue    #EEFFFE rgb: rgba(238, 255, 254, 1)
 
 creme        #FEFCF1
 darkbrown    #252206

@@ -68,7 +68,7 @@ export default function Home() {
             </h1>
             <p
               style={{
-                maxWidth: "75%",
+                maxWidth: "60%",
                 margin: "1rem auto",
               }}
             >

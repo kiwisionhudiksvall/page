@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Logo from "../assets/images/logo_white.svg";
+import Logo from "../assets/images/logo_blue.svg";
 import "../styles/global.css";
 
 export default function Navbar() {
@@ -18,21 +18,10 @@ export default function Navbar() {
           onClick={() => setIsOpen(prev => !prev)} 
         >
           <span
-            className="dropdown-title"
-            style={{
-              margin: "0.2rem",
-              padding: "0.5rem 2rem 0.7rem 2rem",
-              borderRadius: "100px",
-              border: "none",
-              backgroundColor: "#32B0E1",
-              color: "white",
-              cursor: "pointer",
-              textTransform: "uppercase",
-              fontWeight: "500",
-            }}
-          >
+            className="dropdown-title">
+              <button data-name="menu-button">
             Meny ☰
-          </span>
+          </button></span>
 
           {isOpen && (
             <ul
@@ -41,8 +30,8 @@ export default function Navbar() {
                 position: "absolute",
                 top: "13vh",
                 right: "2vw",
-                backgroundColor: "#011436d6",
-                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+                backgroundColor: "var(--darkblue)",
+                boxShadow: "0 4px 8px rgba(238, 255, 254, 0.2)",
                 borderRadius: "20px",
                 padding: "1rem",
                 listStyle: "none",
@@ -53,16 +42,7 @@ export default function Navbar() {
               <li style={{marginLeft: "20px", width: "160px", display: "flex", flexDirection: "column", gap: "0.5rem"}}>
                 <Link to="/products" style={{
               margin: "0.2rem",
-              padding: "0.5rem 2rem 0.7rem 2rem",
-              borderRadius: "100px",
-              border: "none",
-              backgroundColor: "#32B0E1",
-              color: "white",
-              cursor: "pointer",
-              textTransform: "uppercase",
-              fontWeight: "500",
-              textAlign: "center",
-              }}>Utbud</Link>
+              }}><button data-name="button">Utbud</button></Link>
                 <Link style={{margin: "6px 0", fontSize: 14, cursor: "pointer"}} to="/products">Systemutveckling</Link>
                 <Link style={{margin: "6px 0", fontSize: 14}} to="/products">Infrastruktur & moln</Link>
                 <Link style={{margin: "6px 0", fontSize: 14}} to="/products">IT-säkerhet</Link>
@@ -70,44 +50,17 @@ export default function Navbar() {
              <li style={{marginLeft: "20px", width: "160px", display: "flex", flexDirection: "column", gap: "0.5rem"}}>
                 <Link to="/page" style={{
               margin: "0.2rem",
-              padding: "0.5rem 2rem 0.7rem 2rem",
-              borderRadius: "100px",
-              border: "none",
-              backgroundColor: "#32B0E1",
-              color: "white",
-              cursor: "pointer",
-              textTransform: "uppercase",
-              fontWeight: "500",
-              textAlign: "center",
-              }}>Page</Link>
+              }}><button data-name="button">Page</button></Link>
               </li>
               <li style={{marginLeft: "20px", width: "160px", display: "flex", flexDirection: "column", gap: "0.5rem"}}>
                 <Link to="/about" style={{
               margin: "0.2rem",
-              padding: "0.5rem 2rem 0.7rem 2rem",
-              borderRadius: "100px",
-              border: "none",
-              backgroundColor: "#32B0E1",
-              color: "white",
-              cursor: "pointer",
-              textTransform: "uppercase",
-              fontWeight: "500",
-              textAlign: "center",
-              }}>Om oss</Link>
+              }}><button data-name="button">Om oss</button></Link>
               </li>
              <li style={{marginLeft: "20px", width: "160px", display: "flex", flexDirection: "column", gap: "0.5rem"}}>
                 <Link to="/contact" style={{
               margin: "0.2rem",
-              padding: "0.5rem 2rem 0.7rem 2rem",
-              borderRadius: "100px",
-              border: "none",
-              backgroundColor: "#32B0E1",
-              color: "white",
-              cursor: "pointer",
-              textTransform: "uppercase",
-              fontWeight: "500",
-              textAlign: "center",
-              }}>Kontakt</Link>
+              }}><button data-name="button">Kontakt</button></Link>
               </li>
             </ul>
           )}
