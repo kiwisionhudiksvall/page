@@ -1,7 +1,8 @@
 :root {
-  font-weight: 300;
-  font-family: halcom, sans-serif;
-  color: rgba(255, 255, 255, 0.87);
+  font-weight: 400;
+  line-height: 1.4rem;
+  font-family: "halcom", sans-serif;
+  color: rgba(238, 255, 254, 0.9);
   background-color: #011436;
 
   --kiwigreen: #AEC539;
@@ -39,14 +40,35 @@ main {
   margin: 0;
 }
 
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+a {
+  font-weight: 500;
+  text-decoration: inherit;
+  font-family: "Arboria", sans-serif;
+}
+
+a:hover {
+  color: var(--kiwigreen);
+  transform: scale(0.98);
+}
+
 .navbar {
   background: transparent;
-  color: #D1F6FF;
+  color: var(--lightblue);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 4% 2%;
-  max-width: 100%;
+  height: 10vh;
+  padding: 0 2rem;
+  box-sizing: border-box;
+  max-width: 100vw;
 }
 
 .navbar ul {
@@ -56,47 +78,78 @@ main {
 }
 
 .navbar a {
-  color: #D1F6FF;
   text-decoration: none;
+  font-family: "Arboria", sans-serif;
+  color: var(--darkblue);
 }
 
-.logo {
+.navbar span:hover {
+  transform: scale(0.98);
+}
+
+.navbar img {
   width: auto;
-  max-height: 40px;
+  max-height: 45px;
+  padding-bottom: 60px;
 }
 
 .navbar img:hover {
   transform: scale(0.98);
+  cursor: pointer;
 }
 
-a {
-  font-weight: 600;
-  color: var(--kiwigreen);
-  text-decoration: inherit;
+[data-name="nav-button"] {
+  margin: 0.2rem;
+  padding: 0.5rem 2rem 0.7rem 2rem;
+  border-radius: 100px;
+  border: none;
+  background-color: var(--lightblue);
+  color: var(--darkblue);
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 500;
+  text-align: center;
 }
 
-a:hover {
-  color: var(--midgreen);
+[data-name="nav-button"]:hover {
+  background: var(--kiwigreen);
   transform: scale(0.98);
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 100vw;
-  min-height: 100vh;
+li .page-subheading {
+  font-size: 0.95rem;
+  color: var(--darkblue);
+  margin: 6px 0 0 10px;
+}
+
+li .page-subheading::before {
+  content: "❱ ";
+  color: var(--kiwigreen);
+}
+
+li .page-subheading:hover {
+  color: var(--kiwigreen);
+  transform: scale(0.98);
+  cursor: pointer;
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  font-family: "Arboria", sans-serif;
+}
+
+h2 {
+  font-size: 2.4em;
+  line-height: 1.2;
+  font-family: "Arboria", sans-serif;
 }
 
 button {
-  border: 3px solid transparent;
+  font-family: "Arboria", sans-serif;
+  text-transform: uppercase;
   font-size: 0.85rem;
-  font-weight: 300;
+  font-weight: 500;
   font-family: inherit;
   letter-spacing: 0.04rch;
   margin: 0.2rem;
@@ -109,16 +162,19 @@ button {
 }
 
 button:hover {
-  border: 2px solid transparent;
   transform: scale(0.98);
-  /*   transition: border-color 0.25s; */
+  background: var(--kiwigreen);
+  color: var(--lightgreen);
 }
 
-button:focus,
-button:focus-visible {
- /* outline: 4px auto -webkit-focus-ring-color; */
-   background: var(--lightblue);
-  color: var(--aquablue);
+section {
+  box-sizing: border-box;
+  min-height: 60vh;
+  width: 100%;
+}
+
+[data-name="section-2"] {
+  background-color: var(--creme);
 }
 
 [data-name="footer"] {

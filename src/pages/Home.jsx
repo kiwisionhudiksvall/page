@@ -6,9 +6,10 @@ import Image from "../assets/images/wall_kiwision.png";
 export default function Home() {
   const heroImage = {
     backgroundImage: `url(${Image})`,
-    height: "100vh",
+    width: "100%",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
+    backgroundPosition: "0% 95%",
   };
 
   return (
@@ -29,24 +30,31 @@ export default function Home() {
           style={{
             ...heroImage,
             top: 0,
-            marginTop: "-30vh",
+            left: 0,
+            bottom: 0,
+            right: 0,
+            marginTop: "-25vh",
             textAlign: "center",
             justifyContent: "center",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            width: "100vw",
+            height: "100vh",
+            position: "relative",
+            overflow: "hidden",
           }}
         >
           <div
-          data-name="overlay"
+            data-name="overlay"
             style={{
               position: "absolute",
               top: 0,
               left: 0,
               bottom: 0,
               right: 0,
-              backgroundColor:"rgba(24, 17, 6, 0.82)", 
-              zIndex: 1, 
+              backgroundColor: "rgba(24, 17, 6, 0.85)",
+              zIndex: 1,
             }}
           ></div>
           <div
@@ -59,49 +67,39 @@ export default function Home() {
               style={{
                 fontFamily: "Arboria, sans-serif",
                 letterSpacing: "1.0rem",
-                fontWeight: "300",
+                fontWeight: "400",
                 fontSize: "3.2rem",
-                color: "#32B0E1",
+                color: "var(--aquablue)",
               }}
             >
               VI ÄLSKAR IT
             </h1>
             <p
               style={{
-                maxWidth: "60%",
-                margin: "1rem auto",
+                maxWidth: "50%",
+                margin: "2rem auto",
               }}
             >
-              Kiwision är en IT-byrå med skräddarsydda lösningar 
-              för dig som företag eller organisation.
-              Med spetskompetens i branschen och några av Sveriges bästa
-              systemutvecklare har vi lösningarna för just dina IT-behov. Vi
-              arbetar nära våra kunder för att förstå deras behov och levererar
-              lösningar med djup kunnighet bakom.
+              Kiwision är en IT-byrå med skräddarsydda lösningar för dig som
+              företag eller organisation. Med spetskompetens i branschen och
+              några av Sveriges bästa systemutvecklare har vi lösningarna för
+              just dina IT-behov. Vi arbetar nära våra kunder för att förstå
+              deras behov och levererar lösningar med djup kunnighet bakom.
             </p>
             <div
               data-name="button-wrap"
               style={{
-                marginTop: "1rem",
                 display: "flex",
                 justifyContent: "center",
                 flexDirection: "row",
                 alignItems: "center",
               }}
             >
-              <Link
-                to="/products"
-                data-name="link-1"
-              ><button data-name="button-1">
-                UTBUD
-                </button>
+              <Link to="/products" data-name="link-1" style={{margin: "0.5vw"}}>
+                <button data-name="button-1">UTBUD</button>
               </Link>
-              <Link
-                to="/about"
-                data-name="link-2"
-              ><button data-name="button-2">
-                OM OSS
-                </button>
+              <Link to="/about" data-name="link-2" style={{margin: "0.5vw"}}>
+                <button data-name="button-2">OM OSS</button>
               </Link>
             </div>
           </div>
