@@ -75,18 +75,19 @@ export default function Navbar() {
                   Kundcase
                 </Link>
               </li>
-              <li
-                style={{
-                  marginLeft: "20px",
-                  width: "160px",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "0.5rem",
-                }}
-              >
-                <Link to="/page" data-name="nav-button">
-                  Sida
-                </Link>
+             <li style={{marginLeft: "20px", width: "160px", display: "flex", flexDirection: "column", gap: "0.5rem"}}>
+                <Link to="/page" style={{
+              margin: "0.2rem",
+              padding: "0.5rem 2rem 0.7rem 2rem",
+              borderRadius: "100px",
+              border: "none",
+              backgroundColor: "#32B0E1",
+              color: "white",
+              cursor: "pointer",
+              textTransform: "uppercase",
+              fontWeight: "500",
+              textAlign: "center",
+              }}>Page</Link>
               </li>
               <li
                 style={{
