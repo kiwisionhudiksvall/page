@@ -60,6 +60,7 @@ export default function Home() {
           <div
             style={{
               position: "relative",
+              marginTop: "10vh",
               zIndex: 2,
             }}
           >

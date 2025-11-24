@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "../styles/global.css";
 import heroImage from "../assets/images/employed_kiwision.png";
-import { fetchPageContent } from "../sdk/contentfulSDK.js";
+import { fetchPageContentByUrl } from "../sdk/contentfulSDK.js";
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+
 
 export default function About() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchPageContent("4V46k8e7DIJpyrhjQVtvHt").then((result) => {
+    fetchPageContentByUrl("/about").then((result) => {
       setData(result);
       setLoading(false);
     });
@@ -47,10 +49,10 @@ export default function About() {
           }}
         >
           <div
-            style={{ padding: "6rem", margin: "14rem 0", textAlign: "center" }}
+            style={{ padding: "6rem", margin: "10rem 0", textAlign: "center" }}
           >
             <h1>{data.heading1}</h1>
-            <p>{data.paragraph}</p>
+            <p>{data.heroText}</p>
           </div>
         </div>
       </header>
@@ -58,18 +60,19 @@ export default function About() {
       <section
         data-name="section-2"
         style={{
-          width: "100%",
+          width: "100vw",
           minHeight: "60vh",
-          textAlign: "center",
-          backgroundColor: "var(--lightblue)",
-          color: "var(--darkblue)",
-          padding: "4rem",
+          backgroundColor: "var(--darkblue)",
+          color: "var(--lightblue)",
+          padding: "3rem 15rem 6rem 15rem",
         }}
       >
-        <h2>{data.heading2}</h2>
-        <p>{data.paragraph}</p>
-</section>
-<section data-name="section-3" style={{ width: "100%"}}>
+        <h2 style={{textAlign: "center"}}>{data.heading2}</h2>
+<div style={{ textAlign: "left", lineHeight: "1.6", marginTop: "1.5rem" }}>
+  {data.paragraph?.json ? documentToReactComponents(data.paragraph.json) : null}
+</div>
+      </section>
+<section data-name="section-3">
            <div
           data-name="overlay"
             style={{
@@ -86,12 +89,10 @@ export default function About() {
           src={data.imageUrl}
           alt={data.image?.title}
           style={{
-            width: "100%",
-            marginTop: "2rem",
+            width: "100vw",
             height: "80vh",
             objectFit: "cover",
-            overflow: "hidden",
-            objectPosition: "top",
+            objectPosition: "50% 20%",
             position: "relative",
             zIndex: 10,
           }}

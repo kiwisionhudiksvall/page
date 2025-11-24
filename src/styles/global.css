@@ -33,18 +33,15 @@
 }
 
 main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   margin: 0;
+  width: 100vw;
 }
 
 body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 100vw;
+  width: 100%;
   min-height: 100vh;
 }
 
@@ -83,15 +80,17 @@ a:hover {
   color: var(--darkblue);
 }
 
-.navbar span:hover {
+.dropdown-button:hover {
   transform: scale(0.98);
+  background: var(--kiwigreen);
 }
 
+/* logo */
 .navbar img {
   width: auto;
   max-height: 45px;
-  padding-bottom: 60px;
 }
+
 .navbar img:hover {
   transform: scale(0.98);
   cursor: pointer;
@@ -99,7 +98,7 @@ a:hover {
 
 [data-name="nav-button"] {
   margin: 0.2rem;
-  padding: 0.5rem 2rem 0.7rem 2rem;
+  padding: 0.4rem 0rem 0.5rem 0rem;
   border-radius: 100px;
   border: none;
   background-color: var(--lightblue);
@@ -115,18 +114,18 @@ a:hover {
   transform: scale(0.98);
 }
 
-li .page-subheading {
+li .nav-sub {
   font-size: 0.95rem;
   color: var(--darkblue);
   margin: 6px 0 0 10px;
 }
 
-li .page-subheading::before {
+li .nav-sub::before {
   content: "❱ ";
   color: var(--kiwigreen);
 }
 
-li .page-subheading:hover {
+li .nav-sub:hover {
   color: var(--kiwigreen);
   transform: scale(0.98);
   cursor: pointer;
@@ -152,18 +151,18 @@ button {
   font-family: inherit;
   letter-spacing: 0.04rch;
   margin: 0.2rem;
-  padding: 0.3rem 2rem 0.5rem 2rem;
+  padding: 0.3rem 1.5rem 0.5rem 1.5rem;
   border-radius: 100px;
   min-width: 120px;
   background-color: var(--aquablue);
   color: var(--lightblue);
   cursor: pointer;
+  border: none;
 }
 
 button:hover {
   transform: scale(0.98);
   background: var(--kiwigreen);
-  color: var(--lightgreen);
 }
 
 section {
@@ -172,9 +171,14 @@ section {
   width: 100%;
 }
 
-[data-name="section-2"] {
+[data-name="section-1"] {
   background-color: var(--creme);
 }
+
+[data-name="section-2"] {
+  background-color: var(--darkblue);
+}
+
 
 [data-name="footer"] {
   background: var(--lightblue);

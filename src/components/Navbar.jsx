@@ -21,8 +21,8 @@ export default function Navbar() {
             className="dropdown-button"
             style={{
               right: "2.3vw",
-              padding: "0.5rem 2rem 0.7rem 2rem",
-              borderRadius: isOpen ? "30px 30px 0px 0px" : "100px",
+              padding: "0.3rem 1.5rem 0.5rem 1.5rem",
+              borderRadius: "100px",
               border: "none",
               backgroundColor: "var(--lightblue)",
               color: "var(--darkblue)",
@@ -39,10 +39,10 @@ export default function Navbar() {
               className="dropdown-menu"
               style={{
                 position: "absolute",
-                top: "14vh",
+                top: "10vh",
                 right: "2.3vw",
                 backgroundColor: "rgba(50, 176, 225, 0.85)",
-                boxShadow: "0 4px 8px rgba(254, 252, 241, 0.1);",
+                boxShadow: "0 4px 8px rgba(254, 252, 241, 0.1)",
                 borderRadius: "30px 0px 30px 0px",
                 padding: "1rem",
                 listStyle: "none",
@@ -62,32 +62,22 @@ export default function Navbar() {
                 <Link to="/products" data-name="nav-button">
                   Utbud
                 </Link>
-                <Link to="/products" className="page-subheading">
+                <Link to="/products" className="nav-sub">
                   Systemutveckling
                 </Link>
-                <Link to="/products" className="page-subheading">
+                <Link to="/products" className="nav-sub">
                   Infrastruktur & moln
                 </Link>
-                <Link to="/products" className="page-subheading">
+                <Link to="/products" className="nav-sub">
                   IT-säkerhet
                 </Link>
-                <Link to="/products" className="page-subheading">
+                <Link to="/products" className="nav-sub">
                   Kundcase
                 </Link>
               </li>
              <li style={{marginLeft: "20px", width: "160px", display: "flex", flexDirection: "column", gap: "0.5rem"}}>
-                <Link to="/page" style={{
-              margin: "0.2rem",
-              padding: "0.5rem 2rem 0.7rem 2rem",
-              borderRadius: "100px",
-              border: "none",
-              backgroundColor: "#32B0E1",
-              color: "white",
-              cursor: "pointer",
-              textTransform: "uppercase",
-              fontWeight: "500",
-              textAlign: "center",
-              }}>Page</Link>
+                <Link to="/page" data-name="nav-button">
+                Page</Link>
               </li>
               <li
                 style={{
@@ -101,16 +91,16 @@ export default function Navbar() {
                 <Link to="/about" data-name="nav-button">
                   Om oss
                 </Link>
-                <Link to="/about" className="page-subheading">
+                <Link to="/about" className="nav-sub">
                   Bakgrund
                 </Link>
-                <Link to="/about" className="page-subheading">
+                <Link to="/about" className="nav-sub">
                   Kompetenser
                 </Link>
-                <Link to="/about" className="page-subheading">
+                <Link to="/about" className="nav-sub">
                   Samarbeten
                 </Link>
-                <Link to="/about" className="page-subheading">
+                <Link to="/about" className="nav-sub">
                   Kunder
                 </Link>
               </li>
@@ -126,13 +116,13 @@ export default function Navbar() {
                 <Link to="/contact" data-name="nav-button">
                   Kontakt
                 </Link>
-                <Link to="/contact" className="page-subheading">
+                <Link to="/contact" className="nav-sub">
                   Kontaktuppgifter
                 </Link>
-                <Link to="/contact" className="page-subheading">
+                <Link to="/contact" className="nav-sub">
                   Direktformulär
                 </Link>
-                <Link to="/contact" className="page-subheading">
+                <Link to="/contact" className="nav-sub">
                   Här finns vi
                 </Link>
               </li>
