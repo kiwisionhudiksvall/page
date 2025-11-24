@@ -1,11 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Logo from "../assets/images/logos/logo-02.svg";
+import Logo from "../assets/images/logos/logo_kiwision-bluemix-08.png";
 import "../styles/global.css";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (isOpen && dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isOpen]);
 
   return (
     <nav className="navbar" style={{ position: "sticky", top: 0, zIndex: 100 }}>
@@ -16,9 +28,13 @@ export default function Navbar() {
         onClick={() => navigate("/")}
       />
       <ul className="nav-menu">
-        <li className="dropdown" onClick={() => setIsOpen((prev) => !prev)}>
+               <li
+          className="dropdown"
+          ref={dropdownRef}        
+        >
           <span
             className="dropdown-button"
+            onClick={() => setIsOpen((prev) => !prev)}
             style={{
               right: "2.3vw",
               padding: "0.3rem 1.5rem 0.5rem 1.5rem",
@@ -28,7 +44,8 @@ export default function Navbar() {
               color: "var(--darkblue)",
               cursor: "pointer",
               textTransform: "uppercase",
-              fontWeight: "500",
+              fontWeight: "400",
+              fontSize: "0.85rem",
             }}
           >
             {isOpen ? "Stäng ⨯" : "Meny ☰"}
@@ -41,8 +58,8 @@ export default function Navbar() {
                 position: "absolute",
                 top: "10vh",
                 right: "2.3vw",
-                backgroundColor: "rgba(50, 176, 225, 0.85)",
-                boxShadow: "0 4px 8px rgba(254, 252, 241, 0.1)",
+                backgroundColor: "var(--darkblue)",
+                boxShadow: "0 4px 9px rgba(0, 0, 0, 0.3)",
                 borderRadius: "30px 0px 30px 0px",
                 padding: "1rem",
                 listStyle: "none",

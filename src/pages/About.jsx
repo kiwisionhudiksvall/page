@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../styles/global.css";
 import heroImage from "../assets/images/employed_kiwision.png";
-import { fetchPageContentByUrl } from "../sdk/contentfulSDK.js";
+import { fetchPageContent } from "../sdk/contentfulSDK.js";
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 
@@ -10,7 +10,7 @@ export default function About() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchPageContentByUrl("/about").then((result) => {
+    fetchPageContent("/about").then((result) => {
       setData(result);
       setLoading(false);
     });
@@ -49,7 +49,7 @@ export default function About() {
           }}
         >
           <div
-            style={{ padding: "6rem", margin: "10rem 0", textAlign: "center" }}
+            style={{ padding: "6rem", margin: "15rem 0", textAlign: "center" }}
           >
             <h1>{data.heading1}</h1>
             <p>{data.heroText}</p>
@@ -62,14 +62,14 @@ export default function About() {
         style={{
           width: "100vw",
           minHeight: "60vh",
-          backgroundColor: "var(--darkblue)",
-          color: "var(--lightblue)",
+          backgroundColor: "var(--whiteblue)",
+          color: "var(--darkblue)",
           padding: "3rem 15rem 6rem 15rem",
         }}
       >
         <h2 style={{textAlign: "center"}}>{data.heading2}</h2>
 <div style={{ textAlign: "left", lineHeight: "1.6", marginTop: "1.5rem" }}>
-  {data.paragraph?.json ? documentToReactComponents(data.paragraph.json) : null}
+  {data.richText?.json && documentToReactComponents(data.richText.json)}
 </div>
       </section>
 <section data-name="section-3">

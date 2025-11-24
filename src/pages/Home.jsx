@@ -53,7 +53,7 @@ export default function Home() {
               left: 0,
               bottom: 0,
               right: 0,
-              backgroundColor: "rgba(24, 17, 6, 0.85)",
+              backgroundColor: "rgba(23, 12, 2, 0.6)",
               zIndex: 1,
             }}
           ></div>
@@ -70,15 +70,19 @@ export default function Home() {
                 letterSpacing: "1.0rem",
                 fontWeight: "400",
                 fontSize: "3.2rem",
-                color: "var(--aquablue)",
+                color: "var(--lightblue)",
               }}
             >
               VI ÄLSKAR IT
             </h1>
             <p
               style={{
-                maxWidth: "50%",
+                maxWidth: "70%",
                 margin: "2rem auto",
+                fontWeight: "400",
+                fontFamily: "Arboria, sans-serif",
+                fontSize: "1rem",
+                color: "var(--whiteblue)",
               }}
             >
               Kiwision är en IT-byrå med skräddarsydda lösningar för dig som
