@@ -1,24 +1,41 @@
 import React, { useState, useEffect } from "react";
 import "../styles/global.css";
-import heroImage from "../assets/images/kiwisionbilen-borgarparken.png";
-import { fetchPageContent } from "../sdk/contentfulSDK.js";
+import { getEntryByUrl, getAssetUrl } from "../sdk/contentful.js";
 
 export default function Page() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetchPageContent("/page").then((result) => {
-      setData(result);
-      setLoading(false);
-    });
+    const loadContent = async () => {
+      try {
+        const entry = await getEntryByUrl("/page");
+        if (entry) {
+          setData(entry.fields);
+        } else {
+          setError("Inga poster hittades.");
+        }
+      } catch (err) {
+        console.error(err);
+        setError("Fel vid hämtning av innehåll.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadContent();
   }, []);
 
   if (loading) return <div>Laddar innehåll...</div>;
+  if (error) return <div>{error}</div>;
   if (!data) return <div>Innehåll kunde inte hämtas.</div>;
 
+  const { image, heading1, heroText } = data;
+  const imageUrl = getAssetUrl(image);
+
   const heroBackgroundImage = {
-    backgroundImage: `url(${heroImage})`,
+    backgroundImage: `url(${imageUrl})`,
     height: "100vh",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
@@ -29,9 +46,9 @@ export default function Page() {
 
   return (
     <>
- <header data-name="hero" style={heroBackgroundImage}>
+      <header className="hero" style={heroBackgroundImage}>
         <div
-          data-name="box-1"
+          className="box-1"
           style={{
             minWidth: "50vw",
             maxHeight: "100vh",
@@ -39,7 +56,7 @@ export default function Page() {
           }}
         ></div>
         <div
-          data-name="box-2"
+          className="box-2"
           style={{
             maxWidth: "50vw",
             maxHeight: "100vh",
@@ -47,16 +64,16 @@ export default function Page() {
           }}
         >
           <div
+            className="hero-content"
             style={{ padding: "6rem", margin: "15rem 0", textAlign: "center" }}
           >
-            <h1>{data.heading1}</h1>
-            <p>{data.heroText}</p>
+            <h1>{heading1}</h1>
+            <p>{heroText}</p>
           </div>
         </div>
       </header>
 
-      <section data-name="section-1"></section>
+      <section className="section-1"></section>
     </>
   );
 }
-

@@ -1,17 +1,142 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/global.css";
+import { getEntryByUrl, getAssetUrl } from "../sdk/contentful.js";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
 export default function Products() {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+ const [openIndex, setOpenIndex] = useState(null);
+
+  useEffect(() => {
+    const loadContent = async () => {
+      try {
+        const entry = await getEntryByUrl("/products");
+        if (entry) {
+          setData(entry.fields);
+        } else {
+          setError("Inga poster hittades.");
+        }
+      } catch (err) {
+        console.error(err);
+        setError("Fel vid hämtning av innehåll.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadContent();
+  }, []);
+
+  if (loading) return <div>Laddar innehåll...</div>;
+  if (error) return <div>{error}</div>;
+  if (!data) return <div>Innehåll kunde inte hämtas.</div>;
+
+  const { image, heading1, heroText, reference } = data;
+  const imageUrl = getAssetUrl(image);
+
+const toggleDropdown = (index) => {
+    setOpenIndex(openIndex === index ? null : index); // öppna/stäng
+  };
+
+
   return (
     <>
-      <header data-name="hero">
-        <div data-name="box-1"></div>
-        <div data-name="box-2">
-          <h1>Utbud</h1>
-          <p>Vårt utbud med de produkter och tjänster vi erbjuder.</p>
+      <header
+        className="hero"
+        style={{
+          backgroundImage: `url(${imageUrl})`,
+          height: "100vh",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center 25%",
+          display: "flex",
+          flexDirection: "row",
+          marginTop: "-30vh",
+        }}
+      >
+        <div
+          className="colorbox-left"
+          style={{ minWidth: "50vw", backgroundColor: "rgba(39, 24, 2, 0.6)" }}
+        />
+        <div
+          className="colorbox-right"
+          style={{
+            maxWidth: "50vw",
+            backgroundColor: "rgba(1, 20, 54, 0.85)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <div
+            className="hero-textcontent"
+            style={{ padding: "6rem", textAlign: "center", color: "white", maxWidth: "600px" }}
+          >
+            <h1>{heading1 || "Produkt"}</h1>
+            <p>{heroText || ""}</p>
+          </div>
         </div>
       </header>
-      <section data-name="section-1"></section>
+
+      <section
+        className="section-1"
+        style={{
+          width: "100vw",
+          minHeight: "60vh",
+          backgroundColor: "var(--whiteblue)",
+          color: "var(--darkblue)",
+          padding: "3rem 15rem 6rem 15rem",
+        }}
+      >
+        {reference?.length > 0 ? (
+          reference.map((item, idx) => {
+            const title = item.fields.title || `Produkt ${idx + 1}`;
+            const content = item.fields.paragraph
+              ? documentToReactComponents(item.fields.paragraph)
+              : item.fields.text || "Inget innehåll";
+
+            const isOpen = openIndex === idx;
+
+            return (
+              <div
+                key={item.sys.id || idx}
+                className="dropdown border-b border-gray-200 py-2"
+              >
+                <button
+                  onClick={() => toggleDropdown(idx)}
+                  className="text-lg font-semibold mb-2 w-full text-left"
+                  style={{
+                    borderRadius: "4px",
+                    outline: "3px",
+                    border: "solid var(--darkblue) 2px",
+                    offset: "4px",
+                    padding: "0.5rem 1rem",
+                  }}
+                >
+                  {title}
+                </button>
+                {isOpen && (
+                  <div
+                    className="text-sm text-gray-700 leading-relaxed"
+                    style={{
+                      padding: "1rem",
+                      backgroundColor: "var(--lightblue)",
+                      borderRadius: "4px",
+                      marginTop: "0.5rem",
+                    }}
+                  >
+                    {content}
+                  </div>
+                )}
+              </div>
+            );
+          })
+        ) : (
+          <p>Inga produkter tillgängliga just nu</p>
+        )}
+      </section>
     </>
   );
 }

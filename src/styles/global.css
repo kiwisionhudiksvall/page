@@ -45,18 +45,6 @@ body {
   min-height: 100vh;
 }
 
-a {
-  font-weight: 500;
-  text-decoration: inherit;
-  font-family: "Arboria", sans-serif;
-    color: var(--aquablue);
-}
-
-a:hover {
-  color: var(--kiwigreen);
-  transform: scale(0.98);
-}
-
 .navbar {
   background: transparent;
   display: flex;
@@ -83,6 +71,7 @@ a:hover {
 .dropdown-button:hover {
   transform: scale(0.98);
   background: var(--kiwigreen);
+  color: var(--darkblue);
 }
 
 /* logo */
@@ -96,7 +85,7 @@ a:hover {
   cursor: pointer;
 }
 
-[data-name="nav-button"] {
+.nav-button {
   margin: 0.2rem;
   padding: 0.3rem 0rem 0.4rem 0rem;
   border-radius: 100px;
@@ -108,9 +97,14 @@ a:hover {
   text-align: center;
 }
 
-[data-name="nav-button"]:hover {
+.nav-button:hover {
   background: var(--kiwigreen);
   transform: scale(0.98);
+  color: var(--darkblue);
+}
+
+li {
+  list-style: none;
 }
 
 li .nav-sub {
@@ -134,16 +128,16 @@ li .nav-sub:hover {
   cursor: pointer;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+a {
+  font-weight: 500;
+  text-decoration: inherit;
   font-family: "Arboria", sans-serif;
+  color: var(--aquablue);
 }
 
-h2 {
-  font-size: 2.4em;
-  line-height: 1.2;
-  font-family: "Arboria", sans-serif;
+a:hover {
+  color: var(--kiwigreen);
+  transform: scale(0.98);
 }
 
 button {
@@ -169,22 +163,37 @@ button:hover {
   color:var(--darkblue);
 }
 
+h1 {
+  font-size: 3.0em;
+  line-height: 1.1;
+  font-family: "Arboria", sans-serif;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 0.8rch;
+}
+
+h2 {
+  font-size: 2.4em;
+  line-height: 1.2;
+  font-family: "Arboria", sans-serif;
+}
+
 section {
   box-sizing: border-box;
   min-height: 60vh;
   width: 100%;
 }
 
-[data-name="section-1"] {
+.section-1  {
   background-color: var(--whiteblue);
 }
 
-[data-name="section-2"] {
+.section-2  {
   background-color: var(--darkblue);
 }
 
 
-[data-name="footer"] {
+.footer  {
   background: var(--lightblue);
   color: var(--aquablue);
   text-align: center;

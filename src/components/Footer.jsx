@@ -5,13 +5,15 @@ import LogoCircle from "../assets/images/logos/round_logo-kiwision-12.png";
 export default function Footer() {
   return (
     <footer
-      data-name="footer"
       className="footer"
       style={{
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "start",
+        bottom: 0,
+        right: 0,
+        left: 0,
       }}
     >
       <img

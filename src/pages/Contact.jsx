@@ -1,26 +1,42 @@
 import React, { useState, useEffect } from "react";
 import "../styles/global.css";
-import heroImage from "../assets/images/closeup-wall_kwision.png";
-import { fetchPageContent } from "../sdk/contentfulSDK.js";
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-
+import { getEntryByUrl, getAssetUrl } from "../sdk/contentful.js";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
 export default function Contact() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetchPageContent("/contact").then((result) => {
-      setData(result);
-      setLoading(false);
-    });
+    const loadContent = async () => {
+      try {
+        const entry = await getEntryByUrl("/contact");
+        if (entry) {
+          setData(entry.fields);
+        } else {
+          setError("Inga poster hittades.");
+        }
+      } catch (err) {
+        console.error(err);
+        setError("Fel vid hämtning av innehåll.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadContent();
   }, []);
 
   if (loading) return <div>Laddar innehåll...</div>;
+  if (error) return <div>{error}</div>;
   if (!data) return <div>Innehåll kunde inte hämtas.</div>;
 
+  const { image, heading1, heroText, richText, heading2 } = data;
+  const imageUrl = getAssetUrl(image);
+
   const heroBackgroundImage = {
-    backgroundImage: `url(${heroImage})`,
+    backgroundImage: `url(${imageUrl})`,
     height: "100vh",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
@@ -32,9 +48,9 @@ export default function Contact() {
 
   return (
     <>
-      <header data-name="hero" style={heroBackgroundImage}>
+      <header className="hero" style={heroBackgroundImage}>
         <div
-          data-name="box-1"
+          className="box-1"
           style={{
             minWidth: "50vw",
             maxHeight: "100vh",
@@ -42,7 +58,7 @@ export default function Contact() {
           }}
         ></div>
         <div
-          data-name="box-2"
+          className="box-2"
           style={{
             maxWidth: "50vw",
             maxHeight: "100vh",
@@ -50,16 +66,17 @@ export default function Contact() {
           }}
         >
           <div
+            className="hero-content"
             style={{ padding: "6rem", margin: "15rem 0", textAlign: "center" }}
           >
-            <h1>{data.heading1}</h1>
-            <p>{data.heroText}</p>
+            <h1>{heading1}</h1>
+            <p>{heroText}</p>
           </div>
         </div>
       </header>
 
       <section
-        data-name="section-2"
+        className="section-1"
         style={{
           width: "100vw",
           minHeight: "60vh",
@@ -68,11 +85,13 @@ export default function Contact() {
           padding: "3rem 15rem 6rem 15rem",
         }}
       >
-        <h2 style={{textAlign: "center"}}>{data.heading2}</h2>
-<div style={{ textAlign: "left", lineHeight: "1.6", marginTop: "1.5rem" }}>
-  {data.richText?.json && documentToReactComponents(data.richText.json)}
-</div>
+        <h2 style={{ textAlign: "center" }}>{heading2}</h2>
+        <div
+          style={{ textAlign: "left", lineHeight: "1.6", marginTop: "1.5rem" }}
+        >
+          {richText?.json && documentToReactComponents(richText.json)}
+        </div>
       </section>
     </>
-);
-} 
+  );
+}

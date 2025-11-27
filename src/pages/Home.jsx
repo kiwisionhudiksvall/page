@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <>
       <main
-        data-name="home-main"
+        className="home-main"
         style={{
           top: 0,
           display: "flex",
@@ -26,7 +26,7 @@ export default function Home() {
         }}
       >
         <header
-          data-name="home-hero"
+          className="home-hero"
           style={{
             ...heroImage,
             top: 0,
@@ -46,7 +46,7 @@ export default function Home() {
           }}
         >
           <div
-            data-name="overlay"
+            className="overlay"
             style={{
               position: "absolute",
               top: 0,
@@ -58,6 +58,7 @@ export default function Home() {
             }}
           ></div>
           <div
+          className="hero-content"
             style={{
               position: "relative",
               marginTop: "10vh",
@@ -77,7 +78,7 @@ export default function Home() {
             </h1>
             <p
               style={{
-                maxWidth: "70%",
+                maxWidth: "60%",
                 margin: "2rem auto",
                 fontWeight: "400",
                 fontFamily: "Arboria, sans-serif",
@@ -92,7 +93,7 @@ export default function Home() {
               deras behov och levererar lösningar med djup kunnighet bakom.
             </p>
             <div
-              data-name="button-wrap"
+              className="button-wrap"
               style={{
                 display: "flex",
                 justifyContent: "center",
@@ -100,17 +101,17 @@ export default function Home() {
                 alignItems: "center",
               }}
             >
-              <Link to="/products" data-name="link-1" style={{margin: "0.5vw"}}>
-                <button data-name="button-1">UTBUD</button>
+              <Link to="/products" className="link-1" style={{margin: "0.5vw"}}>
+                <button className="button-1">UTBUD</button>
               </Link>
-              <Link to="/about" data-name="link-2" style={{margin: "0.5vw"}}>
-                <button data-name="button-2">OM OSS</button>
+              <Link to="/about" className="link-2" style={{margin: "0.5vw"}}>
+                <button className="button-2">OM OSS</button>
               </Link>
             </div>
           </div>
         </header>
         <section
-          data-name="section-1"
+          className="section-1"
           style={{
             textAlign: "center",
             justifyContent: "center",
@@ -120,7 +121,7 @@ export default function Home() {
           }}
         ></section>
         <section
-          data-name="section-2"
+          className="section-2"
           style={{ textAlign: "center" }}
         ></section>
       </main>

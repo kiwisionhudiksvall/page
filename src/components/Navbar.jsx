@@ -24,7 +24,7 @@ export default function Navbar() {
       <img
         src={Logo}
         alt="Logo"
-        data-name="logo"
+        className="logo"
         onClick={() => navigate("/")}
       />
       <ul className="nav-menu">
@@ -76,24 +76,24 @@ export default function Navbar() {
                   gap: "0.5rem",
                 }}
               >
-                <Link to="/products" data-name="nav-button">
+                <Link to="/products" className="nav-button">
                   Utbud
                 </Link>
-                <Link to="/products" className="nav-sub">
+                <Link to="/products1" className="nav-sub">
                   Systemutveckling
                 </Link>
-                <Link to="/products" className="nav-sub">
+                <Link to="/products2" className="nav-sub">
                   Infrastruktur & moln
                 </Link>
-                <Link to="/products" className="nav-sub">
+                <Link to="/products3" className="nav-sub">
                   IT-säkerhet
                 </Link>
-                <Link to="/products" className="nav-sub">
+                <Link to="/products4" className="nav-sub">
                   Kundcase
                 </Link>
               </li>
              <li style={{marginLeft: "20px", width: "160px", display: "flex", flexDirection: "column", gap: "0.5rem"}}>
-                <Link to="/page" data-name="nav-button">
+                <Link to="/page" className="nav-button">
                 Page</Link>
               </li>
               <li
@@ -105,19 +105,19 @@ export default function Navbar() {
                   gap: "0.5rem",
                 }}
               >
-                <Link to="/about" data-name="nav-button">
+                <Link to="/about" className="nav-button">
                   Om oss
                 </Link>
-                <Link to="/about" className="nav-sub">
+                <Link to="/about1" className="nav-sub">
                   Bakgrund
                 </Link>
-                <Link to="/about" className="nav-sub">
+                <Link to="/about2" className="nav-sub">
                   Kompetenser
                 </Link>
-                <Link to="/about" className="nav-sub">
+                <Link to="/about3" className="nav-sub">
                   Samarbeten
                 </Link>
-                <Link to="/about" className="nav-sub">
+                <Link to="/about4" className="nav-sub">
                   Kunder
                 </Link>
               </li>
@@ -130,16 +130,16 @@ export default function Navbar() {
                   gap: "0.5rem",
                 }}
               >
-                <Link to="/contact" data-name="nav-button">
+                <Link to="/contact" className="nav-button">
                   Kontakt
                 </Link>
-                <Link to="/contact" className="nav-sub">
+                <Link to="/contact1" className="nav-sub">
                   Kontaktuppgifter
                 </Link>
-                <Link to="/contact" className="nav-sub">
+                <Link to="/contact2" className="nav-sub">
                   Direktformulär
                 </Link>
-                <Link to="/contact" className="nav-sub">
+                <Link to="/contact3" className="nav-sub">
                   Här finns vi
                 </Link>
               </li>
