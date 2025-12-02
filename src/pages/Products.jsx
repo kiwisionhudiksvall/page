@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "../styles/global.css";
 import { getEntryByUrl, getAssetUrl } from "../sdk/contentful.js";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import ProductsSectionText from "../components/ProductsSectionText.jsx";
 
 export default function Products() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
- const [openIndex, setOpenIndex] = useState(null);
 
   useEffect(() => {
     const loadContent = async () => {
@@ -33,13 +32,8 @@ export default function Products() {
   if (error) return <div>{error}</div>;
   if (!data) return <div>Innehåll kunde inte hämtas.</div>;
 
-  const { image, heading1, heroText, reference } = data;
+  const { image, heading1, heroText } = data;
   const imageUrl = getAssetUrl(image);
-
-const toggleDropdown = (index) => {
-    setOpenIndex(openIndex === index ? null : index); // öppna/stäng
-  };
-
 
   return (
     <>
@@ -72,10 +66,15 @@ const toggleDropdown = (index) => {
         >
           <div
             className="hero-textcontent"
-            style={{ padding: "6rem", textAlign: "center", color: "white", maxWidth: "600px" }}
+            style={{
+              padding: "6rem",
+              textAlign: "center",
+              color: "white",
+              maxWidth: "600px",
+            }}
           >
-            <h1>{heading1 || "Produkt"}</h1>
-            <p>{heroText || ""}</p>
+            <h1>{heading1 || "Utbud"}</h1>
+            <p>{heroText || "Textinnehåll"}</p>
           </div>
         </div>
       </header>
@@ -83,59 +82,41 @@ const toggleDropdown = (index) => {
       <section
         className="section-1"
         style={{
-          width: "100vw",
           minHeight: "60vh",
           backgroundColor: "var(--whiteblue)",
-          color: "var(--darkblue)",
-          padding: "3rem 15rem 6rem 15rem",
+          width: "100%",
+          display: "flex",
+          flexDirection: "row",
         }}
       >
-        {reference?.length > 0 ? (
-          reference.map((item, idx) => {
-            const title = item.fields.title || `Produkt ${idx + 1}`;
-            const content = item.fields.paragraph
-              ? documentToReactComponents(item.fields.paragraph)
-              : item.fields.text || "Inget innehåll";
+       <ProductsSectionText />
 
-            const isOpen = openIndex === idx;
+      </section>
 
-            return (
-              <div
-                key={item.sys.id || idx}
-                className="dropdown border-b border-gray-200 py-2"
-              >
-                <button
-                  onClick={() => toggleDropdown(idx)}
-                  className="text-lg font-semibold mb-2 w-full text-left"
-                  style={{
-                    borderRadius: "4px",
-                    outline: "3px",
-                    border: "solid var(--darkblue) 2px",
-                    offset: "4px",
-                    padding: "0.5rem 1rem",
-                  }}
-                >
-                  {title}
-                </button>
-                {isOpen && (
-                  <div
-                    className="text-sm text-gray-700 leading-relaxed"
-                    style={{
-                      padding: "1rem",
-                      backgroundColor: "var(--lightblue)",
-                      borderRadius: "4px",
-                      marginTop: "0.5rem",
-                    }}
-                  >
-                    {content}
-                  </div>
-                )}
-              </div>
-            );
-          })
-        ) : (
-          <p>Inga produkter tillgängliga just nu</p>
-        )}
+      <section
+        className="section-2"
+        style={{
+          minHeight: "60vh",
+          backgroundColor: "var(--whiteblue)",
+          width: "100%",
+          display: "flex",
+          flexDirection: "row",
+        }}
+      >
+        <div
+          className="image-box-left"
+          style={{
+            width: "50vw",
+            maxWidth: "50%",
+            minHeight: "100%",
+            backgroundImage: `url(${imageUrl})`,
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            backdropFilter: "opacity(0.5)",
+          }}
+        ></div>
+       <ProductsSectionText/>
       </section>
     </>
   );
