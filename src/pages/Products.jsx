@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../styles/global.css";
 import { getEntryByUrl, getAssetUrl } from "../sdk/contentful.js";
-import ProductsSectionText from "../components/ProductsSectionText.jsx";
+import ProductsSectionContent from "../components/ProductsSectionContent.jsx";
 
 export default function Products() {
   const [data, setData] = useState(null);
@@ -89,34 +89,7 @@ export default function Products() {
           flexDirection: "row",
         }}
       >
-       <ProductsSectionText />
-
-      </section>
-
-      <section
-        className="section-2"
-        style={{
-          minHeight: "60vh",
-          backgroundColor: "var(--whiteblue)",
-          width: "100%",
-          display: "flex",
-          flexDirection: "row",
-        }}
-      >
-        <div
-          className="image-box-left"
-          style={{
-            width: "50vw",
-            maxWidth: "50%",
-            minHeight: "100%",
-            backgroundImage: `url(${imageUrl})`,
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "center",
-            backdropFilter: "opacity(0.5)",
-          }}
-        ></div>
-       <ProductsSectionText/>
+       <ProductsSectionContent />
       </section>
     </>
   );

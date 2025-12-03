@@ -34,6 +34,7 @@ export const getEntryByUrl = async (url) => {
       content_type: "pageContent", // byt till ditt content type id om annat
       "fields.url": url,
       limit: 1,
+      include: 10,
     });
 
     return response.items?.[0] || null;
