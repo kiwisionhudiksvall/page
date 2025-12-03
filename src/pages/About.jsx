@@ -1,6 +1,8 @@
-import { getEntryByUrl, getAssetUrl } from "../sdk/contentful.js";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import React, { useState, useEffect } from "react";
+import "../styles/global.css";
+import { getEntryByUrl, getAssetUrl } from "../sdk/contentful.js";
+import Hero from "../components/Hero.jsx";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
 export default function About() {
   const [data, setData] = useState(null);
@@ -31,47 +33,31 @@ export default function About() {
   if (error) return <div>{error}</div>;
   if (!data) return <div>Innehåll kunde inte hämtas.</div>;
 
-  const { image, heading1, heroText, richText, heading2 } = data;
-  const imageUrl = getAssetUrl(image);
+  const { heroImage, heading1, heroText, richText } = data;
+  const imageUrl = getAssetUrl(heroImage);
 
-  const heroBackgroundImage = {
-    backgroundImage: `url(${imageUrl})`,
-    height: "100vh",
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-    display: "flex",
-    flexDirection: "row",
-    marginTop: "-30vh",
+  const options = {
+    renderNode: {
+      "heading-2": (node, children) => (
+        <h2 className="custom-h2">{children}</h2>
+      ),
+      paragraph: (node, children) => (
+        <p className="custom-paragraph">{children}</p>
+      ),
+    },
   };
 
   return (
     <>
-      <header className="hero" style={heroBackgroundImage}>
-        <div
-          className="box-1"
-          style={{
-            minWidth: "50vw",
-            maxHeight: "100vh",
-            backgroundColor: "rgba(39, 24, 2, 0.6)",
-          }}
-        ></div>
-        <div
-          className="box-2"
-          style={{
-            maxWidth: "50vw",
-            maxHeight: "100vh",
-            backgroundColor: "rgba(1, 20, 54, 0.85)",
-          }}
-        >
-          <div
-            className="hero-content"
-            style={{ padding: "6rem", margin: "15rem 0", textAlign: "center" }}
-          >
-            <h1>{heading1}</h1>
-            <p>{heroText}</p>
-          </div>
-        </div>
-      </header>
+      <Hero
+        className="hero-about"
+        style={{ backgroundImage: `url(${imageUrl})`,
+          backgroundPosition: "100% 100%",
+         }}
+      >
+        <h1>{heading1}</h1>
+        <p>{heroText}</p>
+      </Hero>
 
       <section
         className="section-1"
@@ -83,11 +69,13 @@ export default function About() {
           padding: "3rem 15rem 6rem 15rem",
         }}
       >
-        <h2 style={{ textAlign: "center" }}>{heading2}</h2>
         <div
-          style={{ textAlign: "left", lineHeight: "1.6", marginTop: "1.5rem", color: "var(--darkblue)" }}
+          style={{
+            marginTop: "1.5rem",
+            color: "var(--darkblue)",
+          }}
         >
-          {richText?.json && documentToReactComponents(richText.json)}
+          {documentToReactComponents(richText, options)}
         </div>
       </section>
       <section className="section-2"></section>

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "../styles/global.css";
 import { getEntryByUrl, getAssetUrl } from "../sdk/contentful.js";
-import ProductsSectionText from "../components/ProductsSectionText.jsx";
+import Hero from "../components/Hero.jsx"
+import BoxTextImage from "../components/BoxTextImage.jsx";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
 export default function Products() {
   const [data, setData] = useState(null);
@@ -32,91 +34,36 @@ export default function Products() {
   if (error) return <div>{error}</div>;
   if (!data) return <div>Innehåll kunde inte hämtas.</div>;
 
-  const { image, heading1, heroText } = data;
-  const imageUrl = getAssetUrl(image);
+  const { heroImage, heading1, heroText, richText } = data;
+  const imageUrl = getAssetUrl(heroImage);
+
+const options = {
+    renderNode: {
+      "embedded-entry-inline": (node) => {
+        const entry = node.data?.target?.fields;
+        if (!entry) return null;
+        return <BoxTextImage entry={entry} options={options} />;
+      },
+    },
+  };
+
 
   return (
     <>
-      <header
-        className="hero"
-        style={{
-          backgroundImage: `url(${imageUrl})`,
-          height: "100vh",
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center 25%",
-          display: "flex",
-          flexDirection: "row",
-          marginTop: "-30vh",
-        }}
-      >
-        <div
-          className="colorbox-left"
-          style={{ minWidth: "50vw", backgroundColor: "rgba(39, 24, 2, 0.6)" }}
-        />
-        <div
-          className="colorbox-right"
-          style={{
-            maxWidth: "50vw",
-            backgroundColor: "rgba(1, 20, 54, 0.85)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <div
-            className="hero-textcontent"
-            style={{
-              padding: "6rem",
-              textAlign: "center",
-              color: "white",
-              maxWidth: "600px",
-            }}
-          >
-            <h1>{heading1 || "Utbud"}</h1>
-            <p>{heroText || "Textinnehåll"}</p>
-          </div>
-        </div>
-      </header>
+      <Hero style={{backgroundImage: `url(${imageUrl})`}}>
+            <h1>{heading1}</h1>
+            <p>{heroText}</p>
+      </Hero>
 
-      <section
-        className="section-1"
+     <section
+        className="products-section"
         style={{
+          width: "100%",
           minHeight: "60vh",
           backgroundColor: "var(--whiteblue)",
-          width: "100%",
-          display: "flex",
-          flexDirection: "row",
         }}
       >
-       <ProductsSectionText />
-
-      </section>
-
-      <section
-        className="section-2"
-        style={{
-          minHeight: "60vh",
-          backgroundColor: "var(--whiteblue)",
-          width: "100%",
-          display: "flex",
-          flexDirection: "row",
-        }}
-      >
-        <div
-          className="image-box-left"
-          style={{
-            width: "50vw",
-            maxWidth: "50%",
-            minHeight: "100%",
-            backgroundImage: `url(${imageUrl})`,
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "center",
-            backdropFilter: "opacity(0.5)",
-          }}
-        ></div>
-       <ProductsSectionText/>
+        {documentToReactComponents(richText, options)}
       </section>
     </>
   );

@@ -1,20 +1,20 @@
 :root {
   font-weight: 400;
   line-height: 1.4rem;
-  font-family: "halcom", sans-serif;
-  color: rgba(238, 255, 254, 0.9);
+  font-family: "Red Hat Display", sans-serif;
+  color: rgb(209, 246, 255);
   background-color: #011436;
 
-  --kiwigreen: #AEC539;
-  --aquablue: #32B0E1;
-  --lightblue: #D1F6FF;
-  --lightgreen: #F2F3A7;
   --whiteblue: #EEFFFE;
+  --lightblue: #D1F6FF;
+  --aquablue: #32B0E1;
   --midblue: #005D85;
-  --midgreen: #637B27;
   --darkblue: #011436;
-  --darkgreen: #252C00;
   --creme: #FEFCF1;
+  --lightgreen: #F2F3A7;
+  --kiwigreen: #AEC539;
+  --midgreen: #637B27;
+  --darkgreen: #252C00;
   --white: #FFFFFF;
   --black: #000000;
 
@@ -160,7 +160,7 @@ button {
 button:hover {
   transform: scale(0.98);
   background: var(--kiwigreen);
-  color:var(--darkblue);
+  color: var(--darkblue);
 }
 
 h1 {
@@ -168,14 +168,24 @@ h1 {
   line-height: 1.1;
   font-family: "Arboria", sans-serif;
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 300;
   letter-spacing: 0.8rch;
+  color: var(--aquablue);
 }
 
-h2 {
+h2, .custom-h2 {
   font-size: 2.4em;
   line-height: 1.2;
   font-family: "Arboria", sans-serif;
+  text-align: center;
+}
+
+p {
+  font-weight: 400;
+  font-size: 1.05rem;
+  line-height: 1.6rem;
+  font-family: "Red Hat Display", sans-serif;
+  letter-spacing: 0.02rch;
 }
 
 section {
@@ -184,16 +194,62 @@ section {
   width: 100%;
 }
 
-.section-1  {
+.section-1 {
   background-color: var(--whiteblue);
 }
 
-.section-2  {
+.section-2 {
   background-color: var(--darkblue);
 }
 
+.cards-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin: 0 -8px;
+}
 
-.footer  {
+.card {
+  flex: 1 1 300px;
+  /* grows, shrinks, base width */
+  min-width: 260px;
+  max-width: 33%;
+  box-sizing: border-box;
+  padding: 16px;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.card h3 {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+}
+
+.card p {
+  margin: 0 0 12px;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.map {
+  border-radius: 6px;
+  overflow: hidden;
+  height: 220px;
+  flex: 1 1 auto;
+}
+
+.map iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.footer {
   background: var(--lightblue);
   color: var(--aquablue);
   text-align: center;
@@ -207,7 +263,7 @@ section {
   z-index: 200;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   .navbar {
     flex-direction: column;
     align-items: flex-start;
@@ -217,5 +273,9 @@ section {
     flex-direction: column;
     gap: 0.5rem;
     margin-top: 0.5rem;
+  }
+
+    .card {
+    max-width: 100%;
   }
 }

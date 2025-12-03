@@ -31,7 +31,7 @@ export const getEntryById = async (id) => {
 export const getEntryByUrl = async (url) => {
   try {
     const response = await client.getEntries({
-      content_type: "pageContent", // byt till ditt content type id om annat
+      content_type: "pageContent", 
       "fields.url": url,
       limit: 1,
     });

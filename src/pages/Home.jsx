@@ -1,17 +1,10 @@
 import React from "react";
 import "../styles/global.css";
 import { Link } from "react-router-dom";
-import Image from "../assets/images/wall_kiwision.png";
+import heroImage from "../assets/images/wall_kiwision.png";
+import CardComponent from "../components/CardComponent.jsx";
 
 export default function Home() {
-  const heroImage = {
-    backgroundImage: `url(${Image})`,
-    width: "100%",
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "0% 95%",
-  };
-
   return (
     <>
       <main
@@ -28,7 +21,10 @@ export default function Home() {
         <header
           className="home-hero"
           style={{
-            ...heroImage,
+            backgroundImage: `url(${heroImage})`,
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "0% 95%",
             top: 0,
             left: 0,
             bottom: 0,
@@ -39,7 +35,6 @@ export default function Home() {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            width: "100vw",
             height: "100vh",
             position: "relative",
             overflow: "hidden",
@@ -58,7 +53,7 @@ export default function Home() {
             }}
           ></div>
           <div
-          className="hero-content"
+            className="hero-content"
             style={{
               position: "relative",
               marginTop: "10vh",
@@ -101,10 +96,14 @@ export default function Home() {
                 alignItems: "center",
               }}
             >
-              <Link to="/products" className="link-1" style={{margin: "0.5vw"}}>
+              <Link
+                to="/products"
+                className="link-1"
+                style={{ margin: "0.5vw" }}
+              >
                 <button className="button-1">UTBUD</button>
               </Link>
-              <Link to="/about" className="link-2" style={{margin: "0.5vw"}}>
+              <Link to="/about" className="link-2" style={{ margin: "0.5vw" }}>
                 <button className="button-2">OM OSS</button>
               </Link>
             </div>
@@ -119,11 +118,16 @@ export default function Home() {
             flexDirection: "column",
             alignItems: "center",
           }}
-        ></section>
+        >
+          <h2>Våra kontor</h2>
+          <CardComponent/>
+        </section>
         <section
           className="section-2"
           style={{ textAlign: "center" }}
-        ></section>
+        >
+
+        </section>
       </main>
     </>
   );
