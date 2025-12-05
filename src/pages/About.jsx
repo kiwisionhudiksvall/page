@@ -73,6 +73,10 @@ export default function About() {
           style={{
             marginTop: "1.5rem",
             color: "var(--darkblue)",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
           {documentToReactComponents(richText, options)}

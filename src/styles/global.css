@@ -1,6 +1,6 @@
 :root {
   font-weight: 400;
-  line-height: 1.4rem;
+  line-height: 1.6rem;
   font-family: "Red Hat Display", sans-serif;
   color: rgb(209, 246, 255);
   background-color: #011436;
@@ -11,6 +11,7 @@
   --midblue: #005D85;
   --darkblue: #011436;
   --creme: #FEFCF1;
+  --whitegreen: #f9fade;
   --lightgreen: #F2F3A7;
   --kiwigreen: #AEC539;
   --midgreen: #637B27;
@@ -29,20 +30,17 @@
   flex-direction: column;
   min-height: 100vh;
   margin: 0;
-  width: 100vw;
 }
 
 main {
   margin: 0;
-  width: 100vw;
 }
 
 body {
   margin: 0;
+  min-height: 100vh;
   display: flex;
   place-items: center;
-  width: 100%;
-  min-height: 100vh;
 }
 
 .navbar {
@@ -51,9 +49,9 @@ body {
   justify-content: space-between;
   align-items: center;
   height: 10vh;
-  padding: 0 2rem;
+  padding: 0 4%;
   box-sizing: border-box;
-  max-width: 100vw;
+  width: 100vw;
 }
 
 .navbar ul {
@@ -68,10 +66,14 @@ body {
   font-weight: 500;
 }
 
-.dropdown-button:hover {
+nav ul span:hover {
   transform: scale(0.98);
-  background: var(--kiwigreen);
+  background-color: var(--kiwigreen);
   color: var(--darkblue);
+}
+
+nav ul span:active {
+    background-color: var(--kiwigreen);
 }
 
 /* logo */
@@ -85,9 +87,9 @@ body {
   cursor: pointer;
 }
 
-.nav-button {
-  margin: 0.2rem;
-  padding: 0.3rem 0rem 0.4rem 0rem;
+li .nav-button {
+  margin: 2%;
+  padding: 3px 0 4px 0;
   border-radius: 100px;
   border: none;
   background-color: var(--lightblue);
@@ -95,12 +97,14 @@ body {
   cursor: pointer;
   text-transform: uppercase;
   text-align: center;
+  font-weight: 500;
+  letter-spacing: 0.12rch;
 }
 
-.nav-button:hover {
+li .nav-button:hover {
   background: var(--kiwigreen);
-  transform: scale(0.98);
   color: var(--darkblue);
+  transform: scale(0.98);
 }
 
 li {
@@ -108,16 +112,18 @@ li {
 }
 
 li .nav-sub {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--lightblue);
   margin: 6px 0 0 8px;
+  letter-spacing: 0.02rch;
+  font-weight: 500;
 }
 
 li .nav-sub::before {
   content: "• ";
   color: var(--kiwigreen);
-  font-weight: 800;
-  font-size: 2rem;
+  font-weight: 700;
+  font-size: 2.1rem;
   vertical-align: text-top;
   line-height: 0.8rem;
 }
@@ -144,10 +150,10 @@ button {
   font-family: "Arboria", sans-serif;
   text-transform: uppercase;
   font-size: 0.85rem;
-  font-weight: 400;
+  font-weight: 500;
   font-family: inherit;
-  letter-spacing: 0.04rch;
-  margin: 0.2rem;
+  letter-spacing: 0.09rch;
+  margin: 6px;
   padding: 0.5rem 1.5rem 0.6rem 1.5rem;
   border-radius: 100px;
   min-width: 130px;
@@ -160,25 +166,38 @@ button {
 button:hover {
   transform: scale(0.98);
   background: var(--kiwigreen);
-  color: var(--darkblue);
 }
 
 h1 {
-  font-size: 3.0em;
+  font-size: 2.8em;
   line-height: 1.1;
   font-family: "Arboria", sans-serif;
   text-transform: uppercase;
-  font-weight: 300;
-  letter-spacing: 0.8rch;
+  font-weight: 500;
+  letter-spacing: 0.7rch;
   color: var(--aquablue);
 }
 
 h2, .custom-h2 {
-  font-size: 2.4em;
+  font-size: 2.2em;
   line-height: 1.2;
+  font-weight: 400;
+  letter-spacing: 0.25rch;
   font-family: "Arboria", sans-serif;
   text-align: center;
+  text-transform: uppercase;
 }
+
+.section-1 h2 {
+  font-size: 2.2em;
+  line-height: 1.2;
+  font-weight: 400;
+  letter-spacing: 0.25rch;
+  font-family: "Arboria", sans-serif;
+  text-align: center;
+  text-transform: uppercase;
+}
+
 
 p {
   font-weight: 400;
@@ -217,7 +236,7 @@ section {
   box-sizing: border-box;
   padding: 16px;
   border-radius: 8px;
-  background: #fff;
+  background: var(--darkblue);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   border: 1px solid rgba(0, 0, 0, 0.05);
   display: flex;
@@ -226,13 +245,13 @@ section {
 
 .card h3 {
   margin: 0 0 8px;
-  font-size: 1.05rem;
+  font-size: 1.15rem;
 }
 
 .card p {
   margin: 0 0 12px;
-  color: #555;
-  font-size: 0.95rem;
+  color: var(--creme);
+  font-size: 0.9rem;
 }
 
 .map {

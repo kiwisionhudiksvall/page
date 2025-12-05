@@ -14,6 +14,7 @@ export default function BoxTextImage({ entry, options }) {
         display: "flex",
         flexDirection: isLeft ? "row" : "row-reverse",
         alignItems: "center",
+        marginTop: "-18px",
       }}
     >
       <div
@@ -25,8 +26,7 @@ export default function BoxTextImage({ entry, options }) {
         height: "100%",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
-        backgroundPosition: "center",
-        backdropFilter: "opacity(0.5)",
+        backgroundPosition: "50% 25%",
         backgroundImage: `url(${imageUrl})`
       }}
     ></div>
@@ -43,22 +43,25 @@ export default function BoxTextImage({ entry, options }) {
         <h3
           style={{
             fontFamily: "Arboria",
-            color: "var(--aquablue)",
+            color: "var(--darkblue)",
             fontSize: "1.7rem",
-            fontWeight: "400",
+            fontWeight: "500",
             textTransform: "uppercase",
+            letterSpacing: "0.2rch",
+            marginBottom: "0px",
+            marginTop: "7%",
           }}
         >
           {entry.title}
         </h3>
-        <p
+        <div
           style={{
             color: "var(--darkblue)",
-            padding: "1% 15%",
+            padding: "0 90px",
           }}
         >
           {documentToReactComponents(entry.richText, options)}
-        </p>
+        </div>
       </div>
     </section>
   );

@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "../styles/global.css";
-import { getEntryByUrl, getAssetUrl } from "../sdk/contentful.js";
-import Hero from "../components/Hero.jsx"
+import { getEntryByUrl, getAssetUrl, getCarousel } from "../sdk/contentful.js";
+import Hero from "../components/Hero.jsx";
 import BoxTextImage from "../components/BoxTextImage.jsx";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import Carousel from "../components/Carousel.jsx";
 
 export default function Products() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [carousel, setCarousel] = useState(null);
 
   useEffect(() => {
     const loadContent = async () => {
@@ -30,6 +32,15 @@ export default function Products() {
     loadContent();
   }, []);
 
+  useEffect(() => {
+    async function load() {
+      const data = await getCarousel("2utOYvjm3YrynDflJ6YHus");
+      setCarousel(data);
+    }
+
+    load();
+  }, []);
+
   if (loading) return <div>Laddar innehåll...</div>;
   if (error) return <div>{error}</div>;
   if (!data) return <div>Innehåll kunde inte hämtas.</div>;
@@ -37,7 +48,7 @@ export default function Products() {
   const { heroImage, heading1, heroText, richText } = data;
   const imageUrl = getAssetUrl(heroImage);
 
-const options = {
+  const options = {
     renderNode: {
       "embedded-entry-inline": (node) => {
         const entry = node.data?.target?.fields;
@@ -47,23 +58,32 @@ const options = {
     },
   };
 
-
   return (
     <>
-      <Hero style={{backgroundImage: `url(${imageUrl})`}}>
-            <h1>{heading1}</h1>
-            <p>{heroText}</p>
+      <Hero style={{ backgroundImage: `url(${imageUrl})` }}>
+        <h1>{heading1}</h1>
+        <p>{heroText}</p>
       </Hero>
-
-     <section
+      <section
         className="products-section"
         style={{
           width: "100%",
           minHeight: "60vh",
-          backgroundColor: "var(--whiteblue)",
+          backgroundColor: "var(--whitegreen)",
         }}
       >
-        {documentToReactComponents(richText, options)}
+       <div> {documentToReactComponents(richText, options)}
+      </div>
+      </section>
+      <section
+        className="section-dark"
+        style={{
+          width: "100%",
+          minHeight: "80vh",
+          backgroundColor: "var(--darkblue)",
+        }}
+      >
+        {carousel && <Carousel slides={carousel.slides} />}
       </section>
     </>
   );

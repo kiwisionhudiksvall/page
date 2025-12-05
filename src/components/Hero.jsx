@@ -8,34 +8,37 @@ export default function Hero({ children, className = "", style = {} }) {
        className={`hero ${className}`}
       style={{
         height: "100vh",
-        width: "100%",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         display: "flex",
         flexDirection: "row",
-        marginTop: "-30vh",
+        marginTop: "-25vh",
+        paddingBottom: "0%",
         ...style, 
       }}
     >
       <div
-        className="box-left"
+        className="box-sepia"
         style={{
           minWidth: "50vw",
-          maxHeight: "100vh",
-          backgroundColor: "rgba(39, 24, 2, 0.6)",
+          height: "100%",
+          backgroundColor: "rgba(48, 31, 14, 0.7)",
         }}
       ></div>
       <div
-        className="box-right"
+        className="box-blue"
         style={{
-          maxWidth: "50vw",
-          maxHeight: "100vh",
+          minWidth: "50vw",
+          height: "100%",
+          top: 0,
+          right: 0,
           backgroundColor: "rgba(1, 20, 54, 0.94)",
+          backdropFilter: "blur(5px)",
         }}
       >
         <div
           className="hero-text"
-          style={{ padding: "6rem", margin: "18rem 0", textAlign: "center" }}
+          style={{ padding: "6rem", margin: "16rem 0", textAlign: "center" }}
         >
         {children}
         </div>

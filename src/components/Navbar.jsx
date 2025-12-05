@@ -10,7 +10,11 @@ export default function Navbar() {
 
   useEffect(() => {
     function handleClickOutside(event) {
-      if (isOpen && dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      if (
+        isOpen &&
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target)
+      ) {
         setIsOpen(false);
       }
     }
@@ -20,7 +24,7 @@ export default function Navbar() {
   }, [isOpen]);
 
   return (
-    <nav className="navbar" style={{ position: "sticky", top: 0, zIndex: 100 }}>
+    <nav className="navbar" style={{ position: "fixed", top: 0, zIndex: 100 }}>
       <img
         src={Logo}
         alt="Logo"
@@ -28,24 +32,22 @@ export default function Navbar() {
         onClick={() => navigate("/")}
       />
       <ul className="nav-menu">
-               <li
-          className="dropdown"
-          ref={dropdownRef}        
-        >
+        <li className="dropdown" ref={dropdownRef}>
           <span
             className="dropdown-button"
             onClick={() => setIsOpen((prev) => !prev)}
             style={{
-              right: "2.3vw",
-              padding: "0.3rem 1.5rem 0.5rem 1.5rem",
+              fontFamily: "Arboria",
+              padding: "8px 30px 10px 30px",
               borderRadius: "100px",
               border: "none",
               backgroundColor: "var(--lightblue)",
               color: "var(--darkblue)",
               cursor: "pointer",
               textTransform: "uppercase",
-              fontWeight: "400",
-              fontSize: "0.85rem",
+              fontWeight: "500",
+              fontSize: "1.0rem",
+              letterSpacing: "0.1rch",
             }}
           >
             {isOpen ? "Stäng ⨯" : "Meny ☰"}
@@ -57,13 +59,12 @@ export default function Navbar() {
               style={{
                 position: "absolute",
                 top: "10vh",
-                right: "2.3vw",
-                backgroundColor: "var(--darkblue)",
-                boxShadow: "0 4px 9px rgba(0, 0, 0, 0.3)",
+                right: "3vw",
+                backgroundColor: "#020d21f0",
+                boxShadow: "3px 2px 10px rgba(255, 255, 255, 0.12)",
                 borderRadius: "30px 0px 30px 0px",
-                padding: "1rem",
+                padding: "20px",
                 listStyle: "none",
-                heigth: 300,
                 zIndex: 1000,
               }}
             >
@@ -79,22 +80,40 @@ export default function Navbar() {
                 <Link to="/products" className="nav-button">
                   Utbud
                 </Link>
-                <Link to="/products1" className="nav-sub">
+                <Link to="/products" className="nav-sub">
                   Systemutveckling
                 </Link>
-                <Link to="/products2" className="nav-sub">
+                <Link to="/products" className="nav-sub">
                   Infrastruktur & moln
                 </Link>
-                <Link to="/products3" className="nav-sub">
+                <Link to="/products" className="nav-sub">
                   IT-säkerhet
                 </Link>
-                <Link to="/products4" className="nav-sub">
+                <Link to="/products" className="nav-sub">
                   Kundcase
                 </Link>
               </li>
-             <li style={{marginLeft: "20px", width: "160px", display: "flex", flexDirection: "column", gap: "0.5rem"}}>
-                <Link to="/page" className="nav-button">
-                Page</Link>
+              <li
+                style={{
+                  marginLeft: "20px",
+                  width: "160px",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.5rem",
+                }}
+              >
+                <Link to="/career" className="nav-button">
+                  Karriär
+                </Link>
+                <Link to="/products" className="nav-sub">
+                  Jobba hos oss
+                </Link>
+                <Link to="/products" className="nav-sub">
+                  Yrkestitlar
+                </Link>
+                <Link to="/products" className="nav-sub">
+                  Lediga tjänster
+                </Link>
               </li>
               <li
                 style={{
@@ -108,16 +127,16 @@ export default function Navbar() {
                 <Link to="/about" className="nav-button">
                   Om oss
                 </Link>
-                <Link to="/about1" className="nav-sub">
+                <Link to="/about" className="nav-sub">
                   Bakgrund
                 </Link>
-                <Link to="/about2" className="nav-sub">
+                <Link to="/about" className="nav-sub">
                   Kompetenser
                 </Link>
-                <Link to="/about3" className="nav-sub">
+                <Link to="/about" className="nav-sub">
                   Samarbeten
                 </Link>
-                <Link to="/about4" className="nav-sub">
+                <Link to="/about" className="nav-sub">
                   Kunder
                 </Link>
               </li>
@@ -133,13 +152,13 @@ export default function Navbar() {
                 <Link to="/contact" className="nav-button">
                   Kontakt
                 </Link>
-                <Link to="/contact1" className="nav-sub">
+                <Link to="/contact" className="nav-sub">
                   Kontaktuppgifter
                 </Link>
-                <Link to="/contact2" className="nav-sub">
+                <Link to="/contact" className="nav-sub">
                   Direktformulär
                 </Link>
-                <Link to="/contact3" className="nav-sub">
+                <Link to="/contact" className="nav-sub">
                   Här finns vi
                 </Link>
               </li>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../styles/global.css";
 import { getEntryByUrl, getAssetUrl } from "../sdk/contentful.js";
 
-export default function Page() {
+export default function Career() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

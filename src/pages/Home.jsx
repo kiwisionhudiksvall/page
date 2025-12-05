@@ -24,7 +24,7 @@ export default function Home() {
             backgroundImage: `url(${heroImage})`,
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
-            backgroundPosition: "0% 95%",
+            backgroundPosition: "50% 70%",
             top: 0,
             left: 0,
             bottom: 0,
@@ -48,7 +48,7 @@ export default function Home() {
               left: 0,
               bottom: 0,
               right: 0,
-              backgroundColor: "rgba(23, 12, 2, 0.6)",
+              backgroundColor: "rgba(48, 31, 14, 0.7)",
               zIndex: 1,
             }}
           ></div>
@@ -56,16 +56,16 @@ export default function Home() {
             className="hero-content"
             style={{
               position: "relative",
-              marginTop: "10vh",
+              marginTop: "25vh",
               zIndex: 2,
             }}
           >
             <h1
               style={{
                 fontFamily: "Arboria, sans-serif",
-                letterSpacing: "1.0rem",
+                letterSpacing: "0.9rem",
                 fontWeight: "400",
-                fontSize: "3.2rem",
+                fontSize: "3.0rem",
                 color: "var(--lightblue)",
               }}
             >
@@ -76,8 +76,9 @@ export default function Home() {
                 maxWidth: "60%",
                 margin: "2rem auto",
                 fontWeight: "400",
-                fontFamily: "Arboria, sans-serif",
+                fontFamily: "Red Hat Display, sans-serif",
                 fontSize: "1rem",
+                lineHeight: "1.5rem",
                 color: "var(--whiteblue)",
               }}
             >
@@ -98,13 +99,13 @@ export default function Home() {
             >
               <Link
                 to="/products"
-                className="link-1"
-                style={{ margin: "0.5vw" }}
-              >
+                className="link-1"              >
                 <button className="button-1">UTBUD</button>
               </Link>
-              <Link to="/about" className="link-2" style={{ margin: "0.5vw" }}>
-                <button className="button-2">OM OSS</button>
+              <Link 
+              to="/about" 
+              className="link-1"               >
+                <button className="button-1">OM OSS</button>
               </Link>
             </div>
           </div>
@@ -117,9 +118,10 @@ export default function Home() {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            padding: "2% 0 5% 0",
           }}
         >
-          <h2>Våra kontor</h2>
+          <h2 style={{color: "var(--darkblue)"}}>Våra kontor</h2>
           <CardComponent/>
         </section>
         <section

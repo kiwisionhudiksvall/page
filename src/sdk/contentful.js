@@ -48,3 +48,11 @@ export const getEntryByUrl = async (url) => {
 export const getAssetUrl = (asset) => {
   return asset?.fields?.file?.url || "";
 };
+
+export async function getCarousel(id) {
+  const entry = await client.getEntry(id, {
+    include: 2, // hämtar även card-referenser
+  });
+
+  return entry.fields;
+}
