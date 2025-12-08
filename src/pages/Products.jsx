@@ -1,3 +1,4 @@
+// Products.jsx
 import React, { useState, useEffect } from "react";
 import "../styles/global.css";
 import { getEntryByUrl, getAssetUrl, getCarousel } from "../sdk/contentful.js";
@@ -16,11 +17,9 @@ export default function Products() {
     const loadContent = async () => {
       try {
         const entry = await getEntryByUrl("/products");
-        if (entry) {
-          setData(entry.fields);
-        } else {
-          setError("Inga poster hittades.");
-        }
+        console.log("ENTRY: ", entry);
+        if (entry) setData(entry.fields);
+        else setError("Inga poster hittades.");
       } catch (err) {
         console.error(err);
         setError("Fel vid hämtning av innehåll.");
@@ -28,17 +27,20 @@ export default function Products() {
         setLoading(false);
       }
     };
-
     loadContent();
   }, []);
 
   useEffect(() => {
-    async function load() {
-      const data = await getCarousel("2utOYvjm3YrynDflJ6YHus");
-      setCarousel(data);
-    }
-
-    load();
+    const loadCarousel = async () => {
+      try {
+        const data = await getCarousel("2utOYvjm3YrynDflJ6YHus");
+        console.log("CAROUSEL: ", data);
+        setCarousel(data);
+      } catch (err) {
+        console.error("Carousel load error:", err);
+      }
+    };
+    loadCarousel();
   }, []);
 
   if (loading) return <div>Laddar innehåll...</div>;
@@ -55,6 +57,7 @@ export default function Products() {
         if (!entry) return null;
         return <BoxTextImage entry={entry} options={options} />;
       },
+      paragraph: (node, children) => <div>{children}</div>, // Byt <p> till <div>
     },
   };
 
@@ -62,28 +65,31 @@ export default function Products() {
     <>
       <Hero style={{ backgroundImage: `url(${imageUrl})` }}>
         <h1>{heading1}</h1>
-        <p>{heroText}</p>
+        <div>{heroText}</div>
       </Hero>
+
       <section
         className="products-section"
         style={{
           width: "100%",
-          minHeight: "60vh",
-          backgroundColor: "var(--whitegreen)",
+          minHeight: "70vh",
+          backgroundColor: "var(--creme)",
         }}
       >
-       <div> {documentToReactComponents(richText, options)}
-      </div>
+        {richText && documentToReactComponents(richText, options)}
       </section>
+
       <section
         className="section-dark"
         style={{
           width: "100%",
-          minHeight: "80vh",
+          padding: "5% 0",
+          minHeight: "70vh",
           backgroundColor: "var(--darkblue)",
         }}
       >
-        {carousel && <Carousel slides={carousel.slides} />}
+        <h2>Kundcase</h2>
+        {carousel?.slides?.length ? <Carousel slides={carousel.slides} /> : null}
       </section>
     </>
   );

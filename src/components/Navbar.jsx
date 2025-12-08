@@ -33,11 +33,11 @@ export default function Navbar() {
       />
       <ul className="nav-menu">
         <li className="dropdown" ref={dropdownRef}>
-          <span
+          <button
             className="dropdown-button"
             onClick={() => setIsOpen((prev) => !prev)}
             style={{
-              fontFamily: "Arboria",
+              fontFamily: "bc-novatica-cyr",
               padding: "8px 30px 10px 30px",
               borderRadius: "100px",
               border: "none",
@@ -51,7 +51,7 @@ export default function Navbar() {
             }}
           >
             {isOpen ? "Stäng ⨯" : "Meny ☰"}
-          </span>
+          </button>
 
           {isOpen && (
             <ul
@@ -71,7 +71,7 @@ export default function Navbar() {
               <li
                 style={{
                   marginLeft: "20px",
-                  width: "160px",
+                  width: "170px",
                   display: "flex",
                   flexDirection: "column",
                   gap: "0.5rem",

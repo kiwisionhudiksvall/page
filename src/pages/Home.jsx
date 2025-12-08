@@ -62,11 +62,11 @@ export default function Home() {
           >
             <h1
               style={{
-                fontFamily: "Arboria, sans-serif",
-                letterSpacing: "0.9rem",
-                fontWeight: "400",
+                letterSpacing: "0.75rem",
+                fontWeight: "500",
                 fontSize: "3.0rem",
                 color: "var(--lightblue)",
+                textTransform: "uppercase",
               }}
             >
               VI ÄLSKAR IT
@@ -76,7 +76,6 @@ export default function Home() {
                 maxWidth: "60%",
                 margin: "2rem auto",
                 fontWeight: "400",
-                fontFamily: "Red Hat Display, sans-serif",
                 fontSize: "1rem",
                 lineHeight: "1.5rem",
                 color: "var(--whiteblue)",

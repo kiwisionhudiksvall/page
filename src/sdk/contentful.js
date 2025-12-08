@@ -27,32 +27,47 @@ export const getEntryById = async (id) => {
   }
 };
 
-// Hämta entry via fältet "url"
-export const getEntryByUrl = async (url) => {
+// Hämta entry via fältet "url" sen "slug"
+export const getEntryByUrl = async (path) => {
   try {
-    const response = await client.getEntries({
-      content_type: "pageContent", // byt till ditt content type id om annat
-      "fields.url": url,
+    // Rensa bort eventuellt inledande snedstreck
+    const cleanPath = path.startsWith("/") ? path.slice(1) : path;
+
+    // Försök först hämta på "url"
+    let response = await client.getEntries({
+      content_type: "pageContent",
+      "fields.url[in]": [path, cleanPath],
       limit: 1,
       include: 10,
     });
 
+    // Om ingen träff → försök på "slug"
+    if (!response.items?.length) {
+      response = await client.getEntries({
+        content_type: "pageContent",
+        "fields.slug[in]": [path, cleanPath],
+        limit: 1,
+        include: 10,
+      });
+    }
+
     return response.items?.[0] || null;
   } catch (error) {
-    console.error("Entry fetch by URL error:", error);
+    console.error("Entry fetch by URL/Slug error:", error);
     return null;
   }
 };
 
+
 // Extra hjälpfunktion: hämta asset URL från Contentful field
 export const getAssetUrl = (asset) => {
-  return asset?.fields?.file?.url || "";
+  const url = asset?.fields?.file?.url || "";
+  return url.startsWith("//") ? "https:" + url : url;
 };
 
 export async function getCarousel(id) {
   const entry = await client.getEntry(id, {
     include: 2, // hämtar även card-referenser
   });
-
   return entry.fields;
-}
+};

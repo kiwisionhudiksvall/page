@@ -38,7 +38,7 @@ export default function Hero({ children, className = "", style = {} }) {
       >
         <div
           className="hero-text"
-          style={{ padding: "6rem", margin: "16rem 0", textAlign: "center" }}
+          style={{ padding: "0 80px", marginTop: "52vh", textAlign: "center" }}
         >
         {children}
         </div>

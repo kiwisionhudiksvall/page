@@ -41,7 +41,7 @@ export default function About() {
       "heading-2": (node, children) => (
         <h2 className="custom-h2">{children}</h2>
       ),
-      paragraph: (node, children) => (
+      "paragraph": (node, children) => (
         <p className="custom-paragraph">{children}</p>
       ),
     },
