@@ -2,10 +2,9 @@ import React from "react";
 import "../styles/global.css";
 
 export default function Hero({ children, className = "", style = {} }) {
-
   return (
     <header
-       className={`hero ${className}`}
+      className={`hero ${className}`}
       style={{
         height: "100vh",
         backgroundSize: "cover",
@@ -14,7 +13,7 @@ export default function Hero({ children, className = "", style = {} }) {
         flexDirection: "row",
         marginTop: "-25vh",
         paddingBottom: "0%",
-        ...style, 
+        ...style,
       }}
     >
       <div
@@ -40,7 +39,7 @@ export default function Hero({ children, className = "", style = {} }) {
           className="hero-text"
           style={{ padding: "0 80px", marginTop: "52vh", textAlign: "center" }}
         >
-        {children}
+          {children}
         </div>
       </div>
     </header>

@@ -96,14 +96,10 @@ export default function Home() {
                 alignItems: "center",
               }}
             >
-              <Link
-                to="/products"
-                className="link-1"              >
+              <Link to="/products" className="link-1">
                 <button className="button-1">UTBUD</button>
               </Link>
-              <Link 
-              to="/about" 
-              className="link-1"               >
+              <Link to="/about" className="link-1">
                 <button className="button-1">OM OSS</button>
               </Link>
             </div>
@@ -120,15 +116,13 @@ export default function Home() {
             padding: "2% 0 5% 0",
           }}
         >
-          <h2 style={{color: "var(--darkblue)"}}>Våra kontor</h2>
-          <CardComponent/>
+          <h2 style={{ color: "var(--darkblue)" }}>Våra kontor</h2>
+          <CardComponent />
         </section>
         <section
           className="section-2"
           style={{ textAlign: "center" }}
-        >
-
-        </section>
+        ></section>
       </main>
     </>
   );

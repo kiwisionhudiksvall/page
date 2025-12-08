@@ -37,17 +37,9 @@ export default function Navbar() {
             className="dropdown-button"
             onClick={() => setIsOpen((prev) => !prev)}
             style={{
-              fontFamily: "bc-novatica-cyr",
               padding: "8px 30px 10px 30px",
               borderRadius: "100px",
               border: "none",
-              backgroundColor: "var(--lightblue)",
-              color: "var(--darkblue)",
-              cursor: "pointer",
-              textTransform: "uppercase",
-              fontWeight: "500",
-              fontSize: "1.0rem",
-              letterSpacing: "0.1rch",
             }}
           >
             {isOpen ? "Stäng ⨯" : "Meny ☰"}

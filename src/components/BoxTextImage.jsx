@@ -39,11 +39,12 @@ export default function BoxTextImage({ entry, options }) {
           style={{
             width: "100%",
             minWidth: "50vw",
-            minHeight: "100vh",
+            minHeight: "90vh",
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
-            backgroundPosition: "50% 25%",
+            backgroundPosition: "50% 40%",
             backgroundImage: `url(${imageUrl})`,
+            opacity: "0.5",
           }}
         />
       )}
@@ -58,11 +59,10 @@ export default function BoxTextImage({ entry, options }) {
           minHeight: "100%",
           alignItems: "center",
           justifyContent: "center",
-          marginTop: "2%",
         }}
       >
         <h3
-        className="utbud-title"
+          className="utbud-title"
           style={{
             color: "var(--darkblue)",
             fontSize: "1.7rem",
@@ -75,7 +75,7 @@ export default function BoxTextImage({ entry, options }) {
 
         {/* Rich Text */}
         <div
-        className="utbud-richtext"
+          className="utbud-richtext"
           style={{
             color: "var(--darkblue)",
             padding: "30px 90px",
@@ -101,7 +101,7 @@ export default function BoxTextImage({ entry, options }) {
             cursor: "pointer",
           }}
         >
-          Kontakta oss
+          Kontakt
         </button>
       </div>
 
@@ -135,19 +135,27 @@ export default function BoxTextImage({ entry, options }) {
               gap: "1rem",
             }}
           >
-            <h3 style={{ margin: 0, color: "var(--darkblue)", }}>Skicka meddelande</h3>
+            <h3 style={{ margin: 0, color: "var(--darkblue)" }}>
+              Skicka meddelande
+            </h3>
             <textarea
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Skriv ditt meddelande här..."
               style={{ width: "100%", height: "120px", padding: "0.5rem" }}
             />
-            <div style={{ display: "flex", justifyContent: "flex-end", gap: "1rem" }}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "flex-end",
+                gap: "1rem",
+              }}
+            >
               <button
                 onClick={handleCloseModal}
                 style={{
                   padding: "0.5rem 1rem",
-                  backgroundColor:  "var(--darkblue)",
+                  backgroundColor: "var(--darkblue)",
                   color: "white",
                   border: "none",
                   borderRadius: "0.5rem",

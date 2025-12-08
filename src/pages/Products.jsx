@@ -89,7 +89,9 @@ export default function Products() {
         }}
       >
         <h2>Kundcase</h2>
-        {carousel?.slides?.length ? <Carousel slides={carousel.slides} /> : null}
+        {carousel?.slides?.length ? (
+          <Carousel slides={carousel.slides} />
+        ) : null}
       </section>
     </>
   );

@@ -58,7 +58,6 @@ export const getEntryByUrl = async (path) => {
   }
 };
 
-
 // Extra hjälpfunktion: hämta asset URL från Contentful field
 export const getAssetUrl = (asset) => {
   const url = asset?.fields?.file?.url || "";
@@ -70,4 +69,4 @@ export async function getCarousel(id) {
     include: 2, // hämtar även card-referenser
   });
   return entry.fields;
-};
+}

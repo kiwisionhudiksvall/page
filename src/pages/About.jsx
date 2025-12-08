@@ -41,7 +41,7 @@ export default function About() {
       "heading-2": (node, children) => (
         <h2 className="custom-h2">{children}</h2>
       ),
-      "paragraph": (node, children) => (
+      paragraph: (node, children) => (
         <p className="custom-paragraph">{children}</p>
       ),
     },
@@ -51,9 +51,10 @@ export default function About() {
     <>
       <Hero
         className="hero-about"
-        style={{ backgroundImage: `url(${imageUrl})`,
+        style={{
+          backgroundImage: `url(${imageUrl})`,
           backgroundPosition: "100% 100%",
-         }}
+        }}
       >
         <h1>{heading1}</h1>
         <p>{heroText}</p>
