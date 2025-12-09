@@ -81,8 +81,8 @@ export default function Carousel({ slides }) {
 
           // Style baserat på position: vänster, center, höger
           const isCenter = index === currentIndex;
-          const transform = isCenter ? "scale(1)" : "scale(0.95)";
-          const opacity = isCenter ? 1 : 0.5;
+          const transform = isCenter ? "scale(1)" : "scale(0.95)"
+          const opacity = isCenter ? 1 : 0.2;
           const zIndex = isCenter ? 2 : 1;
 
           return (
@@ -104,6 +104,10 @@ export default function Carousel({ slides }) {
                 boxShadow: isCenter
                   ? "0 10px 25px rgba(255, 255, 255, 0.57)"
                   : "0 4px 10px rgba(255, 255, 255, 0.43)",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
               }}
             >
               {embeddedImage && (
@@ -111,10 +115,15 @@ export default function Carousel({ slides }) {
                   src={embeddedImage}
                   alt={card.title || "embedded image"}
                   style={{
-                    width: "100%",
+                    width: "auto",
                     height: "3%",
                     objectFit: "contain",
                     margin: "5% 0",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+
                   }}
                 />
               )}
