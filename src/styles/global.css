@@ -3,15 +3,15 @@
 
 :root {
   font-weight: 400;
-  font-size: 1.08rem;
-  line-height: 1.6rem;
-  font-family: "work-sans", sans-serif;
+  font-size: 1.02rem;
+  line-height: 1.5rem;
+  font-family: "Albert Sans", sans-serif;
   letter-spacing: -0.04rch;
   color: rgb(209, 246, 255);
   background-color: #011436;
 
   --whiteblue: #EEFFFE;
-  --lightblue: #D1F6FF;
+  --lightblue: #b1e4fa;
   --aquablue: #32B0E1;
   --midblue: #005D85;
   --darkblue: #011436;
@@ -48,7 +48,6 @@ body {
   place-items: center;
 }
 
-
 /* logo */
 .navbar img {
   width: auto;
@@ -63,7 +62,7 @@ body {
 li .nav-button {
   margin: 2%;
   font-family: "all-round-gothic", sans-serif;
-  padding: 3px 0 4px 0;
+  padding: 5px 0 4px 0;
   border-radius: 100px;
   border: none;
   background-color: var(--lightblue);
@@ -71,15 +70,15 @@ li .nav-button {
   cursor: pointer;
   text-transform: uppercase;
   text-align: center;
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-size: 1.0rem;
+  font-weight: 500;
   letter-spacing: 0.1rch;
 }
 
 li .nav-button:hover {
   background: var(--kiwigreen);
   color: var(--darkblue);
-  transform: scale(0.98);
+  transform: scale(0.96);
 }
 
 li {
@@ -105,7 +104,7 @@ li .nav-sub::before {
 
 li .nav-sub:hover {
   color: var(--kiwigreen);
-  transform: scale(0.98);
+  transform: scale(0.96);
   cursor: pointer;
 }
 
@@ -137,9 +136,8 @@ button {
   text-transform: uppercase;
 }
 
-button:hover,
-.carousel-wrapper .carousel-btn:hover {
-  transform: scale(0.98);
+button:hover {
+  transform: scale(0.96);
   color: var(--kiwigreen);
 }
 
@@ -160,7 +158,7 @@ button:hover,
   gap: 1rem;
 }
 
-.navbar ul span {
+.nav-menu li button {
   font-family: "all-round-gothic", sans-serif;
   background-color: var(--lightblue);
   color: var(--darkblue);
@@ -168,26 +166,26 @@ button:hover,
   text-transform: uppercase;
   font-weight: 500;
   font-size: 1.0rem;
-  letter-spacing: 0.1rch,
+  letter-spacing: 0.09rch,
 }
 
-nav ul span:hover {
-  transform: scale(0.98);
+.nav-menu li button:hover {
+  transform: scale(0.96);
   background-color: var(--kiwigreen);
   color: var(--darkblue);
 }
 
-nav ul span:active {
+.nav-menu li button:focus {
   background-color: var(--kiwigreen);
 }
 
 h1 {
   font-size: 2.8em;
   line-height: 1.1;
-  font-family: "all-round-gothic", sans-serif;
-  text-transform: uppercase;
-  font-weight: 600;
-  letter-spacing: 0.2rch;
+  font-family: "bc-novatica-cyr", sans-serif;
+  /* text-transform: uppercase; */
+  font-weight: 300;
+  letter-spacing: 0.3rch;
   color: var(--aquablue);
 }
 
@@ -225,10 +223,10 @@ h3 {
 .carousel-card u {
   font-family: "bc-novatica-cyr", sans-serif;
   letter-spacing: 0.09rch;
-  text-underline-offset: 3px;
+  text-underline-offset: 2px;
   font-weight: 600;
   font-size: 0.95rem;
-  text-decoration-thickness: 2.5px;
+  text-decoration-thickness: 2px;
 }
 
 .carousel-btn left, .carousel-btn, right, .carousel-btn  {
@@ -245,9 +243,23 @@ h3 {
 }
 
 .carousel-container .card-button:hover {
-  transform: scale(0.98);
+  transform: scale(0.96);
   background: var(--kiwigreen);
   color: var(--darkgreen)
+}
+
+.carousel-wrapper .carousel-btn:hover {
+  transform: scale(0.96);
+  color: var(--kiwigreen);
+}
+
+.title-text-box button {
+      background-color: var(--darkblue);
+      color: white;
+  }
+
+.title-text-box button:hover {
+  background-color: var(--aquablue);
 }
 
 .utbud-richtext b {
@@ -256,19 +268,17 @@ h3 {
   letter-spacing: 0.17rch;
   font-weight: 400;
   font-size: 0.95rem;
-  padding-top: 40%;
 }
 
 .utbud-richtext li {
-  margin-top: 2.5%;
-  width: 90%;
+  width: 85%;
 }
 
 p {
   font-weight: 400;
-  font-size: 1.08rem;
-  line-height: 1.6rem;
-  font-family: "work-sans", sans-serif;
+  font-size: 1.0rem;
+  line-height: 1.2rem;
+  font-family: "Albert Sans", sans-serif;
   letter-spacing: -0.04rch;
   line-break: 50px;
 }
@@ -316,7 +326,7 @@ section {
 
 .card p {
   margin: 0 0 12px;
-  color: var(--creme);
+  color: var(--whiteblue);
   font-size: 0.8rem;
   letter-spacing: 0.03rch;
 }

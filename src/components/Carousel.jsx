@@ -84,22 +84,27 @@ export default function Carousel({ slides }) {
           const transform = isCenter ? "scale(1)" : "scale(0.95)"
           const opacity = isCenter ? 1 : 0.2;
           const zIndex = isCenter ? 2 : 1;
+          const marginLeft = isCenter ? "40" : "10";
 
           return (
             <div
               key={index}
               className="carousel-card"
               style={{
-                width: "400px",
-                minWidth: "400px",
+                width: "350px",
+                minWidth: "300px",
                 background: "var(--creme)",
                 borderRadius: "1rem",
                 overflow: "hidden",
                 flexShrink: 0,
-                padding: "2%",
+                padding: "1%",
                 opacity,
                 transform,
+                marginLeft,
                 transition: "all 0.5s ease",
+                animationName: "tonext, snap",
+                animationTimingFunction: "ease",
+                animationDuration: "4s",
                 zIndex,
                 boxShadow: isCenter
                   ? "0 10px 25px rgba(255, 255, 255, 0.57)"
@@ -115,8 +120,7 @@ export default function Carousel({ slides }) {
                   src={embeddedImage}
                   alt={card.title || "embedded image"}
                   style={{
-                    width: "auto",
-                    height: "3%",
+                    maxHeight: "6vh",
                     objectFit: "contain",
                     margin: "5% 0",
                     display: "flex",

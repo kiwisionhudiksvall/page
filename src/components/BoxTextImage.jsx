@@ -29,6 +29,7 @@ export default function BoxTextImage({ entry, options }) {
       style={{
         display: "flex",
         flexDirection: isLeft ? "row" : "row-reverse",
+        backgroundColor: isLeft ? "var(--creme)" : "var(--whiteblue)",
         alignItems: "center",
       }}
     >
@@ -42,7 +43,7 @@ export default function BoxTextImage({ entry, options }) {
             minHeight: "90vh",
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
-            backgroundPosition: "50% 40%",
+            backgroundPosition: "50% 30%",
             backgroundImage: `url(${imageUrl})`,
             opacity: "0.5",
           }}
@@ -56,7 +57,7 @@ export default function BoxTextImage({ entry, options }) {
           display: "flex",
           flexDirection: "column",
           minWidth: "50vw",
-          minHeight: "100%",
+          height: "90vh",
           alignItems: "center",
           justifyContent: "center",
         }}
@@ -67,7 +68,7 @@ export default function BoxTextImage({ entry, options }) {
             color: "var(--darkblue)",
             fontSize: "1.7rem",
             fontWeight: "500",
-            marginBottom: "10px",
+            marginBottom: "2px",
           }}
         >
           {entry.title}
@@ -78,8 +79,7 @@ export default function BoxTextImage({ entry, options }) {
           className="utbud-richtext"
           style={{
             color: "var(--darkblue)",
-            padding: "30px 90px",
-            minHeight: "100%",
+            padding: "10px 60px",
           }}
         >
           {entry.richText
@@ -92,13 +92,12 @@ export default function BoxTextImage({ entry, options }) {
           onClick={handleOpenModal}
           style={{
             padding: "0.8rem 1.2rem",
-            backgroundColor: "var(--darkblue)",
-            color: "white",
             border: "none",
             fontWeight: 500,
             letterSpacing: "0.17rch",
             fontSize: "1rem",
             cursor: "pointer",
+            margin: "2%",
           }}
         >
           Kontakt

@@ -63,7 +63,7 @@ export default function Products() {
 
   return (
     <>
-      <Hero style={{ backgroundImage: `url(${imageUrl})` }}>
+      <Hero style={{ backgroundImage: `url(${imageUrl})`, paddingBottom: "-10px", }}>
         <h1>{heading1}</h1>
         <div>{heroText}</div>
       </Hero>
@@ -72,8 +72,9 @@ export default function Products() {
         className="products-section"
         style={{
           width: "100%",
-          minHeight: "70vh",
+          height: "fit-content",
           backgroundColor: "var(--creme)",
+          paddingTop: "-20px",
         }}
       >
         {richText && documentToReactComponents(richText, options)}
@@ -88,7 +89,7 @@ export default function Products() {
           backgroundColor: "var(--darkblue)",
         }}
       >
-        <h2>Kundcase</h2>
+        <h2 style={{marginBottom: "4%",}}>Kundcase</h2>
         {carousel?.slides?.length ? (
           <Carousel slides={carousel.slides} />
         ) : null}

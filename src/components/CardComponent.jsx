@@ -5,7 +5,7 @@ const offices = [
   {
     id: "goteborg",
     name: "Göteborgskontoret",
-    address: "Göteborg",
+    address: "Privat adress, Göteborg",
     lat: 57.73630718172698,
     lon: 11.957759762081377,
   },
