@@ -21,7 +21,7 @@ export default function Footer() {
         alt="Kiwision Logo"
         style={{ maxHeight: "60px", marginLeft: "2rem", marginRight: "2rem" }}
       />
-      <p style={{ fontFamily: "Arboria, sans-serif", fontWeight: "400" }}>
+      <p style={{ fontWeight: "400" }}>
         Kiwision © {new Date().getFullYear()} All rights reserved
       </p>
     </footer>

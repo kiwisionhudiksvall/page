@@ -69,7 +69,7 @@ export default function Carousel({ slides }) {
           justifyContent: "center",
           alignItems: "flex-start",
           gap: "2rem",
-          transition: "transform 0.6s ease",
+          transition: "all 1.1s ease",
         }}
       >
         {visibleSlides.map((index) => {

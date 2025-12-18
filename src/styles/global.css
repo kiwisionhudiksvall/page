@@ -7,9 +7,8 @@
   line-height: 1.5rem;
   font-family: "Albert Sans", sans-serif;
   letter-spacing: -0.04rch;
-  color: rgb(209, 246, 255);
+  color:  #011436;
   background-color: #011436;
-
   --whiteblue: #EEFFFE;
   --lightblue: #b1e4fa;
   --aquablue: #32B0E1;
@@ -31,6 +30,7 @@
 }
 
 .app-container {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -39,31 +39,33 @@
 
 main {
   margin: 0;
+  width: 100vw;
 }
 
 body {
   margin: 0;
   min-height: 100vh;
+  width: 100vw;
   display: flex;
   place-items: center;
 }
 
-/* logo */
-.navbar img {
+nav img {
   width: auto;
   max-height: 45px;
 }
 
-.navbar img:hover {
+nav img:hover {
   transform: scale(0.98);
   cursor: pointer;
 }
 
-li .nav-button {
+.dropdown-menu a {
   margin: 2%;
   font-family: "all-round-gothic", sans-serif;
   padding: 5px 0 4px 0;
   border-radius: 100px;
+  width: 12vw;
   border: none;
   background-color: var(--lightblue);
   color: var(--darkblue);
@@ -75,7 +77,7 @@ li .nav-button {
   letter-spacing: 0.1rch;
 }
 
-li .nav-button:hover {
+.dropdown-menu a:hover {
   background: var(--kiwigreen);
   color: var(--darkblue);
   transform: scale(0.96);
@@ -141,7 +143,7 @@ button:hover {
   color: var(--kiwigreen);
 }
 
-.navbar {
+nav {
   background: transparent;
   display: flex;
   justify-content: space-between;
@@ -152,13 +154,13 @@ button:hover {
   width: 100vw;
 }
 
-.navbar ul {
+nav ul {
   display: flex;
   list-style: none;
   gap: 1rem;
 }
 
-.nav-menu li button {
+nav button {
   font-family: "all-round-gothic", sans-serif;
   background-color: var(--lightblue);
   color: var(--darkblue);
@@ -169,13 +171,13 @@ button:hover {
   letter-spacing: 0.09rch,
 }
 
-.nav-menu li button:hover {
+nav button:hover {
   transform: scale(0.96);
   background-color: var(--kiwigreen);
   color: var(--darkblue);
 }
 
-.nav-menu li button:focus {
+nav button:focus {
   background-color: var(--kiwigreen);
 }
 
@@ -286,15 +288,17 @@ p {
 section {
   box-sizing: border-box;
   min-height: 25vh;
-  width: 100%;
+  width: 100vw;
 }
 
 .section-1 {
-  background-color: var(--whiteblue);
+  background: var(--whiteblue);
+background: linear-gradient(180deg,rgba(238, 255, 254, 1) 50%, rgba(254, 252, 241, 1) 100%);
 }
 
 .section-2 {
-  background-color: var(--darkblue);
+  background: var(--creme);
+background: linear-gradient(180deg,rgba(254, 252, 241, 1) 0%, rgba(238, 255, 254, 1) 50%, rgba(177, 228, 250, 1) 100%);
 }
 
 .cards-row {

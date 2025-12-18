@@ -1,29 +1,21 @@
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Page from "./pages/Page";
 import Home from "./pages/Home";
-import Products from "./pages/Products";
-import Career from "./pages/Career";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
 import "./styles/global.css";
 
-function App() {
+export default function App() {
   return (
     <div className="app-container">
       <Navbar />
       <main>
         <Routes>
+          <Route path="/:slug" element={<Page />} />
           <Route path="/" element={<Home />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/career" element={<Career />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>
       <Footer />
     </div>
   );
 }
-
-export default App;
