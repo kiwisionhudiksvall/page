@@ -218,7 +218,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const fetchPages = async () => {
-      const res = await client.getEntries({ content_type: "page" });
+      const res = await client.getEntries({ content_type: "pageContent" });
       setPages(res.items.map((item) => item.fields));
     };
     fetchPages();
@@ -263,8 +263,8 @@ export default function Navbar() {
             >
               <Link to="/">Hem</Link>
               {pages.map((p) => (
-                <Link key={p.slug} to={`/${p.slug}`}>
-                  {p.title}
+                <Link className="menu-button" key={p.slug} to={`/${p.slug}`}>
+                  {p.heading1}
                 </Link>
               ))}
             </ul>

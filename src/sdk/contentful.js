@@ -1,9 +1,11 @@
 import { createClient } from "contentful";
 
 const client = createClient({
-  space: "pxok2zrh6jgc",
-  accessToken: "FXtkQ7bgte1j2AuzkClRSZYful0foPGmBqXebQap0JE",
+  space: import.meta.env.VITE_CONTENTFUL_SPACE_ID,
+  accessToken: import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN,
 });
+
+export default client;
 
 // Hämta alla entries av en viss content type
 export const getEntries = async (contentType) => {

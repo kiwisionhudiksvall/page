@@ -1,10 +1,10 @@
 import React from "react";
 import "../styles/global.css";
-// import { getAssetUrl } from "../sdk/contentful.js";
-import decorPattern from "../assets/images/graphic_0101-corner_dark-07.png";
+import decorPattern from "../assets/images/graphic_0101-pattern-07.png";
 
 
 export default function Hero({ children, className = "", style = {} }) {
+
   return (
     <header
       className={`hero ${className}`}
@@ -22,15 +22,29 @@ export default function Hero({ children, className = "", style = {} }) {
       }}
     >
       <div
-        className="box-sepia"
+        className="box-photo-overlay"
         style={{
           minWidth: "50vw",
           height: "100%",
-          backgroundColor: "rgba(48, 31, 14, 0.7)",
-          top: 0,
-          left: 0,
+          // backgroundColor: "rgba(48, 31, 14, 0.7)",
+          backgroundColor: "rgba(14, 27, 28, 0.4)",
+      overflow: "hidden",
         }}
       >
+        <div
+    style={{
+      left: 0,
+      top: 0,
+      width: "100%",
+      height: "100%",
+      backgroundImage: `url(${decorPattern})`,
+      backgroundSize: "90%",
+      backgroundRepeat: "no-repeat",
+      backgroundPosition: "0% 100%",
+      opacity: 0.3,
+      pointerEvents: "none", 
+    }}
+  />
       </div>
       <div
         className="box-blue"
@@ -41,15 +55,11 @@ export default function Hero({ children, className = "", style = {} }) {
           right: 0,
           backgroundColor: "rgba(1, 20, 54, 0.7)",
           backdropFilter: "blur(15px)",
-          backgroundImage: `url(${decorPattern})`, 
-          backgroundSize: "60%",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "0% 100%",
         }}
       >
         <div
           className="hero-text"
-          style={{ padding: "0 80px", marginTop: "52vh", textAlign: "center" }}
+          style={{ maxWidth: "40vw", padding: "0 10vw", marginTop: "52vh", textAlign: "center", }}
         >
           {children}
         </div>

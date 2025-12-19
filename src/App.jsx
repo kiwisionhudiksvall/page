@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Page from "./pages/Page";
+import PageContent from "./pages/PageContent";
 import Home from "./pages/Home";
 import "./styles/global.css";
 
@@ -11,7 +11,7 @@ export default function App() {
       <Navbar />
       <main>
         <Routes>
-          <Route path="/:slug" element={<Page />} />
+          <Route path="/:slug" element={<PageContent />} />
           <Route path="/" element={<Home />} />
         </Routes>
       </main>
