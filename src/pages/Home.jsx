@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/global.css";
 import { Link } from "react-router-dom";
-import heroImage from "../assets/images/wall_kiwision.png";
+import heroImage from "../assets/images/photos/kiwision-kappuddsgatan-2.jpg";
 import CardComponent from "../components/CardComponent.jsx";
 
 export default function Home() {
