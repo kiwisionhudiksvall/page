@@ -96,11 +96,11 @@ export default function Home() {
                 alignItems: "center",
               }}
             >
-              <Link to="/products" className="link-1">
-                <button className="button-1">UTBUD</button>
+              <Link to="/contact" className="link-1">
+                <button className="button-1">BOKA MÖTE</button>
               </Link>
-              <Link to="/about" className="link-1">
-                <button className="button-1">OM OSS</button>
+              <Link to="/products" className="link-1">
+                <button className="button-1">PRODUKTER</button>
               </Link>
             </div>
           </div>
@@ -116,7 +116,7 @@ export default function Home() {
             padding: "2% 0 5% 0",
           }}
         >
-          <h2 style={{ color: "var(--darkblue)" }}>Våra kontor</h2>
+          <h2>Våra kontor</h2>
           <CardComponent />
         </section>
         <section

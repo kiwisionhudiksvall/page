@@ -2,12 +2,12 @@ import React from "react";
 import "../styles/global.css";
 
 const offices = [
-  {
-    id: "goteborg",
-    name: "Göteborgskontoret",
-    address: "Privat adress, Göteborg",
-    lat: 57.73630718172698,
-    lon: 11.957759762081377,
+    {
+    id: "hudiksvall",
+    name: "Hudiksvallskontoret",
+    address: "Käppuddsgatan 5, Hudiksvall",
+    lat: 61.728474765113724,
+    lon: 17.108353824479785,
   },
   {
     id: "stockholm",
@@ -17,11 +17,11 @@ const offices = [
     lon: 18.01669697846398,
   },
   {
-    id: "hudiksvall",
-    name: "Hudiksvallskontoret",
-    address: "Käppuddsgatan 5, Hudiksvall",
-    lat: 61.728474765113724,
-    lon: 17.108353824479785,
+    id: "goteborg",
+    name: "Göteborgskontoret",
+    address: "Privat adress, Göteborg",
+    lat: 57.73630718172698,
+    lon: 11.957759762081377,
   },
 ];
 
@@ -40,13 +40,13 @@ export default function CardComponent() {
               role="listitem"
               aria-labelledby={`${id}-title`}
             >
-              <h3 style={{ color: "var(--lightblue)" }} id={`${id}-title`}>
+              <h3 style={{ color: "var(--darkblue)" }} id={`${id}-title`}>
                 {name}
               </h3>
               <p>{address}</p>
               <div className="map" aria-hidden="false">
                 <iframe
-                  style={{ filter: "saturate(0.7) hue-rotate(240deg)" }}
+                  style={{ filter: "saturate(0.25) hue-rotate(200deg)" }}
                   title={`${name} map`}
                   src={src}
                   loading="lazy"

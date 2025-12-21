@@ -11,10 +11,10 @@ export default function DefaultLayout({ pageContent }) {
   return (
       <>
       <Hero
-        className="hero-about"
+        className="hero"
         style={{
           backgroundImage: `url(${heroImageUrl})`,
-          backgroundPosition: "100% 100%",
+          backgroundPosition: "0% 60%",
         }}
       >
         <h1>{pageContent.heading1}</h1>
@@ -26,7 +26,6 @@ export default function DefaultLayout({ pageContent }) {
         style={{
           width: "100vw",
           minHeight: "60vh",
-          backgroundColor: "var(--whiteblue)",
           padding: "3rem 15rem 6rem 15rem",
         }}
       >

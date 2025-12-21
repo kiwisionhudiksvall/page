@@ -27,7 +27,7 @@ export default function Hero({ children, className = "", style = {} }) {
           minWidth: "50vw",
           height: "100%",
           // backgroundColor: "rgba(48, 31, 14, 0.7)",
-          backgroundColor: "rgba(14, 27, 28, 0.4)",
+          backgroundColor: "rgba(72, 70, 49, 0.4)",
       overflow: "hidden",
         }}
       >
