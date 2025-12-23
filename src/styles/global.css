@@ -7,9 +7,10 @@
   line-height: 1.5rem;
   font-family: "Albert Sans", sans-serif;
   letter-spacing: -0.04rch;
-  color:  #32B0E1;
+  color:  #2583a8;
   background-color: #011436;
   --whiteblue: #EEFFFE;
+  --lightaqua: #d1f6ff;
   --lightblue: #b1e4fa;
   --aquablue: #32B0E1;
   --midblue: #005D85; 
@@ -103,12 +104,20 @@ li .nav-sub:hover {
   cursor: pointer;
 }
 
-a[href^="tel:"] {
+a[href^="tel:"], a[href^="mailto:"] {
    color: var(--aquablue);
    text-decoration: none;
    margin-right: 0.1em;
 }
 a[href^="tel:"]:before {
+   content: "☎";
+   font-family:"dashicons";
+   color: var(--aquablue);
+   width:20px;
+   display:inline-block;
+}
+
+a[href^="mailto:"]:before {
    content: "☎";
    font-family:"dashicons";
    color: var(--aquablue);

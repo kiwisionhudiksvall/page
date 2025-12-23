@@ -4,6 +4,7 @@ import client from "../contentfulClient";
 import DefaultLayout from "./layouts/DefaultLayout";
 import ContactLayout from "./layouts/ContactLayout";
 import LandingLayout from "./layouts/LandingLayout";
+import HomeLayout from "./layouts/HomeLayout";
 import "../styles/global.css";
 
 export default function PageContent() {
@@ -12,7 +13,7 @@ export default function PageContent() {
 
   useEffect(() => {
     const fetchPageContent = async () => {
-     const res = await client.getEntries({
+      const res = await client.getEntries({
         content_type: "pageContent",
         "fields.slug": slug,
       });
@@ -23,20 +24,33 @@ export default function PageContent() {
     fetchPageContent();
   }, [slug]);
 
-  if (!pageContent) return <p style={{textAlign: "center", marginTop: "10vh", color: "var(--aquablue)"}}>Laddar...</p>;
+  if (!pageContent)
+    return (
+      <p
+        style={{
+          textAlign: "center",
+          marginTop: "10vh",
+          color: "var(--aquablue)",
+        }}
+      >
+        Laddar...
+      </p>
+    );
 
   const renderLayout = () => {
     switch (pageContent.template) {
       case "career":
-        return <ContactLayout pageContent={pageContent} />;
+        return <DefaultLayout pageContent={pageContent} />;
       case "products":
-        return <ContactLayout pageContent={pageContent} />;
+        return <DefaultLayout pageContent={pageContent} />;
       case "about":
-        return <ContactLayout pageContent={pageContent} />;
+        return <DefaultLayout pageContent={pageContent} />;
       case "contact":
         return <ContactLayout pageContent={pageContent} />;
       case "landing":
         return <LandingLayout pageContent={pageContent} />;
+      case "home":
+        return <HomeLayout pageContent={pageContent} />;
       default:
         return <DefaultLayout pageContent={pageContent} />;
     }

@@ -1,13 +1,32 @@
-export default function LandingLayout({ page }) {
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import Hero from "../../components/Hero.jsx";
+import "../../styles/global.css";
+
+export default function LandingLayout({ pageContent }) {
+  const imageUrl = pageContent.heroImage?.fields?.file?.url
+    ? `https:${pageContent.heroImage.fields.file.url}`
+    : null;
   return (
-    <section className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-24">
-      <div className="text-center max-w-3xl mx-auto px-6">
-        <h1 className="text-5xl font-bold mb-6">{page.title}</h1>
-        <p className="text-lg opacity-90 mb-8">{page.body}</p>
-        <button className="bg-white text-indigo-700 font-semibold px-6 py-3 rounded-full hover:bg-gray-100">
-          Kom igång
-        </button>
-      </div>
-    </section>
+    <>
+      <Hero
+        className="hero"
+        style={{
+          backgroundImage: `url(${imageUrl})`,
+          backgroundPosition: "100% 60%",
+        }}
+      >
+        <h1>{pageContent.heading1}</h1>
+        <p>{pageContent.heroText}</p>
+      </Hero>
+      <section
+        className="section-1"
+        style={{ padding: "4%", textAlign: "center" }}
+      >
+        <div style={{ color: "var(--whiteblue)" }}>
+          {documentToReactComponents(pageContent.richText)}
+        </div>
+      </section>
+      <section className="section-2" style={{ padding: "4%" }}></section>
+    </>
   );
 }

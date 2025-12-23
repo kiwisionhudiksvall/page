@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/global.css";
-import decorPattern from "../assets/images/decoration/graphic_0101-pattern-07.png";
+import decorPattern from "../assets/images/decoration/graphic_corner_light-left-1.png";
 
 
 export default function Hero({ children, className = "", style = {} }) {

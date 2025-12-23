@@ -14,7 +14,7 @@ export default function DefaultLayout({ pageContent }) {
         className="hero"
         style={{
           backgroundImage: `url(${heroImageUrl})`,
-          backgroundPosition: "0% 60%",
+          backgroundPosition: "0% 30%",
         }}
       >
         <h1>{pageContent.heading1}</h1>

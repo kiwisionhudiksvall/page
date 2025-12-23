@@ -27,8 +27,19 @@ export default function Navbar() {
 
   useEffect(() => {
     const fetchPages = async () => {
-      const res = await client.getEntries({ content_type: "pageContent" });
-      setPages(res.items.map((item) => item.fields));
+      try {
+        const res = await client.getEntries({ content_type: "pageContent" });
+        const items = res.items
+          .map((item) => item.fields)
+          // Filtrera bort sidor som inte ska synas i nav (om du använder showInNav)
+          .filter((page) => page.showInNav !== false)
+          // Sortera efter menuOrder (eller alfabetiskt om det saknas)
+          .sort((a, b) => (a.menuOrder || 999) - (b.menuOrder || 999));
+
+        setPages(items);
+      } catch (error) {
+        console.error("Fel vid hämtning av navigation:", error);
+      }
     };
     fetchPages();
   }, []);
@@ -70,10 +81,9 @@ export default function Navbar() {
                 zIndex: 1000,
               }}
             >
-              <Link to="/">Hem</Link>
               {pages.map((p) => (
-                <Link className="menu-button" key={p.slug} to={`/${p.slug}`}>
-                  {p.heading1}
+                <Link className="menu-button" key={p.slug} to={`/${p.slug}`} onClick={() => setIsOpen(false)}>
+                  {p.pageTitle}
                 </Link>
               ))}
             </ul>
@@ -83,3 +93,5 @@ export default function Navbar() {
     </nav>
   );
 }
+
+ 

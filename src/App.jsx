@@ -11,8 +11,8 @@ export default function App() {
       <Navbar />
       <main>
         <Routes>
-          <Route path="/:slug" element={<PageContent />} />
           <Route path="/" element={<Home />} />
+          <Route path="/:slug" element={<PageContent />} />
         </Routes>
       </main>
       <Footer />
