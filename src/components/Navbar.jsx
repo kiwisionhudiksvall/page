@@ -58,7 +58,7 @@ export default function Navbar() {
             className="dropdown-button"
             onClick={() => setIsOpen((prev) => !prev)}
             style={{
-              padding: "8px 30px 10px 30px",
+              padding: "9px 30px",
               borderRadius: isOpen ? "20px 20px 0px 0px" : "20px",
               border: "none",
             }}
@@ -74,7 +74,7 @@ export default function Navbar() {
                 top: "7vh",
                 right: "4.35vw",
                 backgroundColor: "#020d21f0",
-                boxShadow: "3px 2px 10px rgba(255, 255, 255, 0.12)",
+                boxShadow: "1px 2px 16px #EEFFFE60",
                 borderRadius: "30px 0px 30px 0px",
                 padding: "20px",
                 listStyle: "none",
@@ -86,6 +86,7 @@ export default function Navbar() {
                   {p.pageTitle}
                 </Link>
               ))}
+
             </ul>
           )}
         </li>

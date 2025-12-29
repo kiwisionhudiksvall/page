@@ -55,11 +55,11 @@ export default function HomeLayout({ pageContent }){
           >
             <h1
               style={{
+                fontFamily: "bc-novatica-cyr",
                 letterSpacing: "0.75rem",
-                fontWeight: "500",
+                fontWeight: "300",
                 fontSize: "3.0rem",
                 color: "var(--lightblue)",
-                textTransform: "uppercase",
               }}
             >
               {pageContent.heading1}
@@ -69,7 +69,7 @@ export default function HomeLayout({ pageContent }){
                 maxWidth: "60%",
                 margin: "2rem auto",
                 fontWeight: "400",
-                fontSize: "1rem",
+                fontSize: "1.1rem",
                 lineHeight: "1.5rem",
                 color: "var(--whiteblue)",
               }}

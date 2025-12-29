@@ -20,8 +20,8 @@ const offices = [
     id: "goteborg",
     name: "Göteborgskontoret",
     address: "Privat adress, Göteborg",
-    lat: 57.73630718172698,
-    lon: 11.957759762081377,
+    lat: 61.728474765113724,
+    lon: 17.108353824479785,
   },
 ];
 

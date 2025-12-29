@@ -4,7 +4,7 @@ import React from "react";
 import ContactForm from "../../components/ContactForm";
 import pattern from "../../assets/images/decoration/graphic_0101-long2-darkblue.svg";
 
-export default function DefaultLayout({ pageContent }) {
+export default function ContactLayout({ pageContent }) {
   const imageUrl = pageContent.heroImage?.fields?.file?.url
     ? `https:${pageContent.heroImage.fields.file.url}`
     : null;
@@ -25,7 +25,7 @@ export default function DefaultLayout({ pageContent }) {
         className="section-1"
         style={{ padding: "4rem", textAlign: "center" }}
       >
-        <div style={{ color: "white" }}>
+        <div className="contact-1" style={{ color: "white", display: "flex", flexDirection: "column", alignItems: "center" }}>
           {documentToReactComponents(pageContent.richText)}
         </div>
       </section>

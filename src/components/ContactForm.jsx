@@ -35,7 +35,7 @@ export default function ContactForm() {
         flexDirection: "column",
         gap: "1rem",
         width: "100%",
-        maxWidth: "400px",
+        maxWidth: "600px",
         margin: "2rem auto",
       }}
     >
@@ -45,6 +45,7 @@ export default function ContactForm() {
         placeholder="Ditt namn"
         onChange={handleChange}
         required
+         style={{ fontFamily: "Albert Sans, sans-serif",padding: "8px", border: "none", fontSize: "1.0rem", }}
       />
       <input
         type="email"
@@ -52,15 +53,17 @@ export default function ContactForm() {
         placeholder="Din e-post"
         onChange={handleChange}
         required
+         style={{ fontFamily: "Albert Sans, sans-serif",padding: "8px", border: "none", fontSize: "1.0rem", }}
       />
       <textarea
         name="message"
         placeholder="Ditt meddelande..."
-        rows="5"
+        rows="10"
         onChange={handleChange}
         required
+        style={{ fontFamily: "Albert Sans, sans-serif", padding: "8px", border: "none", fontSize: "1.0rem", }}
       />
-      <button type="submit">Skicka</button>
+      <button style={{width: "200px", backgroundColor: "var(--aquablue)", color: "var(--darkblue)", fontFamily: "Albert Sans, sans-serif"}} type="submit">Skicka</button>
       {status && <p>{status}</p>}
     </form>
   );

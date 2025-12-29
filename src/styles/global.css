@@ -3,13 +3,13 @@
 
 :root {
   font-weight: 400;
-  font-size: 1.02rem;
+  font-size: 1.0rem;
   line-height: 1.5rem;
   font-family: "Albert Sans", sans-serif;
   letter-spacing: -0.04rch;
   color:  #2583a8;
   background-color: #011436;
-  --whiteblue: #EEFFFE;
+  --whiteblue: #EEFFFE; 
   --lightaqua: #d1f6ff;
   --lightblue: #b1e4fa;
   --aquablue: #32B0E1;
@@ -110,40 +110,66 @@ a[href^="tel:"], a[href^="mailto:"] {
    margin-right: 0.1em;
 }
 a[href^="tel:"]:before {
-   content: "☎";
+   content: "✆";
    font-family:"dashicons";
    color: var(--aquablue);
-   width:20px;
+   width:30px;
+   font-size: 2.2rem;
    display:inline-block;
 }
 
 a[href^="mailto:"]:before {
-   content: "☎";
+   content: "✉";
    font-family:"dashicons";
    color: var(--aquablue);
-   width:20px;
+   width:30px;
+   font-size: 2.2rem;
    display:inline-block;
 }
 
-a {
+.contact-1 td p {
+  font-size: 1.1rem;
+  font-weight: 400;
+  font-family: "Albert Sans", sans-serif;
+  color: var(--lightblue);
+  padding: 0px 50px;
+  margin-bottom: 2px;
+}
+
+.contact-1 table {
+  padding-bottom: 5vh;
+}
+
+a::before {
+  content: "";  
   font-weight: 500;
   text-decoration: none;
-  font-family: "bc-novatica-cyr", sans-serif;
   color: var(--aquablue);
+}
+
+nav ul a {
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--aquablue);
+  font-weight: 700;
 }
 
 a:hover {
   color: var(--kiwigreen);
-  transform: scale(0.98);
+  transition: color 0.3s ease; 
+  transform: scale(0.98) ease;
 }
 
 button {
   font-family: "all-round-gothic", sans-serif;
-  font-size: 0.85rem;
-  font-weight: 500;
-  letter-spacing: 0.1rch;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.15rch;
   margin: 6px;
-  padding: 0.6rem 1.5rem;
+  padding: 0.8rem 1.5rem 0.7rem 1.5rem;
   border-radius: 100px;
   min-width: 130px;
   background-color: var(--darkblue);
@@ -230,6 +256,34 @@ h2,
 
 .section-1 h2 {
   color: var(--lightblue);
+}
+
+.work-ad h3 {
+  font-size: 1.5rem;
+  line-height: 1.2;
+  font-weight: 400;
+  letter-spacing: 0.1rch;
+  font-family: "bc-novatica-cyr", sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+
+}
+
+.work-ad h2 {
+  font-size: 1.16rem;
+  font-weight: 600;
+  font-family: "Albert Sans", sans-serif;
+  text-align: left;
+  color: var(--aquablue);
+  letter-spacing: 0.05rch;
+}
+
+.work-ad p {
+  font-size: 1.0rem;
+  line-height: 1.4;
+  font-weight: 300;
+  font-family: "Albert Sans", sans-serif;
+  color: var(--midblue);
 }
 
 h3 {

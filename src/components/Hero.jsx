@@ -9,7 +9,7 @@ export default function Hero({ children, className = "", style = {} }) {
     <header
       className={`hero ${className}`}
       style={{
-        height: "100vh",
+        height: "80vh",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         display: "flex",
@@ -26,8 +26,8 @@ export default function Hero({ children, className = "", style = {} }) {
         style={{
           minWidth: "50vw",
           height: "100%",
-          // backgroundColor: "rgba(48, 31, 14, 0.7)",
-          backgroundColor: "rgba(72, 70, 49, 0.4)",
+          backgroundColor: "rgba(48, 31, 14, 0.7)",
+          // backgroundColor: "rgba(72, 70, 49, 0.4)",
       overflow: "hidden",
         }}
       >
@@ -59,7 +59,7 @@ export default function Hero({ children, className = "", style = {} }) {
       >
         <div
           className="hero-text"
-          style={{ maxWidth: "40vw", padding: "0 10vw", marginTop: "52vh", textAlign: "center", }}
+          style={{ maxWidth: "40vw", padding: "0 10vw", marginTop: "45vh", textAlign: "center", }}
         >
           {children}
         </div>
