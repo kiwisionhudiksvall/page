@@ -46,7 +46,9 @@ export default function ContactLayout({ pageContent }) {
         >
           {documentToReactComponents(pageContent?.richText || {})}
         </div>
+        <div style={{height: "200px", width: "200px", background: "gray"}}>
         <MapComponent/>
+        </div>
       </section>
       <section
         className="section-2"
