@@ -233,6 +233,7 @@ h1 {
   font-size: 2.5em;
   line-height: 1.1;
   font-family: "bc-novatica-cyr", sans-serif;
+  text-transform: uppercase;
   font-weight: 400;
   letter-spacing: 0.3rch;
   color: var(--aquablue);
@@ -264,7 +265,7 @@ h2,
   font-weight: 400;
   letter-spacing: 0.1rch;
   font-family: "bc-novatica-cyr", sans-serif;
-  text-transform: uppercase;
+  text-transform: lowercase;
   text-align: center;
 
 }
@@ -301,7 +302,6 @@ h3 {
   font-weight: 500;
   letter-spacing: 0.08rch;
   font-family: "bc-novatica-cyr", sans-serif;
-  text-transform: uppercase;
   margin-bottom: 10px;
 }
 
@@ -349,7 +349,6 @@ h3 {
 
 .utbud-richtext b {
   font-family: "bc-novatica-cyr", sans-serif;
-  text-transform: uppercase;
   letter-spacing: 0.17rch;
   font-weight: 400;
   font-size: 0.95rem;
@@ -394,16 +393,14 @@ background: linear-gradient(180deg,rgba(1, 20, 54, 1) 0%, rgba(177, 228, 250, 1)
 
 .cards-row {
   display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin: 0 -8px;
+  justify-content: space-between;
+  gap: 2%;
+  width: 90%;
 }
 
 .card {
-  flex: 1 1 300px;
-  min-width: 260px;
+  min-width: none;
   max-width: 33%;
-  box-sizing: border-box;
   padding: 25px 15px;
   margin-top: 3%;
   border-radius: 8px;
@@ -418,7 +415,6 @@ background: linear-gradient(180deg,rgba(1, 20, 54, 1) 0%, rgba(177, 228, 250, 1)
   margin: 8px;
   font-size: 0.95rem;
   font-family: "bc-novatica-cyr", sans-serif;
-  text-transform: uppercase;
   font-weight: 600;
 }
 
@@ -433,14 +429,15 @@ background: linear-gradient(180deg,rgba(1, 20, 54, 1) 0%, rgba(177, 228, 250, 1)
   border-radius: 6px;
   overflow: hidden;
   height: 220px;
-  flex: 1 1 auto;
+  display: flex;
 }
 
 .map iframe {
+  display: flex;
   width: 100%;
   height: 100%;
   border: 0;
-  display: block;
+  min-width: none;
 }
 
 footer {

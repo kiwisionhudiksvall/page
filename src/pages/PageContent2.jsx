@@ -9,6 +9,9 @@ import ProductsLayout from "./layouts/ProductsLayout";
 import CareerLayout from "./layouts/CareerLayout";
 import HomeLayout from "./layouts/HomeLayout";
 import "../styles/global.css";
+import { extractTables } from "../utils/extractTables";
+import MapComponent from "../components/MapComponent";
+
 
 export default function PageContent() {
   const { slug } = useParams();
@@ -21,15 +24,17 @@ export default function PageContent() {
         "fields.slug": slug,
         include: 10, // Viktigt för att få med embedded entries/assets
       });
-      console.log("Res från pageContent: ", res);
-      if (res.items.length) setPageContent(res.items[0]);
+      console.log("PAGECONTENT:", res);
+      console.log("INCLUDES ENTRY:", res.includes?.Entry);
+      if (res.length) setPageContent(res);
     };
+
     fetchPageContent();
   }, [slug]);
 
-  if (!pageContent)
+    if (!pageContent)
     return (
-      <p
+      <div
         style={{
           textAlign: "center",
           marginTop: "10vh",
@@ -39,8 +44,11 @@ export default function PageContent() {
         }}
       >
         Vänta lite...
-      </p>
+      </div>
     );
+
+  const tables = extractTables(pageContent);
+  console.log("EXTRACTED TABLES:", tables);
 
   const renderLayout = () => {
     switch (pageContent.fields.template) {
@@ -70,6 +78,7 @@ export default function PageContent() {
           <ContactLayout
             pageContent={pageContent.fields}
             includes={pageContent.includes}
+            tables={tables}
           />
         );
       case "landing":
@@ -98,3 +107,4 @@ export default function PageContent() {
 
   return <>{renderLayout()}</>;
 }
+
