@@ -9,7 +9,7 @@ export default function Hero({ children, className = "", style = {} }) {
     <header
       className={`hero ${className}`}
       style={{
-        height: "80vh",
+        height: "100vh",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         display: "flex",
@@ -59,7 +59,7 @@ export default function Hero({ children, className = "", style = {} }) {
       >
         <div
           className="hero-text"
-          style={{ maxWidth: "40vw", padding: "0 10vw", marginTop: "45vh", textAlign: "center", }}
+          style={{ maxWidth: "40vw", padding: "0 10vw", marginTop: "55vh", textAlign: "center", }}
         >
           {children}
         </div>

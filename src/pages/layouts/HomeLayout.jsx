@@ -103,7 +103,7 @@ export default function HomeLayout({ pageContent }){
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            padding: "2% 0 5% 0",
+            padding: "4% 0 5% 0",
           }}
         >
           <h2>Våra kontor</h2>
