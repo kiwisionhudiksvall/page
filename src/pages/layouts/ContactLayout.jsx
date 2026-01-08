@@ -4,6 +4,7 @@ import ContactForm from "../../components/ContactForm.jsx";
 import pattern from "../../assets/images/decoration/graphic_0101-long2-darkblue.svg";
 import "../../styles/global.css";
 import MapComponent from "../../components/MapComponent.jsx";
+import { extractTables } from "../../utils/extractTables";
 
 export default function ContactLayout({ pageContent }) {
   // Helper for safely getting Contentful asset URLs
@@ -11,6 +12,7 @@ export default function ContactLayout({ pageContent }) {
     asset?.fields?.file?.url ? `https:${asset.fields.file.url}` : "";
 
   const imageUrl = getAssetUrl(pageContent?.heroImage);
+  const tables = extractTables(pageContent?.richText || {});
 
   return (
     <>
@@ -46,9 +48,7 @@ export default function ContactLayout({ pageContent }) {
         >
           {documentToReactComponents(pageContent?.richText || {})}
         </div>
-        <div style={{height: "200px", width: "200px", background: "gray"}}>
-        <MapComponent/>
-        </div>
+        <MapComponent mapsOffices={tables} />
       </section>
       <section
         className="section-2"

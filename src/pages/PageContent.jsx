@@ -9,9 +9,6 @@ import ProductsLayout from "./layouts/ProductsLayout";
 import CareerLayout from "./layouts/CareerLayout";
 import HomeLayout from "./layouts/HomeLayout";
 import "../styles/global.css";
-import { extractTables } from "../utils/extractTables";
-import MapComponent from "../components/MapComponent";
-
 
 export default function PageContent() {
   const { slug } = useParams();
@@ -26,7 +23,7 @@ export default function PageContent() {
       });
       console.log("PAGECONTENT:", res);
       console.log("INCLUDES ENTRY:", res.includes?.Entry);
-      if (res.length) setPageContent(res);
+      if (res.items.length) setPageContent(res.items[0]);
     };
 
     fetchPageContent();
@@ -47,9 +44,7 @@ export default function PageContent() {
       </div>
     );
 
-  const tables = extractTables(pageContent);
-  console.log("EXTRACTED TABLES:", tables);
-
+  
   const renderLayout = () => {
     switch (pageContent.fields.template) {
       case "career":
@@ -78,7 +73,7 @@ export default function PageContent() {
           <ContactLayout
             pageContent={pageContent.fields}
             includes={pageContent.includes}
-            tables={tables}
+            tables={pageContent.fields.tables}
           />
         );
       case "landing":
