@@ -2,7 +2,7 @@
 @import url("https://use.typekit.net/nfb5crw.css");
 
 :root {
-  font-weight: 400;
+  font-weight: 300;
   font-size: 1.0rem;
   line-height: 1.5rem;
   font-family: "Albert Sans", sans-serif;
@@ -232,11 +232,11 @@ nav button:focus {
 h1 {
   font-size: 2.5em;
   line-height: 1.1;
-  font-family: "bc-novatica-cyr", sans-serif;
+  font-family: "all-round-gothic", sans-serif;
   text-transform: uppercase;
-  font-weight: 400;
-  letter-spacing: 0.3rch;
-  color: var(--aquablue);
+  font-weight: 500;
+  letter-spacing: -0.04rch;
+  color: var(--lightblue);
 }
 
 .hero p {
@@ -250,7 +250,7 @@ h2,
   letter-spacing: 0.13rch;
   font-family: "all-round-gothic", sans-serif;
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 200;
   text-align: center;
   margin: 15px 0 0 0;
 }
@@ -441,11 +441,11 @@ background: linear-gradient(180deg,rgba(1, 20, 54, 1) 0%, rgba(177, 228, 250, 1)
 }
 
 footer {
-  width: 99%;
+  width: 100%;
   background: var(--lightblue);
   color: var(--aquablue);
   text-align: center;
-  font-size: 0.85rem;
+  font-size: 1.15rem;
   padding: 2% 0;
   min-height: 6vh;
   bottom: 0;
