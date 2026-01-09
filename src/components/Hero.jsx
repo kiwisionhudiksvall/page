@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/global.css";
-import decorPattern from "../assets/images/decoration/graphic_corner_light-left-1.png";
+import decorPattern from "../assets/images/decoration/graphic_corner_dark-left-1.png";
 
 
 export default function Hero({ children, className = "", style = {} }) {
@@ -26,8 +26,8 @@ export default function Hero({ children, className = "", style = {} }) {
         style={{
           minWidth: "50vw",
           height: "100%",
-          backgroundColor: "rgba(48, 31, 14, 0.7)",
-          // backgroundColor: "rgba(72, 70, 49, 0.4)",
+  //  backgroundColor: "rgba(30, 67, 44, 0.7)",
+   backgroundColor: "rgba(44, 82, 103, 0.8)",
       overflow: "hidden",
         }}
       >
@@ -54,7 +54,7 @@ export default function Hero({ children, className = "", style = {} }) {
           top: 0,
           right: 0,
           backgroundColor: "rgba(1, 20, 54, 0.7)",
-          backdropFilter: "blur(15px)",
+          backdropFilter: "blur(12px)",
         }}
       >
         <div

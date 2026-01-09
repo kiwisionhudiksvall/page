@@ -1,5 +1,15 @@
-@import url("../fonts/font.css");
+@import url("../assets/fonts/font.css");
 @import url("https://use.typekit.net/nfb5crw.css");
+
+@font-face {
+    font-family: 'Eastman-Alternate-Trial-Medium';
+    src: url('../assets/fonts/Eastman-Alternate-Trial-Medium.ttf.woff') format('woff'),
+}
+
+@font-face {
+  font-family: 'Eastman-Alternate-Trial-Bold';
+  src: url('../assets/fonts/Eastman-Alternate-Trial-Bold.ttf.woff') format('woff');
+}
 
 :root {
   font-weight: 400;
@@ -9,9 +19,9 @@
   letter-spacing: -0.04rch;
   color:  #2583a8;
   background-color: #011436;
-  --whiteblue: #EEFFFE; 
-  --lightaqua: #d1f6ff;
-  --lightblue: #b1e4fa;
+  --whiteblue: #eefffe; 
+  --lightblue: #d1f6ff;
+  --lightbluer: #b1e4fa;
   --aquablue: #32B0E1;
   --midblue: #005D85; 
   --darkblue: #011436;
@@ -56,8 +66,8 @@ nav img:hover {
 
 ul a, ul a .menu-button {
   margin: 2%;
-  font-family: "all-round-gothic", sans-serif;
-  padding: 5px 0 4px 0;
+  font-family: "bc-novatica-cyr", sans-serif;
+  padding: 5px 5px 4px 5px;
   border-radius: 100px;
   width: 12vw;
   border: none;
@@ -66,9 +76,9 @@ ul a, ul a .menu-button {
   cursor: pointer;
   text-transform: uppercase;
   text-align: center;
-  font-size: 1.0rem;
+  font-size: 0.95rem;
   font-weight: 500;
-  letter-spacing: 0.1rch;
+  letter-spacing: 0.08rch;
 }
 
 .dropdown-menu a:hover, ul .menu-button:hover {
@@ -159,17 +169,16 @@ a {
 
 a:hover {
   color: var(--kiwigreen);
-  transition: color 0.3s ease; 
-  transform: scale(0.98) ease;
+  transform: scale(0.95) ease;
 }
 
 button {
-  font-family: "all-round-gothic", sans-serif;
-  font-size: 0.95rem;
+  font-family: "bc-novatica-cyr", sans-serif;
+  font-size: 0.92rem;
   font-weight: 600;
   letter-spacing: 0.15rch;
   margin: 6px;
-  padding: 0.8rem 1.5rem 0.7rem 1.5rem;
+  padding: 0.8rem 1.5rem 0.9rem 1.5rem;
   border-radius: 100px;
   min-width: 130px;
   background-color: var(--darkblue);
@@ -209,7 +218,8 @@ nav ul {
 }
 
 nav button {
-  font-family: "all-round-gothic", sans-serif;
+  font-family: "bc-novatica-cyr", sans-serif;
+  word-spacing: 0rch;
   background-color: var(--lightblue);
   color: var(--darkblue);
   cursor: pointer;
@@ -230,12 +240,13 @@ nav button:focus {
 }
 
 h1 {
-  font-size: 2.5em;
-  line-height: 1.1;
-  font-family: "bc-novatica-cyr", sans-serif;
+  font-size: 2.8rem;
+  line-height: 2.0rem;
+  font-family: 'Eastman-Alternate-Trial-Medium', sans-serif;
+  word-spacing: 0rch;
   text-transform: uppercase;
-  font-weight: 400;
-  letter-spacing: 0.3rch;
+  font-weight: 600;
+  letter-spacing: 0.06rch;
   color: var(--aquablue);
 }
 
@@ -245,14 +256,19 @@ h1 {
 
 h2,
 .custom-h2 {
-  font-size: 1.65em;
-  line-height: 1.4;
-  letter-spacing: 0.13rch;
-  font-family: "all-round-gothic", sans-serif;
+  font-size: 2.2rem;
+  line-height: 2.0rem;
+  letter-spacing: 0.2rch;
+  font-family: 'Eastman-Alternate-Trial-Medium', sans-serif;
+  word-spacing: 0rch;
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 500;
   text-align: center;
-  margin: 15px 0 0 0;
+  margin: 20px 0 0;
+}
+
+.section-2 h2 {
+  padding-bottom: 5%;
 }
 
 .section-1 h2 {
@@ -265,9 +281,8 @@ h2,
   font-weight: 400;
   letter-spacing: 0.1rch;
   font-family: "bc-novatica-cyr", sans-serif;
-  text-transform: lowercase;
   text-align: center;
-
+  margin-top: -3%;
 }
 
 .work-ad h2 {
@@ -277,6 +292,7 @@ h2,
   text-align: left;
   color: var(--aquablue);
   letter-spacing: 0.05rch;
+  margin-bottom: -3%;
 }
 
 .work-ad p {
@@ -285,6 +301,7 @@ h2,
   font-weight: 300;
   font-family: "Albert Sans", sans-serif;
   color: var(--midblue);
+  margin-top: 1%;
 }
 
 h3 {
@@ -340,7 +357,7 @@ h3 {
 
 .title-text-box button {
       background-color: var(--darkblue);
-      color: white;
+      color: var(--whiteblue);
   }
 
 .title-text-box button:hover {
@@ -383,8 +400,7 @@ section {
 }
 
 .section-2 {
-  background: var(--creme);
-background: linear-gradient(180deg,rgba(1, 20, 54, 1) 0%, rgba(177, 228, 250, 1) 100%);
+  background-color: var(--whiteblue);
 }
 
 .section-2 p {
@@ -395,34 +411,53 @@ background: linear-gradient(180deg,rgba(1, 20, 54, 1) 0%, rgba(177, 228, 250, 1)
   display: flex;
   justify-content: space-between;
   gap: 2%;
-  width: 90%;
+  width: 80%;
 }
 
 .card {
   min-width: none;
   max-width: 33%;
-  padding: 25px 15px;
+  padding: 10px 15px;
   margin-top: 3%;
   border-radius: 8px;
-  background: var(--creme);
+  background: var(--kiwigreen);
   box-shadow: 2px 5px 20px rgba(119, 201, 255, 0.6);
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  border: 1px solid rgb(174, 197, 57, 0.4);
   display: flex;
   flex-direction: column;
 }
 
 .card h3 {
-  margin: 8px;
-  font-size: 0.95rem;
+  margin: 20px 0 8px;
+  font-size: 1.25rem;
   font-family: "bc-novatica-cyr", sans-serif;
+  color: var(--darkgreen);
   font-weight: 600;
+  letter-spacing: -0.008rch;
 }
 
 .card p {
   margin: 0 0 12px;
-  color: var(--darkblue);
-  font-size: 0.8rem;
+  color: var(--midgreen);
+  font-size: 0.85rem;
   letter-spacing: 0.03rch;
+}
+
+.card a {
+  background: #7a9b29ff;
+  color: var(--darkgreen);
+}
+
+.card a::before {
+  content: "";
+  margin-left: -30px;
+}
+
+.card a:hover {
+  color: var(--darkblue);
+  background-color: var(--aquablue);
+  transform: scale(0.95);
+  cursor: pointer;
 }
 
 .map {

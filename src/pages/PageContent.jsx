@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import client from "../contentfulClient";
+
 import DefaultLayout from "./layouts/DefaultLayout";
 import ContactLayout from "./layouts/ContactLayout";
 import LandingLayout from "./layouts/LandingLayout";
@@ -8,10 +9,9 @@ import AboutLayout from "./layouts/AboutLayout";
 import ProductsLayout from "./layouts/ProductsLayout";
 import CareerLayout from "./layouts/CareerLayout";
 import HomeLayout from "./layouts/HomeLayout";
+
 import "../styles/global.css";
 import { extractTables } from "../utils/extractTables";
-import MapComponent from "../components/MapComponent";
-
 
 export default function PageContent() {
   const { slug } = useParams();
@@ -22,17 +22,20 @@ export default function PageContent() {
       const res = await client.getEntries({
         content_type: "pageContent",
         "fields.slug": slug,
-        include: 10, // Viktigt för att få med embedded entries/assets
+        include: 10,
       });
-      console.log("PAGECONTENT:", res);
-      console.log("INCLUDES ENTRY:", res.includes?.Entry);
-      if (res.length) setPageContent(res);
+
+      console.log("PAGECONTENT RESPONSE:", res);
+
+      if (res.items?.length) {
+        setPageContent(res);
+      }
     };
 
     fetchPageContent();
   }, [slug]);
 
-    if (!pageContent)
+  if (!pageContent) {
     return (
       <div
         style={{
@@ -46,65 +49,41 @@ export default function PageContent() {
         Vänta lite...
       </div>
     );
+  }
 
-  const tables = extractTables(pageContent);
+  const pageEntry = pageContent.items[0];
+  const { fields } = pageEntry;
+
+  // Exempel: justera detta till rätt rich text-fält
+  const tables = fields.mapsOffices?.fields?.richText
+    ? extractTables(fields.mapsOffices.fields.richText)
+    : [];
+
   console.log("EXTRACTED TABLES:", tables);
 
   const renderLayout = () => {
-    switch (pageContent.fields.template) {
+    switch (fields.template) {
       case "career":
-        return (
-          <CareerLayout
-            pageContent={pageContent.fields}
-            includes={pageContent.includes}
-          />
-        );
+        return <CareerLayout pageContent={fields} />;
       case "products":
-        return (
-          <ProductsLayout
-            pageContent={pageContent.fields}
-            includes={pageContent.includes}
-          />
-        );
-      case "about":
-        return (
-          <AboutLayout
-            pageContent={pageContent.fields}
-            includes={pageContent.includes}
-          />
-        );
+        return <ProductsLayout pageContent={fields} />;
+case "about":
+  return <AboutLayout pageContent={fields} />;
       case "contact":
         return (
           <ContactLayout
-            pageContent={pageContent.fields}
-            includes={pageContent.includes}
+            pageContent={fields}
             tables={tables}
           />
         );
       case "landing":
-        return (
-          <LandingLayout
-            pageContent={pageContent.fields}
-            includes={pageContent.includes}
-          />
-        );
+        return <LandingLayout pageContent={fields} />;
       case "home":
-        return (
-          <HomeLayout
-            pageContent={pageContent.fields}
-            includes={pageContent.includes}
-          />
-        );
+        return <HomeLayout pageContent={fields} />;
       default:
-        return (
-          <DefaultLayout
-            pageContent={pageContent.fields}
-            includes={pageContent.includes}
-          />
-        );
+        return <DefaultLayout pageContent={fields} />;
     }
   };
 
-  return <>{renderLayout()}</>;
+  return renderLayout();
 }
-

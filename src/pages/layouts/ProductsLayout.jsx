@@ -2,12 +2,12 @@ import React from "react";
 import Hero from "../../components/Hero";
 import ZiczagLayout from "../../components/layouts/ZiczagLayout.jsx";
 import "../../styles/global.css";
+import Carousel from "../../components/Carousel.jsx";
 
 export default function ProductsLayout({ pageContent }) {
-  const fields = pageContent;
 
-  const heroImageUrl = fields.heroImage?.fields?.file?.url
-    ? `https:${fields.heroImage.fields.file.url}`
+  const heroImageUrl = pageContent.heroImage?.fields?.file?.url
+    ? `https:${pageContent.heroImage.fields.file.url}`
     : null;
 
   return (
@@ -19,8 +19,8 @@ export default function ProductsLayout({ pageContent }) {
           backgroundPosition: "0% 30%",
         }}
       >
-        <h1>{fields.heading1}</h1>
-        <p>{fields.heroText}</p>
+        <h1>{pageContent.heading1}</h1>
+        <p>{pageContent.heroText}</p>
       </Hero>
       <section
         className="section-products"
@@ -28,9 +28,11 @@ export default function ProductsLayout({ pageContent }) {
           marginTop: "-20px",
         }}
       >
-          <ZiczagLayout pageItem={fields} />
+          <ZiczagLayout pageItem={pageContent} />
       </section>
-      <section className="section-2"></section>
+      <section className="section-2">
+        <Carousel pageItem={pageContent.carousel} />
+      </section>
     </>
   );
 }

@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { getAssetUrl } from "../sdk/contentful.js";
+import { getAssetUrl } from "../contentfulClient.js";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import "../styles/global.css";
 
 export default function Carousel({ slides }) {
   const [currentIndex, setCurrentIndex] = useState(0);
-
+  
   const getEmbeddedImage = (richText) => {
     if (!richText || !richText.content) return null;
     for (const node of richText.content) {

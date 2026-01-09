@@ -17,7 +17,7 @@ export default function HomeLayout({ pageContent }){
             backgroundImage: `url(${homeHeroImage})`,
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
-            backgroundPosition: "50% 70%",
+            backgroundPosition: "50% 30%",
             top: 0,
             left: 0,
             bottom: 0,
@@ -41,7 +41,7 @@ export default function HomeLayout({ pageContent }){
               left: 0,
               bottom: 0,
               right: 0,
-              backgroundColor: "rgba(48, 31, 14, 0.7)",
+              backgroundColor: "rgba(30, 67, 44, 0.7)",
               zIndex: 1,
             }}
           ></div>
@@ -55,7 +55,7 @@ export default function HomeLayout({ pageContent }){
           >
             <h1
               style={{
-                fontFamily: "bc-novatica-cyr",
+                fontFamily: "'Eastman-Alternate-Trial-Medium', sans-serif",
                 letterSpacing: "0.75rem",
                 fontWeight: "300",
                 fontSize: "3.0rem",
@@ -99,6 +99,11 @@ export default function HomeLayout({ pageContent }){
           className="section-1"
           style={{
             textAlign: "center",
+            backgroundImage: "url('src/assets/images/decoration/graphic_0101-long2-whiteblue.png')",
+            backgroundSize: "140%",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            backgroundColor: "var(--whiteblue)",
             justifyContent: "center",
             display: "flex",
             flexDirection: "column",
@@ -106,7 +111,7 @@ export default function HomeLayout({ pageContent }){
             padding: "4% 0 5% 0",
           }}
         >
-          <h2>Våra kontor</h2>
+          <h2 style={{ color: "var(--aquablue)" }}>Våra kontor</h2>
           <CardComponent />
          {documentToReactComponents(pageContent.richText)}
         </section>

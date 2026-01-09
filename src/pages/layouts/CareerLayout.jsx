@@ -1,9 +1,9 @@
 import Hero from "../../components/Hero";
 import "../../styles/global.css";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import WorkAd from "../../components/WorkAd.jsx";
 import { useEffect, useState } from "react";
 import client from "../../contentfulClient.js";
+import SectionLayout from "../../components/layouts/SectionLayout.jsx";
 
 export default function CareerLayout({ pageContent }) {
   const heroImageUrl = pageContent.heroImage?.fields?.file?.url
@@ -47,30 +47,19 @@ export default function CareerLayout({ pageContent }) {
 
       <section
         className="section-career"
-        style={{
+      >
+        <SectionLayout pageItem={pageContent} />
+      </section>
+
+      <section className="section-2"         
+      style={{
           width: "100vw",
           minHeight: "60vh",
           padding: "3rem 15rem 6rem 15rem",
-        }}
-      >
-        <h2 style={{ color: "var(--lightblue)" }}>LEDIGA JOBB</h2>
-        <div
-          className="section-1-text"
-          style={{
-            marginTop: "1.5%",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          {documentToReactComponents(pageContent.richText)}
-        </div>
-                {workAd && <WorkAd workAd={workAd}/>}
-      </section>
-
-      <section className="section-2">
-
+          backgroundColor: "var(--darkblue)",
+        }}>
+     <h2 style={{ color: "var(--aqua)" }}>LEDIGA JOBB</h2>
+      {workAd && <WorkAd workAd={workAd}/>}
       </section>
     </>
   );
