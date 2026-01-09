@@ -1,0 +1,111 @@
+.
+├── config.js
+├── eslint.config.js
+├── index.html
+├── node_modules
+├── package-lock.json
+├── package.json
+├── public
+│   └── vite.svg
+├── README.md
+├── src
+│   ├── App.jsx
+│   ├── assets
+│   │   ├── images
+│   │   │   ├── cloud-2.png
+│   │   │   ├── cloud-5.png
+│   │   │   ├── customers
+│   │   │   ├── dator-retro.png
+│   │   │   ├── datorer-retro.png
+│   │   │   ├── decoration
+│   │   │   ├── diskett-grey.png
+│   │   │   ├── diskett-red.png
+│   │   │   ├── disketter.png
+│   │   │   ├── diskettuttag-2.png
+│   │   │   ├── diskettuttag.png
+│   │   │   ├── ibm-dator-retro.png
+│   │   │   ├── kiwision-07.png
+│   │   │   ├── krertskort-2.png
+│   │   │   ├── kretskort.png
+│   │   │   ├── kugghjul.png
+│   │   │   ├── lock.png
+│   │   │   ├── locks.png
+│   │   │   ├── logos
+│   │   │   ├── mailbox.png
+│   │   │   ├── office.png
+│   │   │   ├── phones.png
+│   │   │   ├── photos
+│   │   │   ├── tangenter-1.png
+│   │   │   ├── tangenter-2.png
+│   │   │   └── windows-shelf.png
+│   │   ├── react-1.svg
+│   │   └── react.svg
+│   ├── components
+│   │   ├── BoxTextImage.jsx
+│   │   ├── CardComponent.jsx
+│   │   ├── Carousel.jsx
+│   │   ├── ContactForm.jsx
+│   │   ├── Footer.jsx
+│   │   ├── Hero.jsx
+│   │   ├── layouts
+│   │   │   └── ZiczagLayout.jsx
+│   │   ├── Navbar.jsx
+│   │   └── PageItem.jsx
+│   ├── contentfulClient.js
+│   ├── fonts
+│   │   ├── Eastman-Black.otf
+│   │   ├── Eastman-BlackItalic.otf
+│   │   ├── Eastman-Bold.otf
+│   │   ├── Eastman-BoldItalic.otf
+│   │   ├── Eastman-Extrabold.otf
+│   │   ├── Eastman-ExtraboldItalic.otf
+│   │   ├── Eastman-Extralight.otf
+│   │   ├── Eastman-ExtralightItalic.otf
+│   │   ├── Eastman-Italic.otf
+│   │   ├── Eastman-Light.otf
+│   │   ├── Eastman-LightItalic.otf
+│   │   ├── Eastman-Medium.otf
+│   │   ├── Eastman-MediumItalic.otf
+│   │   ├── Eastman-Regular.otf
+│   │   ├── Eastman-RegularOffset.otf
+│   │   ├── Eastman-RegularOffsetItalic.otf
+│   │   ├── Eastman-Thin.otf
+│   │   ├── Eastman-ThinItalic.otf
+│   │   ├── font.css
+│   │   ├── googlelogofont2015.otf
+│   │   ├── Majoram Bold Italic.otf
+│   │   ├── Majoram Bold.otf
+│   │   ├── Majoram Italic.otf
+│   │   ├── Majoram Sans Bold Italic.otf
+│   │   ├── Majoram Sans Bold.otf
+│   │   ├── Majoram Sans Italic.otf
+│   │   ├── Majoram Sans.otf
+│   │   ├── Majoram.otf
+│   │   ├── ModeG.ttf
+│   │   ├── ProductSansInfanity.ttf
+│   │   ├── REZ.ttf
+│   │   └── SiBuled.ttf
+│   ├── main.jsx
+│   ├── pages
+│   │   ├── About.jsx
+│   │   ├── Career.jsx
+│   │   ├── Contact.jsx
+│   │   ├── Home.jsx
+│   │   ├── layouts
+│   │   │   ├── AboutLayout.jsx
+│   │   │   ├── ContactLayout.jsx
+│   │   │   ├── DefaultLayout.jsx
+│   │   │   ├── HomeLayout.jsx
+│   │   │   ├── LandingLayout.jsx
+│   │   │   └── ProductsLayout.jsx
+│   │   ├── PageContent.jsx
+│   │   └── Products.jsx
+│   ├── sdk
+│   │   └── contentful.js
+│   ├── server.js
+│   └── styles
+│       └── global.css
+├── structure.txt
+└── vite.config.js
+
+528 directories, 3720 files

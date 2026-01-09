@@ -1,112 +1,92 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import Logo from "../assets/images/logo_white.svg";
-import "../index.css";
+import client from "../contentfulClient";
+import Logo from "../assets/images/logos/logo_aquablue-00-01.svg";
+import { useState, useEffect, useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "../styles/global.css";
 
 export default function Navbar() {
+  const [pages, setPages] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (
+        isOpen &&
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target)
+      ) {
+        setIsOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isOpen]);
+
+  useEffect(() => {
+    const fetchPages = async () => {
+      try {
+        const res = await client.getEntries({ content_type: "pageContent" });
+        const items = res.items
+          .map((item) => item.fields)
+          // Filtrera bort sidor som inte ska synas i nav (om du använder showInNav)
+          .filter((page) => page.showInNav !== false)
+          // Sortera efter menuOrder (eller alfabetiskt om det saknas)
+          .sort((a, b) => (a.menuOrder || 999) - (b.menuOrder || 999));
+
+        setPages(items);
+      } catch (error) {
+        console.error("Fel vid hämtning av navigation:", error);
+      }
+    };
+    fetchPages();
+  }, []);
 
   return (
-    <nav className="navbar">
-      <img src={Logo} alt="Logo" className="logo" />
-
-      <ul className="nav-links">
-        <li
-          className="dropdown"
-          onClick={() => setIsOpen(prev => !prev)} 
-        >
-          <span
-            className="dropdown-title"
+    <nav className="navbar" style={{ position: "fixed", top: 0, zIndex: 100 }}>
+      <img
+        src={Logo}
+        alt="Logo"
+        className="logo"
+        onClick={() => navigate("/")}
+      />
+      <ul className="nav-menu">
+        <li className="dropdown" ref={dropdownRef}>
+          <button
+            className="dropdown-button"
+            onClick={() => setIsOpen((prev) => !prev)}
             style={{
-              margin: "0.2rem",
-              padding: "0.5rem 2rem 0.7rem 2rem",
-              borderRadius: "100px",
+              padding: "9px 30px",
+              borderRadius: isOpen ? "20px 20px 0px 0px" : "20px",
               border: "none",
-              backgroundColor: "#32B0E1",
-              color: "white",
-              cursor: "pointer",
-              textTransform: "uppercase",
-              fontWeight: "500",
             }}
           >
-            Meny ☰
-          </span>
+            {isOpen ? "Stäng ⨯" : "Meny ☰"}
+          </button>
 
           {isOpen && (
             <ul
               className="dropdown-menu"
               style={{
                 position: "absolute",
-                top: "65px",
-                right: "30px",
-                backgroundColor: "#011436d6",
-                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-                borderRadius: "20px",
-                padding: "1rem",
+                top: "7vh",
+                right: "4.35vw",
+                backgroundColor: "#020d21f0",
+                boxShadow: "1px 2px 16px #EEFFFE60",
+                borderRadius: "30px 0px 30px 0px",
+                padding: "20px",
                 listStyle: "none",
-                heigth: 300,
                 zIndex: 1000,
               }}
             >
-              <li style={{marginLeft: "20px", width: "160px", display: "flex", flexDirection: "column", gap: "0.5rem"}}>
-                <Link to="/products" style={{
-              margin: "0.2rem",
-              padding: "0.5rem 2rem 0.7rem 2rem",
-              borderRadius: "100px",
-              border: "none",
-              backgroundColor: "#32B0E1",
-              color: "white",
-              cursor: "pointer",
-              textTransform: "uppercase",
-              fontWeight: "500",
-              textAlign: "center",
-              }}>Utbud</Link>
-                <Link style={{margin: "6px 0", fontSize: 14, cursor: "pointer"}} to="/products">Systemutveckling</Link>
-                <Link style={{margin: "6px 0", fontSize: 14}} to="/products">Infrastruktur & moln</Link>
-                <Link style={{margin: "6px 0", fontSize: 14}} to="/products">IT-säkerhet</Link>
-              </li>
-             <li style={{marginLeft: "20px", width: "160px", display: "flex", flexDirection: "column", gap: "0.5rem"}}>
-                <Link to="/page" style={{
-              margin: "0.2rem",
-              padding: "0.5rem 2rem 0.7rem 2rem",
-              borderRadius: "100px",
-              border: "none",
-              backgroundColor: "#32B0E1",
-              color: "white",
-              cursor: "pointer",
-              textTransform: "uppercase",
-              fontWeight: "500",
-              textAlign: "center",
-              }}>Page</Link>
-              </li>
-              <li style={{marginLeft: "20px", width: "160px", display: "flex", flexDirection: "column", gap: "0.5rem"}}>
-                <Link to="/about" style={{
-              margin: "0.2rem",
-              padding: "0.5rem 2rem 0.7rem 2rem",
-              borderRadius: "100px",
-              border: "none",
-              backgroundColor: "#32B0E1",
-              color: "white",
-              cursor: "pointer",
-              textTransform: "uppercase",
-              fontWeight: "500",
-              textAlign: "center",
-              }}>Om oss</Link>
-              </li>
-             <li style={{marginLeft: "20px", width: "160px", display: "flex", flexDirection: "column", gap: "0.5rem"}}>
-                <Link to="/contact" style={{
-              margin: "0.2rem",
-              padding: "0.5rem 2rem 0.7rem 2rem",
-              borderRadius: "100px",
-              border: "none",
-              backgroundColor: "#32B0E1",
-              color: "white",
-              cursor: "pointer",
-              textTransform: "uppercase",
-              fontWeight: "500",
-              textAlign: "center",
-              }}>Kontakt</Link>
-              </li>
+              {pages.map((p) => (
+                <Link className="menu-button" key={p.slug} to={`/${p.slug}`} onClick={() => setIsOpen(false)}>
+                  {p.pageTitle}
+                </Link>
+              ))}
+
             </ul>
           )}
         </li>
@@ -114,3 +94,5 @@ export default function Navbar() {
     </nav>
   );
 }
+
+ 

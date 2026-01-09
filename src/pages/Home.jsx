@@ -1,32 +1,106 @@
-import React from 'react';
-import "../index.css";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import client from "../contentfulClient.js";
+// import client, { getAssetUrl } from "../contentfulClient.js";
+import HomeLayout from "./layouts/HomeLayout";
 
 export default function Home() {
-  return (
-    <>
-    <main data-name="home-main" style={{top: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '2rem'}}>
-    <header data-name="home-hero" style={{marginTop: '20vh', textAlign: 'center'}}>
-            <h1 style={{letterSpacing: '1.0rem', fontWeight: "600", fontSize: "2.6rem"}}>VI ÄLSKAR IT</h1>
-            </header>
-    <section data-name="section-1" style={{marginTop: "-5vh", textAlign: 'center', justifyContent: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-        <div data-name="text-1" style={{maxWidth: '70%'}}>
-        <p>Kiwision är en IT-konsultbyrå som specialiserar sig på att skapa skräddarsydda digitala 
-            lösningar för företag och organisationer. Med hög spetskompetens och kanske några av 
-            Sveriges bästa systemutvecklare har vi lösningarna för just dina IT-behov.
-             Vi arbetar nära våra kunder för att förstå deras behov och levererar 
-            lösningar med djup kunnighet bakom.</p>
-            </div>
-            <div data-name="button-wrap" style={{marginTop: '1rem', display: 'flex', justifyContent: 'center', flexDirection: 'row', alignItems: 'center'}}>
-            <Link to="/products" data-name="button-1" style={{margin: '0.2rem', padding: '0.5rem 2rem 0.7rem 2rem', borderRadius: '100px', border: 'none', backgroundColor: '#32B0E1', color: 'white', cursor: 'pointer'}}>UTBUD</Link>
-     <Link to="/about" data-name="button-1" style={{margin: '0.2rem', padding: '0.5rem 2rem 0.7rem 2rem', borderRadius: '100px', border: 'none', backgroundColor: '#32B0E1', color: 'white', cursor: 'pointer'}}>OM OSS</Link>
+  const [homePage, setHomePage] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-    </div>
-    </section>
-    <section data-name="section-2" style={{textAlign: 'center'}}>
+  useEffect(() => {
+    const fetchHomePage = async () => {
+      try {
+        const res = await client.getEntries({
+          content_type: "pageContent",
+          "fields.slug": "home",
+          include: 10, // Viktigt om du vill hämta embedded entries
+        });
 
-    </section>
-    </main>
-    </>
-  );
+        if (res.items.length) {
+          const page = res.items[0].fields;
+
+          // Optional: extrahera references för embedded entries
+          page.references = res.includes?.Entry || [];
+
+          setHomePage(page);
+        } else {
+          console.warn("Ingen startsida hittades i Contentful.");
+        }
+      } catch (err) {
+        console.error("Fel vid hämtning av startsida:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchHomePage();
+  }, []);
+
+  if (loading)
+    return (
+      <p
+        style={{
+          textAlign: "center",
+          marginTop: "10vh",
+          color: "var(--aquablue)",
+          fontSize: "1.5rem",
+          fontFamily: "all-round-gothic, sans-serif",
+        }}
+      >
+        Laddar...
+      </p>
+    );
+
+  if (!homePage)
+    return (
+      <p
+        style={{
+          textAlign: "center",
+          marginTop: "10vh",
+          color: "var(--aquablue)",
+          fontSize: "1.5rem",
+          fontFamily: "all-round-gothic, sans-serif",
+        }}
+      >
+        Inget innehåll.
+      </p>
+    );
+
+  return <HomeLayout pageContent={homePage} />;
 }
+
+
+
+// import { useEffect, useState } from "react";
+// import client from "../sdk/contentful.js";
+// import HomeLayout from "./layouts/HomeLayout";
+
+// export default function Home() {
+//   const [homePage, setHomePage] = useState(null);
+
+//   useEffect(() => {
+//     const fetchHomePage = async () => {
+//       try {
+//         const res = await client.getEntries({
+//           content_type: "pageContent",
+//           "fields.slug": "home",
+//         });
+
+//         if (res.items.length) {
+//           setHomePage(res.items[0].fields);
+//         } else {
+//           console.warn("Ingen startsida hittades i Contentful.");
+//         }
+//       } catch (err) {
+//         console.error("Fel vid hämtning av startsida:", err);
+//       }
+//     };
+
+//     fetchHomePage();
+//   }, []);
+
+//   if (!homePage)
+//     return <p style={{ textAlign: "center" }}>Laddar startsida...</p>;
+
+//   return <HomeLayout pageContent={homePage} />;
+// }

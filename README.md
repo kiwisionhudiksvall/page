@@ -18,17 +18,18 @@ If you are developing a production application, we recommend using TypeScript wi
 ## Colors
 
 aqua         #32B0E1
-lime         #AEC539
+kiwi         #AEC539
 
 darkblue     #011436
-midblue      #045587
-lightblue    #D1EDFF
+midblue      #045587 #005D85
+lightblue    #D1F6FF
+whiteblue    #EEFFFE rgb: rgba(238, 255, 254, 1)
 
-darkbrown    #1E1800
-brown        #403302
-beige        #B79F7D
 creme        #FEFCF1
+darkbrown    #252206
+brown        #403302
+beige        #B7A87D
 
-darkgreen    #2E391B
-midgreen     #3B5C02
-lightgreen   #EBFFC4
+darkgreen    #252C00
+midgreen     #637B27
+lightgreen   #F2F3A7
