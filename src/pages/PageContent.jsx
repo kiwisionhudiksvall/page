@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import client from "../contentfulClient";
-
 import DefaultLayout from "./layouts/DefaultLayout";
 import ContactLayout from "./layouts/ContactLayout";
 import LandingLayout from "./layouts/LandingLayout";
