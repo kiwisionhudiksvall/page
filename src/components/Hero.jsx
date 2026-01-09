@@ -4,7 +4,6 @@ import decorPattern from "../assets/images/decoration/graphic_corner_dark-left-1
 
 
 export default function Hero({ children, className = "", style = {} }) {
-
   return (
     <header
       className={`hero ${className}`}
@@ -49,7 +48,7 @@ export default function Hero({ children, className = "", style = {} }) {
       <div
         className="box-blue"
         style={{
-          minWidth: "50vw",
+          minWidth: "30vw",
           height: "100%",
           top: 0,
           right: 0,
@@ -59,11 +58,36 @@ export default function Hero({ children, className = "", style = {} }) {
       >
         <div
           className="hero-text"
-          style={{ maxWidth: "40vw", padding: "0 10vw", marginTop: "55vh", textAlign: "center", }}
+          style={{ padding: "0 10%", marginTop: "55vh", textAlign: "center" }}
         >
           {children}
         </div>
       </div>
+      <div
+        className="box-photo-overlay"
+        style={{
+          minWidth: "70vw",
+          height: "100%",
+          backgroundColor: "rgba(42, 22, 7, 0.5)",
+          // backgroundColor: "rgba(72, 70, 49, 0.4)",
+          overflow: "hidden",
+        }}
+      ></div>
+      <div
+        style={{
+          right: 0,
+          top: 0,
+          width: "100%",
+          height: "100%",
+          backgroundImage: `url(${decorPattern})`,
+          backgroundSize: "60%",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "100% 100%",
+          opacity: 0.36,
+          position: "absolute",
+          marginTop: "-20vh",
+        }}
+      />
     </header>
   );
 }
