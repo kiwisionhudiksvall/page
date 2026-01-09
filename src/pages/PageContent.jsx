@@ -8,7 +8,7 @@ import AboutLayout from "./layouts/AboutLayout";
 import ProductsLayout from "./layouts/ProductsLayout";
 import CareerLayout from "./layouts/CareerLayout";
 import HomeLayout from "./layouts/HomeLayout";
-
+// röv
 import "../styles/global.css";
 import { extractTables } from "../utils/extractTables";
 
