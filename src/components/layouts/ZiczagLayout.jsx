@@ -12,6 +12,10 @@ export default function ZiczagLayout({ pageItem }) {
         const fields = node.data?.target?.fields;
         if (!fields) return null;
 
+        if (fields.title === "Karusell - Kundcase") {
+          console.log("Hoppa över block:", fields.title);
+          return null; 
+        }
         const embeddedImageUrl = fields.image?.fields?.file?.url
           ? `https:${fields.image.fields.file.url}`
           : null;
@@ -25,7 +29,7 @@ export default function ZiczagLayout({ pageItem }) {
               alignItems: "center",
               backgroundColor: fields.imageToTheLeft
                 ? "var(--darkblue)"
-                : "var(--midblue)",
+                : "var(--aquablue)",
             }}
           >
             {embeddedImageUrl && (
@@ -35,6 +39,7 @@ export default function ZiczagLayout({ pageItem }) {
                   backgroundImage: `url(${embeddedImageUrl})`,
                   backgroundSize: "cover",
                   backgroundRepeat: "no-repeat",
+                  backgroundPosition: "30% 20%",
                   padding: "3vw",
                   width: "100%",
                   height: "100%",
@@ -59,7 +64,9 @@ export default function ZiczagLayout({ pageItem }) {
             >
               <h3
                 style={{
-                  color: "var(--aquablue)",
+                  color: fields.imageToTheLeft
+                    ? "var(--aquablue)"
+                    : "var(--darkblue)",
                 }}
               >
                 {fields.heading || fields.title}
@@ -71,7 +78,7 @@ export default function ZiczagLayout({ pageItem }) {
                   maxWidth: "80%",
                   textAlign: "center",
                   color: fields.imageToTheLeft
-                    ? "var(--midblue)"
+                    ? "var(--lightblue)"
                     : "var(--darkblue)",
                 }}
               >
@@ -140,7 +147,7 @@ export default function ZiczagLayout({ pageItem }) {
               <h3
                 style={{
                   color: fields.imageToTheLeft
-                    ? "var(--midblue)"
+                    ? "var(--aquablue)"
                     : "var(--darkblue)",
                 }}
               >

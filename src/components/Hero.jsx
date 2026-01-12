@@ -8,7 +8,7 @@ export default function Hero({ children, className = "", style = {} }) {
     <header
       className={`hero ${className}`}
       style={{
-        height: "100vh",
+        height: "110vh",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         display: "flex",
@@ -26,7 +26,7 @@ export default function Hero({ children, className = "", style = {} }) {
           minWidth: "50vw",
           height: "100%",
   //  backgroundColor: "rgba(30, 67, 44, 0.7)",
-   backgroundColor: "rgba(44, 82, 103, 0.8)",
+              backgroundColor: "rgba(50, 51, 37, 0.7)",
       overflow: "hidden",
         }}
       >
@@ -49,6 +49,7 @@ export default function Hero({ children, className = "", style = {} }) {
         className="box-blue"
         style={{
           minWidth: "30vw",
+          width: "100%",
           height: "100%",
           top: 0,
           right: 0,
@@ -63,31 +64,6 @@ export default function Hero({ children, className = "", style = {} }) {
           {children}
         </div>
       </div>
-      <div
-        className="box-photo-overlay"
-        style={{
-          minWidth: "70vw",
-          height: "100%",
-          backgroundColor: "rgba(42, 22, 7, 0.5)",
-          // backgroundColor: "rgba(72, 70, 49, 0.4)",
-          overflow: "hidden",
-        }}
-      ></div>
-      <div
-        style={{
-          right: 0,
-          top: 0,
-          width: "100%",
-          height: "100%",
-          backgroundImage: `url(${decorPattern})`,
-          backgroundSize: "60%",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "100% 100%",
-          opacity: 0.36,
-          position: "absolute",
-          marginTop: "-20vh",
-        }}
-      />
     </header>
   );
 }

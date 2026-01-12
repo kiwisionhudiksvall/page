@@ -45,7 +45,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="navbar" style={{ position: "fixed", top: 0, zIndex: 100 }}>
+    <nav className="navbar" style={{ position: "fixed", top: 0, paddingTop: "5vh", zIndex: 100 }}>
       <img
         src={Logo}
         alt="Logo"
