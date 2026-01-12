@@ -17,7 +17,7 @@ export default function HomeLayout({ pageContent }){
             backgroundImage: `url(${homeHeroImage})`,
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
-            backgroundPosition: "50% 70%",
+            backgroundPosition: "85% 0%",
             top: 0,
             left: 0,
             bottom: 0,
@@ -28,7 +28,7 @@ export default function HomeLayout({ pageContent }){
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            height: "100vh",
+            height: "110vh",
             position: "relative",
             overflow: "hidden",
           }}
@@ -41,7 +41,7 @@ export default function HomeLayout({ pageContent }){
               left: 0,
               bottom: 0,
               right: 0,
-              backgroundColor: "rgba(48, 31, 14, 0.7)",
+              backgroundColor: "rgba(50, 51, 37, 0.7)",
               zIndex: 1,
             }}
           ></div>
@@ -55,9 +55,9 @@ export default function HomeLayout({ pageContent }){
           >
             <h1
               style={{
-                fontFamily: "bc-novatica-cyr",
+                fontFamily: "'EastmanRegular', sans-serif",
                 letterSpacing: "0.75rem",
-                fontWeight: "300",
+                fontWeight: "100",
                 fontSize: "3.0rem",
                 color: "var(--lightblue)",
               }}
@@ -71,7 +71,7 @@ export default function HomeLayout({ pageContent }){
                 fontWeight: "400",
                 fontSize: "1.1rem",
                 lineHeight: "1.5rem",
-                color: "var(--whiteblue)",
+                color: "var(--lightblue)",
               }}
             >
               {pageContent.heroText}
@@ -99,6 +99,12 @@ export default function HomeLayout({ pageContent }){
           className="section-1"
           style={{
             textAlign: "center",
+            // backgroundImage: "url('src/assets/images/decoration/graphic_0101-long1-aquablue.png')",
+            backgroundSize: "140%",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            // backgroundColor: "#183945",
+            backgroundColor: "var(--darkblue)",
             justifyContent: "center",
             display: "flex",
             flexDirection: "column",
@@ -106,14 +112,14 @@ export default function HomeLayout({ pageContent }){
             padding: "4% 0 5% 0",
           }}
         >
-          <h2>Våra kontor</h2>
+          <h2 style={{ color: "var(--lightblue)" }}>Våra kontor</h2>
           <CardComponent />
          {documentToReactComponents(pageContent.richText)}
         </section>
-        <section
+        {/* <section
           className="section-2"
           style={{ textAlign: "center" }}
-        ></section>
+        ></section> */}
     </>
   );
 }

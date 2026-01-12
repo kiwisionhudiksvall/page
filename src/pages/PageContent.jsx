@@ -8,7 +8,9 @@ import AboutLayout from "./layouts/AboutLayout";
 import ProductsLayout from "./layouts/ProductsLayout";
 import CareerLayout from "./layouts/CareerLayout";
 import HomeLayout from "./layouts/HomeLayout";
+// röv
 import "../styles/global.css";
+import { extractTables } from "../utils/extractTables";
 
 export default function PageContent() {
   const { slug } = useParams();
@@ -19,17 +21,20 @@ export default function PageContent() {
       const res = await client.getEntries({
         content_type: "pageContent",
         "fields.slug": slug,
-        include: 10, // Viktigt för att få med embedded entries/assets
+        include: 10,
       });
-      console.log("PAGECONTENT:", res);
-      console.log("INCLUDES ENTRY:", res.includes?.Entry);
-      if (res.items.length) setPageContent(res.items[0]);
+
+      console.log("PAGECONTENT RESPONSE:", res);
+
+      if (res.items?.length) {
+        setPageContent(res);
+      }
     };
 
     fetchPageContent();
   }, [slug]);
 
-    if (!pageContent)
+  if (!pageContent) {
     return (
       <div
         style={{
@@ -43,63 +48,54 @@ export default function PageContent() {
         Vänta lite...
       </div>
     );
+  }
 
-  
+  const pageEntry = pageContent.items[0];
+  const { fields } = pageEntry;
+  // const slides = pageContent.includes.Entry[3].fields.slides
+
+  // Exempel: justera detta till rätt rich text-fält
+  const tables = fields.mapsOffices?.fields?.richText
+    ? extractTables(fields.mapsOffices.fields.richText)
+    : [];
+
+  console.log("EXTRACTED TABLES:", tables);
+
   const renderLayout = () => {
-    switch (pageContent.fields.template) {
-      case "career":
-        return (
-          <CareerLayout
-            pageContent={pageContent.fields}
-            includes={pageContent.includes}
-          />
-        );
-      case "products":
-        return (
-          <ProductsLayout
-            pageContent={pageContent.fields}
-            includes={pageContent.includes}
-          />
-        );
-      case "about":
-        return (
-          <AboutLayout
-            pageContent={pageContent.fields}
-            includes={pageContent.includes}
-          />
-        );
-      case "contact":
-        return (
-          <ContactLayout
-            pageContent={pageContent.fields}
-            includes={pageContent.includes}
-            tables={pageContent.fields.tables}
-          />
-        );
-      case "landing":
-        return (
-          <LandingLayout
-            pageContent={pageContent.fields}
-            includes={pageContent.includes}
-          />
-        );
-      case "home":
-        return (
-          <HomeLayout
-            pageContent={pageContent.fields}
-            includes={pageContent.includes}
-          />
-        );
-      default:
-        return (
-          <DefaultLayout
-            pageContent={pageContent.fields}
-            includes={pageContent.includes}
-          />
-        );
+  switch (fields.template) {
+    case "products": {
+      const slides =
+        pageContent.includes?.Entry
+          ?.find(e => e.fields?.slides)
+          ?.fields?.slides ?? [];
+      return (
+        <ProductsLayout
+          pageContent={fields}
+          slides={slides}
+        />
+      );
     }
-  };
 
-  return <>{renderLayout()}</>;
+    case "about":
+      return <AboutLayout pageContent={fields} />;
+
+    case "career":
+      return <CareerLayout pageContent={fields} />;
+
+    case "contact":
+      return <ContactLayout pageContent={fields} tables={tables} />;
+
+    case "landing":
+      return <LandingLayout pageContent={fields} />;
+
+    case "home":
+      return <HomeLayout pageContent={fields} />;
+
+    default:
+      return <DefaultLayout pageContent={fields} />;
+  }
+};
+
+
+  return renderLayout();
 }
-

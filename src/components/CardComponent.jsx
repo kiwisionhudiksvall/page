@@ -2,7 +2,7 @@ import React from "react";
 import "../styles/global.css";
 
 const offices = [
-    {
+  {
     id: "hudiksvall",
     name: "Hudiksvallskontoret",
     address: "Käppuddsgatan 5, Hudiksvall",
@@ -40,19 +40,33 @@ export default function CardComponent() {
               role="listitem"
               aria-labelledby={`${id}-title`}
             >
-              <h3 style={{ color: "var(--darkblue)" }} id={`${id}-title`}>
-                {name}
-              </h3>
+              <h3 id={`${id}-title`}>{name}</h3>
               <p>{address}</p>
               <div className="map" aria-hidden="false">
                 <iframe
-                  style={{ filter: "saturate(0.25) hue-rotate(200deg)" }}
+                  style={{ filter: "saturate(0.1) hue-rotate(270deg)" }}
                   title={`${name} map`}
                   src={src}
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 />
               </div>
+              <a
+                style={{
+                  fontSize: "0.9rem",
+                  fontFamily: "'bc-novatica-cyr', sans-serif",
+                  fontWeight: "600",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.1rch",
+                  borderRadius: "100px",
+                  margin: "20px 60px",
+                  padding: "8px 0",
+                }}
+                href="mailto:kontakt@kiwision.se"
+                className="card-button"
+              >
+                Kontakt
+              </a>
             </article>
           );
         })}

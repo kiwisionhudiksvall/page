@@ -7,9 +7,6 @@ export default function AboutLayout({ pageContent }) {
     ? `https:${pageContent.heroImage.fields.file.url}`
     : null;
 
-  // Här hämtar vi de referenser (pageItems) som ligger länkade till sidan
-  const pageItems = pageContent.reference || [];
-
   return (
     <>
       <Hero
@@ -23,20 +20,33 @@ export default function AboutLayout({ pageContent }) {
         <p>{pageContent.heroText}</p>
       </Hero>
 
-      {pageItems.length > 0 && (
+      {pageContent.richText && (
         <section
           className="section-1"
           style={{
             width: "100vw",
-            minHeight: "60vh",
-            padding: "3rem 0",
+            marginBottom: "-2vh",
           }}
         >
-          {pageItems.map((item) => (
-            <ZiczagLayout key={item.sys.id} pageItem={item.fields} />
-          ))}
+          <ZiczagLayout pageItem={pageContent} />
         </section>
       )}
+      <section style={{background: "var(--whiteblue)", width: "100%", padding: "4%", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
+        <div style={{width: "40%", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "flex-start"}}>
+          <h3>Företagsfakta</h3>
+
+    <p>Org nr: 556123-4567</p>
+    <p>Startdatum: 2015-06-01</p>
+    <p>Tel: 031-123456</p>
+    <p>Mail: kontakt@företag.se</p>
+          </div>
+        </section>
+        <section style={{marginTop: "-20px", padding: "4%", background: "var(--aquablue)", color: "var(--whiteblue)"}}>
+          <h3>Vårt företagsnamn</h3>
+          <p>
+            Lorem ipsum
+            </p>
+          </section>
     </>
   );
 }

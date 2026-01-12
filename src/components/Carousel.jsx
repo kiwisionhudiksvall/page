@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getAssetUrl } from "../sdk/contentful.js";
+import { getAssetUrl } from "../contentfulClient.js";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import "../styles/global.css";
 
@@ -26,7 +26,8 @@ export default function Carousel({ slides }) {
   const nextIndex = (currentIndex + 1) % total;
 
   const handleNext = () => setCurrentIndex((prev) => (prev + 1) % total);
-  const handlePrev = () => setCurrentIndex((prev) => (prev - 1 + total) % total);
+  const handlePrev = () =>
+    setCurrentIndex((prev) => (prev - 1 + total) % total);
 
   const visibleSlides = [prevIndex, currentIndex, nextIndex];
 
@@ -37,6 +38,7 @@ export default function Carousel({ slides }) {
         position: "relative",
         width: "90vw",
         margin: "0 auto",
+        padding: "10vh 0",
         overflow: "hidden",
         display: "flex",
         flexDirection: "column",
@@ -51,16 +53,13 @@ export default function Carousel({ slides }) {
           top: "30%",
           left: "10px",
           zIndex: 2,
-          fontSize: "2rem",
           background: "none",
           border: "none",
           cursor: "pointer",
-          color: "var(--darkblue)",
         }}
       >
         ‹
       </button>
-
       <div
         className="carousel-track"
         style={{
@@ -69,7 +68,7 @@ export default function Carousel({ slides }) {
           justifyContent: "center",
           alignItems: "flex-start",
           gap: "2rem",
-          transition: "all 1.1s ease",
+          backgroundColor: "var(--darkblue)",
         }}
       >
         {visibleSlides.map((index) => {
@@ -79,36 +78,37 @@ export default function Carousel({ slides }) {
           const mainImage = card.image ? getAssetUrl(card.image) : null;
           const embeddedImage = getEmbeddedImage(card.text);
 
-          // Style baserat på position: vänster, center, höger
-          const isCenter = index === currentIndex;
-          const transform = isCenter ? "scale(1)" : "scale(0.95)"
-          const opacity = isCenter ? 1 : 0.2;
-          const zIndex = isCenter ? 2 : 1;
-          const marginLeft = isCenter ? "40" : "10";
+          const position =
+            index === currentIndex
+              ? "center"
+              : index === nextIndex
+              ? "right"
+              : "left";
 
           return (
             <div
               key={index}
               className="carousel-card"
               style={{
-                width: "350px",
-                minWidth: "300px",
+                width: position === "center" ? "600px" : "200px",
+                opacity: position === "center" ? 1 : 0.15,
+                transform:
+                  position === "center"
+                    ? "translateX(0) scale(1)"
+                    : position === "right"
+                    ? "translateX(140px) scale(0.9)"
+                    : "translateX(-140px) scale(0.9)",
+                transition:
+                  "transform 0.6s ease, opacity 0.4s ease, width 0.6s ease",
+                zIndex: position === "center" ? 2 : 1,
                 background: "var(--creme)",
                 borderRadius: "1rem",
-                overflow: "hidden",
                 flexShrink: 0,
                 padding: "1%",
-                opacity,
-                transform,
-                marginLeft,
-                transition: "all 0.5s ease",
-                animationName: "tonext, snap",
-                animationTimingFunction: "ease",
-                animationDuration: "4s",
-                zIndex,
-                boxShadow: isCenter
-                  ? "0 10px 25px rgba(255, 255, 255, 0.57)"
-                  : "0 4px 10px rgba(255, 255, 255, 0.43)",
+                boxShadow:
+                  position === "center"
+                    ? "0px 2px 25px rgba(255,255,255,0.77)"
+                    : "none",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
@@ -127,7 +127,6 @@ export default function Carousel({ slides }) {
                     flexDirection: "column",
                     alignItems: "center",
                     justifyContent: "center",
-
                   }}
                 />
               )}
@@ -144,7 +143,6 @@ export default function Carousel({ slides }) {
                   }}
                 />
               )}
-
               <div style={{ padding: "1rem" }}>
                 {card.title && (
                   <h3
@@ -160,19 +158,16 @@ export default function Carousel({ slides }) {
                     {card.title}
                   </h3>
                 )}
-
                 {card.text && typeof card.text === "string" && (
                   <p style={{ fontSize: "0.9rem", color: "var(--darkblue)" }}>
                     {card.text}
                   </p>
                 )}
-
                 {card.text && typeof card.text === "object" && (
                   <div style={{ fontSize: "0.9rem", color: "var(--darkblue)" }}>
                     {documentToReactComponents(card.text)}
                   </div>
                 )}
-
                 {card.link && (
                   <a
                     href={card.link}
@@ -204,7 +199,6 @@ export default function Carousel({ slides }) {
           );
         })}
       </div>
-
       <button
         onClick={handleNext}
         className="carousel-btn right"

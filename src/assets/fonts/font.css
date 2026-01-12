@@ -1,0 +1,26 @@
+
+@font-face {
+  font-family: 'EastmanBold';
+  src: url('../assets/fonts/EastmanMedium.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'EastmanRegular';
+  src: url('../assets/fonts/EastmanRegular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Eastman-Bold';
+  src: url('../assets/fonts/Eastman-Alternate-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Eastman-Medium';
+  src: url('../assets/fonts/Eastman-Alternate-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Rez';
+  src: url('../assets/fonts/REZ.ttf') format('truetype');
+  font-display: swap;
+}
