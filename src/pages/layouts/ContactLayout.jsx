@@ -4,7 +4,7 @@ import ContactForm from "../../components/ContactForm.jsx";
 import pattern from "../../assets/images/decoration/graphic_0101-long2-darkblue.svg";
 import "../../styles/global.css";
 import MapEmbed from "../../components/MapEmbed.jsx";
-import RenderRichText from "../../components/RenderRichText";
+import ContactTables from "../../components/ContactTables.jsx";
 
 export default function ContactLayout({ pageContent }) {
 
@@ -43,11 +43,17 @@ export default function ContactLayout({ pageContent }) {
             justifyContent: "center",
             alignItems: "center",
             gap: "2rem",
+            height: "70vh",
           }}
         >
-          <RenderRichText richText={pageContent.richText} />
+        <ContactTables richText={pageContent.richText} 
+        className="contact-tables-box"
+        style={{            
+          display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",}}/>
         </div>
- <MapEmbed location={pageContent} />
       </section>
       <section
         className="section-2"

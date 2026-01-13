@@ -2,7 +2,7 @@ import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
 export default function MapEmbed({
-  location, // <-- ta emot location här
+  location, 
   lat,
   lon,
   width = "100%",
@@ -13,17 +13,13 @@ export default function MapEmbed({
 
   if (lat != null && lon != null) coords = [lat, lon];
   else if (location) {
-    // Contentful kan ha olika strukturer:
+
     if (location.location?.lat != null && location.location?.lon != null) {
       coords = [location.location.lat, location.location.lon];
     } else if (location.latitude != null && location.longitude != null) {
       coords = [location.latitude, location.longitude];
     }
   }
-
-  console.log("Coords:", coords);
-
-  console.log("Location:", location);
 
   if (!coords) {
     return (
