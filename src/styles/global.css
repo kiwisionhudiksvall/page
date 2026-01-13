@@ -2,6 +2,11 @@
 @import url("https://use.typekit.net/nfb5crw.css");
 
 @font-face {
+    font-family: 'Eastman-Alternate-Trial-Regular';
+    src: url('../assets/fonts/Eastman-Regular.otf') format('opentype'),
+}
+
+@font-face {
     font-family: 'Eastman-Alternate-Trial-Medium';
     src: url('../assets/fonts/Eastman-Alternate-Trial-Medium.ttf.woff') format('woff'),
 }
@@ -243,16 +248,19 @@ nav button:focus {
 h1 {
   font-size: 2.8rem;
   line-height: 2.0rem;
-  font-family: 'Eastman-Alternate-Trial-Medium', sans-serif;
+  font-family: "bc-novatica-cyr", sans-serif;
   word-spacing: 0rch;
-  text-transform: uppercase;
-  font-weight: 600;
+  /* text-transform: uppercase; */
   letter-spacing: 0.06rch;
-  color: var(--aquablue);
+  font-weight: 500;
+    color: var(--lightblue);
 }
 
 .hero p {
-    color: var(--lightblue);
+    color: #76c1ec;
+    font-size: 1.3rem;
+    line-height: 1.5rem;
+    font-weight: 500;
 }
 
 h2,
@@ -476,9 +484,24 @@ section {
   min-width: none;
 }
 
+.leaflet-container {
+  width: 100%;
+  height: 60vh;
+}
+
+.map-embed .leaflet-container {
+  width: 100%;
+  height: 60vh;
+}
+
+.section-1-text {
+    width: 100%;
+  height: 30vh;
+}
+
 footer {
   width: 100%;
-  background: var(--lightblue);
+  background: var(--midblue);
   color: var(--aquablue);
   text-align: center;
   font-size: 1.15rem;

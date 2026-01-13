@@ -33,3 +33,16 @@ beige        #B7A87D
 darkgreen    #252C00
 midgreen     #637B27
 lightgreen   #F2F3A7
+
+--whiteblue: #eefffe; 
+  --lightblue: #b0e4f9;
+  --lightbluer: #d1f6ff;
+  --aquablue: #32B0E1;
+  --midblue: #005D85; 
+  --darkblue: #011436;
+  --creme: #FEFCF1;
+  --whitegreen: #f9fade;
+  --lightgreen: #F2F3A7;
+  --kiwigreen: #AEC539;
+  --midgreen: #637B27;
+  --darkgreen: #252C00;
