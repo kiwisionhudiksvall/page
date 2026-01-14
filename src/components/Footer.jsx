@@ -1,6 +1,6 @@
 import "../styles/global.css";
 import React from "react";
-import LogoCircle from "../assets/images/logos/round_logo-kiwision-12.png";
+import LogoCircle from "../assets/images/logos/round_logo-kiwision-02.svg";
 
 export default function Footer() {
   return (

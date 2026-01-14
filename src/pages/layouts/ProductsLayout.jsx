@@ -4,7 +4,7 @@ import ZiczagLayout from "../../components/layouts/ZiczagLayout.jsx";
 import "../../styles/global.css";
 import Carousel from "../../components/Carousel.jsx";
 
-export default function ProductsLayout({ pageContent }) {
+export default function ProductsLayout({ pageContent, slides }) {
 
   const heroImageUrl = pageContent.heroImage?.fields?.file?.url
     ? `https:${pageContent.heroImage.fields.file.url}`
@@ -30,9 +30,9 @@ export default function ProductsLayout({ pageContent }) {
       >
           <ZiczagLayout pageItem={pageContent} />
       </section>
-      <section className="section-2">
-        <Carousel pageItem={pageContent.carousel} />
-      </section>
+<section className="section-2" style={{backgroundColor: "var(--darkblue)"}}>
+  <Carousel slides={slides} />
+</section>
     </>
   );
 }

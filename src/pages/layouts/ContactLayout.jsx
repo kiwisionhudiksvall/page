@@ -1,18 +1,17 @@
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+
 import Hero from "../../components/Hero.jsx";
 import ContactForm from "../../components/ContactForm.jsx";
 import pattern from "../../assets/images/decoration/graphic_0101-long2-darkblue.svg";
 import "../../styles/global.css";
-import MapComponent from "../../components/MapComponent.jsx";
-import { extractTables } from "../../utils/extractTables";
+import MapEmbed from "../../components/MapEmbed.jsx";
+import ContactTables from "../../components/ContactTables.jsx";
 
 export default function ContactLayout({ pageContent }) {
-  // Helper for safely getting Contentful asset URLs
+
   const getAssetUrl = (asset) =>
     asset?.fields?.file?.url ? `https:${asset.fields.file.url}` : "";
 
   const imageUrl = getAssetUrl(pageContent?.heroImage);
-  const tables = extractTables(pageContent?.richText || {});
 
   return (
     <>
@@ -44,11 +43,17 @@ export default function ContactLayout({ pageContent }) {
             justifyContent: "center",
             alignItems: "center",
             gap: "2rem",
+            height: "70vh",
           }}
         >
-          {documentToReactComponents(pageContent?.richText || {})}
+        <ContactTables richText={pageContent.richText} 
+        className="contact-tables-box"
+        style={{            
+          display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",}}/>
         </div>
-        <MapComponent mapsOffices={tables} />
       </section>
       <section
         className="section-2"
@@ -57,6 +62,7 @@ export default function ContactLayout({ pageContent }) {
           textAlign: "center",
           backgroundImage: `url(${pattern})`,
           backgroundSize: "cover",
+          backgroundColor: "var(--darkblue)",
         }}
       >
         <h1>{pageContent?.heading1 || "Rubrik saknas"}</h1>

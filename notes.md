@@ -21,9 +21,9 @@ aqua         #32B0E1
 kiwi         #AEC539
 
 darkblue     #011436
-midblue      #045587 #005D85
+midblue      #005D85
 lightblue    #D1F6FF
-whiteblue    #EEFFFE rgb: rgba(238, 255, 254, 1)
+whiteblue    #EEFFFE
 
 creme        #FEFCF1
 darkbrown    #252206
@@ -33,3 +33,18 @@ beige        #B7A87D
 darkgreen    #252C00
 midgreen     #637B27
 lightgreen   #F2F3A7
+wgitegreen   #EEFADE
+
+whiteblue:   rgb(238, 255, 254);
+lightblue:   rgb(176, 228, 249);
+lightbluer:  rgb(209, 246, 255);
+aquablue:    rgb(50, 176, 225);
+midblue:     rgb(0, 93, 133);
+darkblue:    rgb(1, 20, 54);
+
+creme:       rgb(254, 252, 241);
+whitegreen:  rgb(238, 250, 222);
+lightgreen:  rgb(242, 243, 167);
+kiwigreen:   rgb(174, 197, 57);
+midgreen:    rgb(99, 123, 39);
+darkgreen:   rgb(37, 44, 0);

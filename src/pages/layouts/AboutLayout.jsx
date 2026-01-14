@@ -31,6 +31,22 @@ export default function AboutLayout({ pageContent }) {
           <ZiczagLayout pageItem={pageContent} />
         </section>
       )}
+      <section style={{background: "var(--whiteblue)", width: "100%", padding: "4%", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
+        <div style={{width: "40%", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "flex-start"}}>
+          <h3>Företagsfakta</h3>
+
+    <p>Org nr: 556123-4567</p>
+    <p>Startdatum: 2015-06-01</p>
+    <p>Tel: 031-123456</p>
+    <p>Mail: kontakt@företag.se</p>
+          </div>
+        </section>
+        <section style={{marginTop: "-20px", padding: "4%", background: "var(--aquablue)", color: "var(--whiteblue)"}}>
+          <h3>Vårt företagsnamn</h3>
+          <p>
+            Lorem ipsum
+            </p>
+          </section>
     </>
   );
 }

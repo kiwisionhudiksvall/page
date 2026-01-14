@@ -8,7 +8,7 @@ import AboutLayout from "./layouts/AboutLayout";
 import ProductsLayout from "./layouts/ProductsLayout";
 import CareerLayout from "./layouts/CareerLayout";
 import HomeLayout from "./layouts/HomeLayout";
-
+// röv
 import "../styles/global.css";
 import { extractTables } from "../utils/extractTables";
 
@@ -52,6 +52,7 @@ export default function PageContent() {
 
   const pageEntry = pageContent.items[0];
   const { fields } = pageEntry;
+  // const slides = pageContent.includes.Entry[3].fields.slides
 
   // Exempel: justera detta till rätt rich text-fält
   const tables = fields.mapsOffices?.fields?.richText
@@ -61,28 +62,40 @@ export default function PageContent() {
   console.log("EXTRACTED TABLES:", tables);
 
   const renderLayout = () => {
-    switch (fields.template) {
-      case "career":
-        return <CareerLayout pageContent={fields} />;
-      case "products":
-        return <ProductsLayout pageContent={fields} />;
-case "about":
-  return <AboutLayout pageContent={fields} />;
-      case "contact":
-        return (
-          <ContactLayout
-            pageContent={fields}
-            tables={tables}
-          />
-        );
-      case "landing":
-        return <LandingLayout pageContent={fields} />;
-      case "home":
-        return <HomeLayout pageContent={fields} />;
-      default:
-        return <DefaultLayout pageContent={fields} />;
+  switch (fields.template) {
+    case "products": {
+      const slides =
+        pageContent.includes?.Entry
+          ?.find(e => e.fields?.slides)
+          ?.fields?.slides ?? [];
+      return (
+        <ProductsLayout
+          pageContent={fields}
+          slides={slides}
+        />
+      );
     }
-  };
+
+    case "about":
+      return <AboutLayout pageContent={fields} />;
+
+    case "career":
+      return <CareerLayout pageContent={fields} />;
+
+    case "contact":
+      return <ContactLayout pageContent={fields} tables={tables} />;
+
+    case "landing":
+      return <LandingLayout pageContent={fields} />;
+
+    case "home":
+      return <HomeLayout pageContent={fields} />;
+
+    default:
+      return <DefaultLayout pageContent={fields} />;
+  }
+};
+
 
   return renderLayout();
 }

@@ -1,5 +1,3 @@
-
-
 export function extractTables(richTextDocument) {
   if (!richTextDocument?.content) return [];
 

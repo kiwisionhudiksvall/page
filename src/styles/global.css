@@ -6,11 +6,6 @@
     src: url('../assets/fonts/Eastman-Alternate-Trial-Medium.ttf.woff') format('woff'),
 }
 
-@font-face {
-  font-family: 'Eastman-Alternate-Trial-Bold';
-  src: url('../assets/fonts/Eastman-Alternate-Trial-Bold.ttf.woff') format('woff');
-}
-
 :root {
   font-weight: 300;
   font-size: 1.0rem;
@@ -20,17 +15,20 @@
   color:  #2583a8;
   background-color: #011436;
   --whiteblue: #eefffe; 
-  --lightblue: #d1f6ff;
-  --lightbluer: #b1e4fa;
+  --lightblue: #b0e4f9;
+  --lightbluer: #d1f6ff;
+  --brightaqua: #32b0c0;
   --aquablue: #32B0E1;
-  --midblue: #005D85; 
+  --brightblue: #2d2ed0;
+  --midblue: #0f4f61; 
   --darkblue: #011436;
   --creme: #FEFCF1;
-  --whitegreen: #f9fade;
-  --lightgreen: #F2F3A7;
+  --darkcreme: #dddbaa;
+  --whitegreen: #eefade;
+  --lightgreen: #d9f4c5;
   --kiwigreen: #AEC539;
-  --midgreen: #637B27;
-  --darkgreen: #252C00;
+  --midgreen: #637b27;
+  --darkgreen: #193829;
   --white: #FFFFFF;
   --black: #000000;
 
@@ -62,6 +60,7 @@ nav img {
 nav img:hover {
   transform: scale(0.98);
   cursor: pointer;
+  opacity: 0.8;
 }
 
 ul a, ul a .menu-button {
@@ -242,16 +241,19 @@ nav button:focus {
 h1 {
   font-size: 2.8rem;
   line-height: 2.0rem;
-  font-family: 'Eastman-Alternate-Trial-Medium', sans-serif;
+  font-family: "bc-novatica-cyr", sans-serif;
   word-spacing: 0rch;
-  text-transform: uppercase;
-  font-weight: 600;
+  /* text-transform: uppercase; */
   letter-spacing: 0.06rch;
-  color: var(--aquablue);
+  font-weight: 500;
+    color: var(--lightblue);
 }
 
 .hero p {
-    color: var(--lightblue);
+    color: #76c1ec;
+    font-size: 1.3rem;
+    line-height: 1.5rem;
+    font-weight: 500;
 }
 
 h2,
@@ -259,7 +261,7 @@ h2,
   font-size: 2.2rem;
   line-height: 2.0rem;
   letter-spacing: 0.2rch;
-  font-family: 'Eastman-Alternate-Trial-Medium', sans-serif;
+  font-family: 'all-round-gothic', sans-serif;
   word-spacing: 0rch;
   text-transform: uppercase;
   font-weight: 500;
@@ -332,7 +334,7 @@ h3 {
 }
 
 .carousel-btn left, .carousel-btn, right, .carousel-btn  {
-  font-size: 13rem;
+  font-size: 9rem;
   font-weight: 400;
   background-color: transparent;
   color: var(--aquablue);
@@ -420,9 +422,9 @@ section {
   padding: 10px 15px;
   margin-top: 3%;
   border-radius: 8px;
-  background: var(--kiwigreen);
-  box-shadow: 2px 5px 20px rgba(119, 201, 255, 0.6);
-  border: 1px solid rgb(174, 197, 57, 0.4);
+  background: var(--creme);
+  box-shadow: 2px 2px 20px rgba(119, 201, 255, 0.85);
+  border: 1px solid rgba(119, 201, 255, 0.712);
   display: flex;
   flex-direction: column;
 }
@@ -431,21 +433,21 @@ section {
   margin: 20px 0 8px;
   font-size: 1.25rem;
   font-family: "bc-novatica-cyr", sans-serif;
-  color: var(--darkgreen);
+  color: var(--black);
   font-weight: 600;
   letter-spacing: -0.008rch;
 }
 
 .card p {
   margin: 0 0 12px;
-  color: var(--midgreen);
-  font-size: 0.85rem;
+  color: var(--black);
+  font-size: 0.95rem;
   letter-spacing: 0.03rch;
 }
 
 .card a {
-  background: #7a9b29ff;
-  color: var(--darkgreen);
+  background: var(--kiwigreen);
+  color: var(--midgreen);
 }
 
 .card a::before {
@@ -475,9 +477,50 @@ section {
   min-width: none;
 }
 
+.contact-table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 600px;
+}
+
+.contact-table th,
+.contact-table td {
+  border: 1px solid #ccc;
+  padding: 0.5rem 1rem;
+  text-align: left;
+}
+
+.contact-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+}
+
+.section-1-text div .section-style {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.leaflet-container {
+  width: 100%;
+  height: 60vh;
+}
+
+.map-embed .leaflet-container {
+  width: 100%;
+  height: 60vh;
+}
+
+.section-1-text {
+    width: 100%;
+  height: 30vh;
+}
+
 footer {
   width: 100%;
-  background: var(--lightblue);
+  background: var(--midblue);
   color: var(--aquablue);
   text-align: center;
   font-size: 1.15rem;

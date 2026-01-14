@@ -28,12 +28,19 @@ export default function Navbar() {
   useEffect(() => {
     const fetchPages = async () => {
       try {
-        const res = await client.getEntries({ content_type: "pageContent" });
+        const res = await client.getEntries({
+  content_type: "navigation",
+  include: 4,
+});
+
+const nav = res.items[0];
+setPages(nav.fields.items);
+
         const items = res.items
           .map((item) => item.fields)
-          // Filtrera bort sidor som inte ska synas i nav (om du använder showInNav)
+
           .filter((page) => page.showInNav !== false)
-          // Sortera efter menuOrder (eller alfabetiskt om det saknas)
+          
           .sort((a, b) => (a.menuOrder || 999) - (b.menuOrder || 999));
 
         setPages(items);
@@ -45,7 +52,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="navbar" style={{ position: "fixed", top: 0, zIndex: 100 }}>
+    <nav className="navbar" style={{ position: "fixed", top: 0, paddingTop: "5vh", zIndex: 100 }}>
       <img
         src={Logo}
         alt="Logo"
@@ -81,18 +88,50 @@ export default function Navbar() {
                 zIndex: 1000,
               }}
             >
-              {pages.map((p) => (
-                <Link className="menu-button" key={p.slug} to={`/${p.slug}`} onClick={() => setIsOpen(false)}>
-                  {p.pageTitle}
-                </Link>
-              ))}
-
+  {pages.map((item) => (
+    <NavItem
+      key={item.sys.id}
+      item={item}
+      onClick={() => setIsOpen(false)}
+    />
+  ))}
             </ul>
           )}
         </li>
       </ul>
     </nav>
   );
+
+function NavItem({ item, onClick }) {
+  const page = item.fields.page;
+  const children = item.fields.children || [];
+
+  return (
+    <li>
+      <Link
+        className="menu-button"
+        to={`/${page.fields.slug}`}
+        onClick={onClick}
+      >
+        {item.fields.label}
+      </Link>
+
+      {children.length > 0 && (
+        <ul className="submenu">
+          {children.map((child) => (
+            <NavItem
+              key={child.sys.id}
+              item={child}
+              onClick={onClick}
+            />
+          ))}
+        </ul>
+      )}
+    </li>
+  );
+}
+
+
 }
 
  

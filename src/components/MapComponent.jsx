@@ -32,11 +32,9 @@ function MapEmbed({ lat, lon, location, src, title, width = "100%", height = "30
   if (lat != null && lon != null) coords = [lat, lon];
   else if (location) {
     const fields = location.fields || {};
-    if (fields.lat && fields.lon) coords = [fields.lat, fields.lon];
-    else if (fields.latitude && fields.longitude) coords = [fields.latitude, fields.longitude];
-    else if (fields.location && (fields.location.lat || fields.location.lon)) coords = [fields.location.lat, fields.location.lon];
-    else if (fields.coordinates && Array.isArray(fields.coordinates)) coords = fields.coordinates;
-  }
+     if (fields.location && (fields.location.lat || fields.location.lon)) 
+      coords = [fields.location.lat, fields.location.lon];
+     }
 
   if (!coords)
     return (
