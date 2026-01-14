@@ -52,7 +52,7 @@ export default function Carousel({ slides }) {
           position: "absolute",
           top: "30%",
           left: "10px",
-          zIndex: 2,
+          zIndex: 3,
           background: "none",
           border: "none",
           cursor: "pointer",
@@ -96,10 +96,10 @@ export default function Carousel({ slides }) {
                   position === "center"
                     ? "translateX(0) scale(1)"
                     : position === "right"
-                    ? "translateX(140px) scale(0.9)"
-                    : "translateX(-140px) scale(0.9)",
+                    ? "translateX(300px) scale(0.95)"
+                    : "translateX(-300px) scale(0.95)",
                 transition:
-                  "transform 0.6s ease, opacity 0.4s ease, width 0.6s ease",
+                  "transform 0.2s ease, opacity 0.4s ease, width 0.2s ease",
                 zIndex: position === "center" ? 2 : 1,
                 background: "var(--creme)",
                 borderRadius: "1rem",
@@ -206,7 +206,7 @@ export default function Carousel({ slides }) {
           position: "absolute",
           top: "30%",
           right: "10px",
-          zIndex: 2,
+          zIndex: 3,
           background: "none",
           border: "none",
           cursor: "pointer",

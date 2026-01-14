@@ -17,15 +17,18 @@
   --whiteblue: #eefffe; 
   --lightblue: #b0e4f9;
   --lightbluer: #d1f6ff;
+  --brightaqua: #32b0c0;
   --aquablue: #32B0E1;
-  --midblue: #005D85; 
+  --brightblue: #2d2ed0;
+  --midblue: #0f4f61; 
   --darkblue: #011436;
   --creme: #FEFCF1;
+  --darkcreme: #dddbaa;
   --whitegreen: #eefade;
-  --lightgreen: #F2F3A7;
+  --lightgreen: #d9f4c5;
   --kiwigreen: #AEC539;
-  --midgreen: #637B27;
-  --darkgreen: #252C00;
+  --midgreen: #637b27;
+  --darkgreen: #193829;
   --white: #FFFFFF;
   --black: #000000;
 
@@ -331,7 +334,7 @@ h3 {
 }
 
 .carousel-btn left, .carousel-btn, right, .carousel-btn  {
-  font-size: 13rem;
+  font-size: 9rem;
   font-weight: 400;
   background-color: transparent;
   color: var(--aquablue);
