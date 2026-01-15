@@ -520,8 +520,8 @@ section {
 
 footer {
   width: 100%;
-  background: var(--midblue);
-  color: var(--aquablue);
+  background: var(--aquablue);
+  color: var(--lightblue);
   text-align: center;
   font-size: 1.15rem;
   padding: 2% 0;

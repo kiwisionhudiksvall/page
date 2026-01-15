@@ -1,23 +1,30 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import Hero from "../../components/Hero.jsx";
 import "../../styles/global.css";
 
 export default function LandingLayout({ pageContent }) {
   const imageUrl = pageContent.heroImage?.fields?.file?.url
     ? `https:${pageContent.heroImage.fields.file.url}`
     : null;
+    
   return (
     <>
-      <Hero
+      <header
         className="hero"
         style={{
           backgroundImage: `url(${imageUrl})`,
-          backgroundPosition: "100% 60%",
+          backgroundSize: "110%",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "60vh",
+          position: "relative",
+          overflow: "hidden",
         }}
       >
         <h1>{pageContent.heading1}</h1>
         <p>{pageContent.heroText}</p>
-      </Hero>
+      </header>
       <section
         className="section-1"
         style={{ padding: "4%", textAlign: "center" }}

@@ -55,9 +55,9 @@ export default function HomeLayout({ pageContent }){
           >
             <h1
               style={{
-                fontFamily: "'EastmanRegular', sans-serif",
+                fontFamily: "'all-round-gothic', sans-serif",
                 letterSpacing: "0.75rem",
-                fontWeight: "100",
+                fontWeight: "400",
                 fontSize: "3.0rem",
                 color: "var(--lightblue)",
               }}
@@ -71,7 +71,7 @@ export default function HomeLayout({ pageContent }){
                 fontWeight: "400",
                 fontSize: "1.1rem",
                 lineHeight: "1.5rem",
-                color: "var(--lightblue)",
+                color: "var(--whiteblue)",
               }}
             >
               {pageContent.heroText}

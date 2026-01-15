@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "../styles/global.css";
 
 export default function Navbar() {
-  const [pages, setPages] = useState([]);
+  const [navItems, setNavItems] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
@@ -21,44 +21,43 @@ export default function Navbar() {
       }
     }
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
   }, [isOpen]);
 
   useEffect(() => {
-    const fetchPages = async () => {
+    async function fetchNavigation() {
       try {
         const res = await client.getEntries({
-  content_type: "navigation",
-  include: 4,
-});
+          content_type: "navigation",
+          include: 4,
+        });
 
-const nav = res.items[0];
-setPages(nav.fields.items);
+        if (!res.items.length) return;
 
-        const items = res.items
-          .map((item) => item.fields)
-
-          .filter((page) => page.showInNav !== false)
-          
-          .sort((a, b) => (a.menuOrder || 999) - (b.menuOrder || 999));
-
-        setPages(items);
+        // Vi antar EN navigation: "Main navigation"
+        const navigation = res.items[0];
+        setNavItems(navigation.fields.items || []);
       } catch (error) {
         console.error("Fel vid hämtning av navigation:", error);
       }
-    };
-    fetchPages();
+    }
+
+    fetchNavigation();
   }, []);
 
   return (
-    <nav className="navbar" style={{ position: "fixed", top: 0, paddingTop: "5vh", zIndex: 100 }}>
+    <nav
+      className="navbar"
+      style={{ position: "fixed", top: 0, paddingTop: "5vh", zIndex: 100 }}
+    >
       <img
         src={Logo}
         alt="Logo"
         className="logo"
         onClick={() => navigate("/")}
       />
+
       <ul className="nav-menu">
         <li className="dropdown" ref={dropdownRef}>
           <button
@@ -88,23 +87,25 @@ setPages(nav.fields.items);
                 zIndex: 1000,
               }}
             >
-  {pages.map((item) => (
-    <NavItem
-      key={item.sys.id}
-      item={item}
-      onClick={() => setIsOpen(false)}
-    />
-  ))}
+              {navItems.map((item) => (
+                <NavItem
+                  key={item.sys.id}
+                  item={item}
+                  onClick={() => setIsOpen(false)}
+                />
+              ))}
             </ul>
           )}
         </li>
       </ul>
     </nav>
   );
+}
 
 function NavItem({ item, onClick }) {
-  const page = item.fields.page;
-  const children = item.fields.children || [];
+  const { label, page, children = [] } = item.fields;
+
+  if (!page) return null;
 
   return (
     <li>
@@ -113,7 +114,7 @@ function NavItem({ item, onClick }) {
         to={`/${page.fields.slug}`}
         onClick={onClick}
       >
-        {item.fields.label}
+        {label}
       </Link>
 
       {children.length > 0 && (
@@ -130,8 +131,3 @@ function NavItem({ item, onClick }) {
     </li>
   );
 }
-
-
-}
-
- 
